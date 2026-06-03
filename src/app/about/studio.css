@@ -1,0 +1,160 @@
+.studio {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.studio-hero {
+  position: relative;
+  width: 100vw;
+  padding: 1.6rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.studio-hero h1 {
+  font-size: 50vw;
+  position: relative;
+  transform: translateY(-3rem);
+  
+}
+
+.studio-hero-img {
+  aspect-ratio: 7/5;
+  position: relative;
+  width: calc(100vw - 3rem);
+  margin: 0 auto -25% auto;
+}
+
+.studio-hero-img-wrapper {
+  position: relative;
+  transform: translateY(-50%);
+  border-radius: 1.5rem;
+}
+
+.studio-header {
+  width: 100%;
+  padding: clamp(5rem 1.5rem 10vw 1.5rem) clamp(1rem, 4vw, 3rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.studio-header-copy {
+  margin-inline: auto;
+  width: min(100%, 1100px);
+}
+
+.studio-header-copy h2{
+  font-size: clamp(1.5rem, 2vw, 3rem);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  margin-inline: auto;
+}
+
+.mission-intro {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 1.5rem;
+  background-color: var(--foreground);
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+}
+
+.mission-intro-col-sm {
+  flex: 1.5;
+}
+
+.mission-intro-col-lg {
+  flex: 4;
+}
+
+.mission-intro-copy {
+  width: min(100%,980px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2vw, 3rem);
+}
+
+
+.mission-link {
+  margin-top: 4.5rem;
+}
+/* Mission link styling  */
+
+.recognition {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  padding-block: clamp(6rem, 10vw, 12rem);
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.recognition-copy {
+  width: min(90%, 900px);
+   margin: 0 auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.recognition-copy p {
+  gap: clamp(0.5rem, 1vw, 1.5rem);
+  font-size: clamp(0.875rem, 1vw, 1.25rem);
+  color: var(--secondary);
+}
+
+.recognition-copy h2 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-inline: auto;
+  font-size: clamp(1.5rem, 2vw, 3rem);
+}
+
+
+.char {
+  display: inline-block;
+  letter-spacing: 0;
+}
+
+.char-mask {
+  overflow: hidden;
+  display: inline-block;
+}
+
+@media (max-width: 1000px) {
+  .studio-hero {
+    padding: 7.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .studio-header-copy,
+  .mission-intro-copy,
+  .recognition-copy {
+    width: 100%;
+  }
+
+  .mission-intro-col-sm {
+    display: none;
+  }
+
+  .mission-intro {
+    min-height: 100svh;
+    height: 100%;
+  }
+}
