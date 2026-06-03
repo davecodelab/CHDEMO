@@ -44,7 +44,7 @@ const Menu = ({ pageRef }: MenuProps) => {
   const menuItems: MenuItem[] = [
     { label: "Home", route: "/" },
     { label: "Services", route: "/services" },
-    { label: "About Us", route: "/studio" },
+    { label: "About Us", route: "/about" },
     { label: "Gallery", route: "/gallery" },
     { label: "Contact", route: "/contact" },
   ];
