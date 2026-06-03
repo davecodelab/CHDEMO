@@ -99,7 +99,7 @@ const Showreel: React.FC = () => {
       <div className="showreel-container">
         <video
           ref={videoRef}
-          src="/showreel/showreel.mp4"
+          src="https://res.cloudinary.com/def28zwct/video/upload/v1780152596/4_6021571873005898776_ii6ziv.mp4"
           autoPlay
           muted={isMuted}
           loop
