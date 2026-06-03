@@ -61,7 +61,8 @@
 .mission-intro {
   position: relative;
   width: 100vw;
-  height: 100svh;
+  min-height: 100svh;
+  height: auto;
   padding: 1.5rem;
   background-color: var(--foreground);
   color: var(--background);
@@ -95,7 +96,8 @@
 .recognition {
   position: relative;
   width: 100%;
-  height: 100svh;
+  min-height: 100svh;
+  height: auto;
   padding-block: clamp(6rem, 10vw, 12rem);
   background-color: var(--background);
   color: var(--foreground);
@@ -155,6 +157,6 @@
 
   .mission-intro {
     min-height: 100svh;
-    height: 100%;
+    height: auto;
   }
 }
