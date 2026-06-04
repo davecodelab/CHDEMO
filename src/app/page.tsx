@@ -41,6 +41,8 @@ const Page = () => {
     ScrollTrigger.create({
       trigger: ".hero",
       start: "top top",
+      endTrigger: ".showreel",
+      end: "bottom top", // Unpins exactly when the Video finishes scrolling up
       pin: true,
       pinSpacing: false,
     });
