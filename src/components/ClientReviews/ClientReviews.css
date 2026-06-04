@@ -26,10 +26,10 @@
 }
 
 .marquee-card {
-  width: clamp(300px, 40vw, 450px);
-  min-height: clamp(350px, 40vh, 450px);
+  width: clamp(250px, 30vw, 350px); /* Reduced from 450px max */
+  min-height: clamp(280px, 30vh, 320px); /* Reduced from 450px max */
   border-radius: 1rem;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 2vw, 2rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,8 +44,8 @@
 }
 
 .marquee-card-text {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  line-height: 1.25;
+  font-size: clamp(1rem, 1.8vw, 1.4rem); /* Reduced font size to match smaller card */
+  line-height: 1.35;
   font-weight: 500;
   letter-spacing: -0.01rem;
 }
@@ -80,6 +80,8 @@
 .client-reviews-stacked .review-card-container {
   position: relative;
   width: 100%;
+  max-width: 350px; /* Constrain the maximum width on mobile */
+  margin: 0 auto; /* Center the constrained card */
   min-height: auto;
   height: auto;
   display: flex;
@@ -106,9 +108,10 @@
 }
 
 .client-reviews-stacked h3.review-card-text {
-  font-size: clamp(1.4rem, 8vw, 2rem);
-  line-height: 1.15;
-  letter-spacing: 0;
+  font-size: clamp(1rem, 5vw, 1.25rem); /* Substantially reduced text size */
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 500;
   max-width: 100%;
   overflow-wrap: break-word;
 }

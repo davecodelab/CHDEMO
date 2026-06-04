@@ -37,31 +37,20 @@ const Page = () => {
   }, []);
 
   useGSAP(() => {
-    const wrapper = theaterWrapperRef.current;
-    if (!wrapper) return;
-
-    // Darken to "theater mode" as the video scrolls into view
-    gsap.to(wrapper, {
-      backgroundColor: "#1a1614", // CraftHive Black
-      color: "#e3e3db",
-      scrollTrigger: {
-        trigger: ".showreel",
-        start: "top 75%",
-        end: "top 25%",
-        scrub: true,
-      }
+    // 1. Hero Curtain Effect: Hero pins, and the Video slides over it
+    ScrollTrigger.create({
+      trigger: ".hero",
+      start: "top top",
+      pin: true,
+      pinSpacing: false,
     });
 
-    // Lighten back to normal as Featured Work scrolls into view
-    gsap.to(wrapper, {
-      backgroundColor: "#e3e3db", // CraftHive Light Grey
-      color: "#1a1614",
-      scrollTrigger: {
-        trigger: ".featured-work",
-        start: "top 75%",
-        end: "top 25%",
-        scrub: true,
-      }
+    // 2. Video Curtain Effect: Video pins, and the Featured Work slides over it
+    ScrollTrigger.create({
+      trigger: ".showreel",
+      start: "top top",
+      pin: true,
+      pinSpacing: false,
     });
   }, { scope: theaterWrapperRef });
 
@@ -133,28 +122,30 @@ const Page = () => {
         </div>
       </section>
 
-      <section className="client-reviews-header-container">
-        <div className="container">
-          <div className="client-reviews-header-content">
-            <div className="client-reviews-header">
-              <Copy animateOnScroll={true} delay={0.25}>
-                <h1>People Approved</h1>
-              </Copy>
-            </div>
+      <div className="reviews-curtain-wrapper">
+        <section className="client-reviews-header-container">
+          <div className="container">
+            <div className="client-reviews-header-content">
+              <div className="client-reviews-header">
+                <Copy animateOnScroll={true} delay={0.25}>
+                  <h1>People Approved</h1>
+                </Copy>
+              </div>
 
-            <div className="client-reviews-header-copy">
-              <Copy animateOnScroll={true} delay={0.25}>
-                <p className="lg">
-                  Unfiltered thoughts from the people who survived our creative
-                  process. Or at least that’s what they told us.
-                </p>
-              </Copy>
+              <div className="client-reviews-header-copy">
+                <Copy animateOnScroll={true} delay={0.25}>
+                  <p className="lg">
+                    Unfiltered thoughts from the people who survived our creative
+                    process. Or at least that’s what they told us.
+                  </p>
+                </Copy>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <ClientReviews />
+        <ClientReviews />
+      </div>
 
       <BrandTicker />
       <CTACard />

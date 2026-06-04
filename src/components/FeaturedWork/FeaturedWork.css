@@ -15,11 +15,11 @@
 
 .featured-work-item {
   position: relative;
-  width: calc(100vw - 4rem);
-  flex: 0 0 calc(100vw - 4rem); /* Fix: prevent shrinking */
-  max-width: 450px;
+  height: clamp(350px, 55vh, 600px);
+  width: auto;
+  min-width: 260px;
+  flex: 0 0 auto;
   aspect-ratio: 3/4;
-  border-radius: 1.5rem;
   overflow: hidden;
   cursor: pointer;
   background-color: var(--base-200);
@@ -64,7 +64,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 2.5rem 2rem;
+  padding: 2rem 2rem 1rem 2rem; /* Reduced bottom padding from 2.5rem to 1rem to move text down */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -75,7 +75,7 @@
 
 .featured-work-title {
   font-family: "Outfit", sans-serif;
-  font-size: 2.25rem;
+  font-size: 1.25rem; /* Significantly reduced size */
   font-weight: 800;
   color: #e3e3db;
   letter-spacing: -0.02em;
@@ -86,9 +86,9 @@
 
 .featured-work-desc {
   font-family: "Inter", sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem; /* Reduced size */
   color: #ccccc4;
-  opacity: 0;
+  opacity: 0; /* Hidden by default until hovered */
   transform: translateY(1rem);
   transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   margin: 0;
@@ -116,7 +116,7 @@
   }
 }
 
-/* Mobile defaults (no hover needed, always show text clearly) */
+/* Mobile defaults (always hidden until tapped/hovered to match desktop feel) */
 @media (max-width: 1023px) {
   .featured-work-overlay {
     opacity: 0.9;
@@ -125,9 +125,6 @@
     transform: translateY(0);
     padding: 2rem 1.5rem;
   }
-  .featured-work-desc {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Description remains hidden on mobile until the user taps/interacts with the item */
 }
 

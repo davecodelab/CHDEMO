@@ -52,38 +52,31 @@ export default function FeaturedWork() {
 
     const section = wrapper.closest('.featured-work');
 
-    // Horizontal Scroll Logic
-    const getScrollAmount = () => {
-      if (!root) return 0;
-      let rootWidth = root.scrollWidth;
-      // Provide a buffer so the last item isn't strictly flush against the right edge
-      return -(rootWidth - window.innerWidth + 100); 
-    };
-
-    const tween = gsap.to(root, {
-      x: getScrollAmount,
+    const tl = gsap.timeline();
+    
+    // Animate exactly the element's full width, offset by the viewport width
+    tl.to(root, {
+      xPercent: -100,
+      x: () => window.innerWidth,
       ease: "none",
+      duration: 1,
     });
+
+    // Add pause by animating an invisible property so it stops at the last image
+    tl.to(root, { opacity: 1, duration: 0.3 }); 
 
     const st1 = ScrollTrigger.create({
       trigger: section || wrapper,
       start: "top top",
-      end: () => `+=${(getScrollAmount() * -1)}`,
+      // Fixed scroll distance of exactly 8000 pixels for testing the speed/feel
+      end: () => `+=${8000}`,
       pin: true,
-      animation: tween,
+      animation: tl,
       scrub: 1,
       invalidateOnRefresh: true,
     });
 
-    // Curtain Effect Pin: Stays pinned while the next section (ClientReviews) slides over it
-    const st2 = ScrollTrigger.create({
-      trigger: section || wrapper,
-      start: () => st1.end,
-      end: () => `+=${window.innerHeight}`,
-      pin: true,
-      pinSpacing: false,
-      invalidateOnRefresh: true,
-    });
+
     
     const handleClick = (event: MouseEvent) => {
       const anchor = event.currentTarget as HTMLAnchorElement;
@@ -100,8 +93,7 @@ export default function FeaturedWork() {
     return () => {
       links.forEach((link) => link.removeEventListener("click", handleClick));
       st1.kill();
-      st2.kill();
-      tween.kill();
+      tl.kill();
     };
   }, { scope: carouselWrapperRef, dependencies: [navigateWithTransition] });
 
