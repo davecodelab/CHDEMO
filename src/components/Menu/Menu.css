@@ -7,7 +7,12 @@ nav {
   color: #e3e3db;
   display: flex;
   justify-content: space-between;
-  z-index: 2;
+  z-index: 50;
+  pointer-events: none;
+}
+
+nav > * {
+  pointer-events: auto;
 }
 
 .logo{
@@ -56,7 +61,7 @@ nav .close-label {
   overflow: hidden;
   background-color: #1a1614;
   color: #e3e3db;
-  z-index: 1;
+  z-index: 49;
   will-change: clip-path;
 }
 
