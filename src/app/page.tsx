@@ -50,12 +50,12 @@ const Page = () => {
               </Animates>
             </div>
 
-            <div className="hero-footer-outer">
+            {/* <div className="hero-footer-outer">
               <Animates animateOnScroll={false} delay={isInitialLoad ? 6.35 : 1.65}>
                 <p className="sm">&copy; CraftHive</p>
                 <p className="sm">( Design Your Frame )</p>
               </Animates>
-            </div>
+            </div> */}
 
             <div className="hero-footer">
               <Animates animateOnScroll={false} delay={isInitialLoad ? 6.05 : 1.15}>
