@@ -14,6 +14,7 @@ type Project = {
   name: string;
   route: string;
   img: string;
+  description: string;
   [key: string]: unknown;
 };
 
