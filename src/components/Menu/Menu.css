@@ -30,6 +30,25 @@ nav .nav-logo img {
   object-fit: cover;
 }
 
+nav .desktop-nav-link {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #e3e3db;
+  text-decoration: none;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+nav .desktop-nav-link:hover {
+  opacity: 0.7;
+}
+
+nav .nav-menu-container {
+  display: flex;
+  align-items: center;
+}
+
 nav .nav-toggle {
   cursor: pointer;
 }

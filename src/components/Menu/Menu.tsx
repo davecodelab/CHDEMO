@@ -504,6 +504,7 @@ const Menu = ({ pageRef }: MenuProps) => {
           </a>
         </div>
 
+        {/* 
         <div className="nav-toggle" ref={navToggleRef} onClick={toggleMenu}>
           <div className="nav-toggle-wrapper">
             <p ref={openLabelRef} className="open-label">
@@ -513,6 +514,38 @@ const Menu = ({ pageRef }: MenuProps) => {
             <p ref={closeLabelRef} className="close-label">
               Close
             </p>
+          </div>
+        </div>
+        */}
+
+        <div className="nav-menu-container">
+          <div className="desktop-links hidden lg:flex items-center gap-8">
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.route}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  e.preventDefault();
+                  const currentPath = window.location.pathname;
+                  if (currentPath === item.route) return;
+                  navigateWithTransition(item.route);
+                }}
+                className="desktop-nav-link"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="mobile-toggle lg:hidden nav-toggle" ref={navToggleRef} onClick={toggleMenu}>
+            <div className="nav-toggle-wrapper">
+              <p ref={openLabelRef} className="open-label">
+                Menu
+              </p>
+              <p ref={closeLabelRef} className="close-label">
+                Close
+              </p>
+            </div>
           </div>
         </div>
       </nav>
