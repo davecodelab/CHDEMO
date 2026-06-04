@@ -1,5 +1,5 @@
 nav {
-  position: fixed;
+  position: absolute; /* Scrolls with the page so logo blends well */
   top: 0;
   left: 0;
   width: 100vw;
@@ -30,35 +30,16 @@ nav .nav-logo img {
   object-fit: cover;
 }
 
-nav .desktop-links {
-  background-color: #ccccc4;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1.5rem;
-  gap: 2rem;
-  align-items: center;
-}
 
-nav .desktop-nav-link {
-  font-family: "Outfit", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #1a1614;
-  text-decoration: none;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
 
-nav .desktop-nav-link:hover {
-  opacity: 0.6;
-}
-
-nav .nav-menu-container {
-  display: flex;
-  align-items: center;
-}
 
 nav .nav-toggle {
   cursor: pointer;
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 9999;
+  pointer-events: auto;
 }
 
 nav .nav-toggle-wrapper {
@@ -230,11 +211,12 @@ nav .nav-toggle-wrapper {
   align-items: center;
   height: 2.5rem;
   overflow: hidden;
-  background-color: #ccccc4;
+  background-color: #1a1614; /* Black pill background */
   border-radius: 0.5rem;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  z-index: 2;
+  z-index: 9999;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 nav .open-label,
@@ -248,7 +230,7 @@ nav .close-label {
   user-select: none;
   cursor: pointer;
   padding: 0.8rem;
-  color: #1a1614;
+  color: #e3e3db; /* White text for contrast on black */
   margin: 0;
   will-change: transform;
 }

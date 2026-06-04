@@ -1,10 +1,10 @@
 .client-reviews-marquee {
   position: relative;
+  z-index: 10;
   width: 100%;
-  background-color: #e3e3db;
+  background-color: #ffffff;
   padding: 0 0 clamp(4rem, 8vw, 8rem) 0;
   overflow: hidden;
-  display: flex;
 }
 
 .marquee-track {
@@ -21,13 +21,8 @@
 }
 
 @keyframes marqueeScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Translate exactly half of the total track width to loop seamlessly */
-    transform: translateX(calc(-50% - clamp(1.5rem, 3vw, 2.5rem) / 2));
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - clamp(1.5rem, 3vw, 2.5rem) / 2)); }
 }
 
 .marquee-card {
@@ -58,25 +53,82 @@
 .marquee-card-client-info {
   margin-top: auto;
 }
+.marquee-card-client { font-weight: 700; }
+.marquee-card-client-company { opacity: 0.6; }
 
-.marquee-card-client {
-  font-weight: 700;
+
+/* MOBILE STACKED CARDS */
+.client-reviews-stacked {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100%;
+  background-color: #ffffff;
 }
 
-.marquee-card-client-company {
-  opacity: 0.6;
+.client-reviews-stacked .review-card {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  height: auto;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Original Card Colors */
-.card-color-1 { background-color: #ccccc4; color: #1a1614; }
-.card-color-2 { background-color: #ff3d33; color: #1a1614; }
-.card-color-3 { background-color: #a92f78; color: #e3e3db; }
-.card-color-4 { background-color: #8c7e77; color: #1a1614; }
-.card-color-5 { background-color: #ccccc4; color: #1a1614; }
-.card-color-6 { background-color: #1a1614; color: #e3e3db; }
+.client-reviews-stacked .review-card-container {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  height: auto;
+  display: flex;
+  padding: 1.5rem;
+  border-radius: 0.85rem;
+  will-change: transform;
+  overflow: hidden;
+}
 
-@media (max-width: 768px) {
-  .marquee-track {
-    animation-duration: 35s;
-  }
+.client-reviews-stacked .review-card-content-wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.client-reviews-stacked .review-card-content {
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.client-reviews-stacked h3.review-card-text {
+  font-size: clamp(1.4rem, 8vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.client-reviews-stacked p.sm.review-card-client-company {
+  color: var(--base-100);
+  opacity: 0.4;
+  overflow-wrap: break-word;
+}
+
+/* Colors for both Marquee and Stacked */
+.card-color-1, #review-card-1 { background-color: #ccccc4; color: #1a1614; }
+.card-color-2, #review-card-2 { background-color: #ff3d33; color: #1a1614; }
+.card-color-3, #review-card-3 { background-color: #a92f78; color: #e3e3db; }
+.card-color-4, #review-card-4 { background-color: #8c7e77; color: #1a1614; }
+.card-color-5, #review-card-5 { background-color: #ccccc4; color: #1a1614; }
+.card-color-6, #review-card-6 { background-color: #1a1614; color: #e3e3db; }
+
+#review-card-1 p.sm.review-card-client-company,
+#review-card-4 p.sm.review-card-client-company,
+#review-card-5 p.sm.review-card-client-company {
+  color: var(--base-400);
 }

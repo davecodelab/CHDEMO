@@ -1,0 +1,50 @@
+.brand-ticker {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background-color: #ffffff; /* Continues the white curtain from ClientReviews */
+  padding: clamp(3rem, 5vw, 5rem) 0;
+  border-bottom: 1px solid rgba(26, 22, 20, 0.08);
+  overflow: hidden;
+}
+
+.brand-ticker-container {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.brand-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: brandTickerScroll 30s linear infinite;
+}
+
+.brand-item {
+  padding: 0 clamp(2rem, 4vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-item h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: transparent;
+  -webkit-text-stroke: 1px #1a1614;
+  opacity: 0.3;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.brand-item:hover h2 {
+  opacity: 1;
+  color: #1a1614;
+}
+
+@keyframes brandTickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-33.333333%)); }
+}
