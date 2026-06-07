@@ -272,19 +272,19 @@ nav .close-label {
     width: 100%;
     height: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
   }
 
   .menu-overlay .menu-link {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
   }
 
   .menu-overlay .menu-link a {
     font-size: 4rem;
     letter-spacing: -0.05rem;
-    text-align: center;
+    text-align: right;
   }
 }
 
