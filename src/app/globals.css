@@ -72,8 +72,8 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #07060A; }
-::-webkit-scrollbar-thumb { background: #7A5C2A; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #fa3838; }
+::-webkit-scrollbar-thumb { background: #ac0000; border-radius: 2px; }
 
 /* Custom range slider */
 input[type='range'] {
