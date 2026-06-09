@@ -243,6 +243,7 @@
 /* Intentional Curtain Reveal Transition */
 .reviews-curtain-wrapper {
   position: relative;
-  z-index: 20; 
+  z-index: 20; /* Ensure it slides OVER the pinned Featured Work */
+  margin-top: -100vh; /* Pull it up exactly 1 screen height so it overlaps the pinned section at the end of the scroll */
   background-color: #f4f4f4; /* Solid background to hide the artwork underneath as it slides over */
 }
