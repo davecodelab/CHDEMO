@@ -9,6 +9,7 @@ import Button from "@/components/Button/Button";
 import WhoWeAre from "@/components/sections/WhoWeAre/WhoWeAre";
 import ProcessCards from "@/components/ProcessCards/ProcessCards";
 import Footer from "@/components/ui/Footer";
+import Animates from "@/components/Animates/Animate";
 
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -121,13 +122,9 @@ const StudioPage = () => {
             <div className="studio-header-copy">
               <Copy>
                 <h2>
-                  CraftHive is a craft and art store specialising in bespoke
-                  Shadow Box artworks, custom picture framing, laser engraving
-                  and cutting, indoor and outdoor signage, personalised gifts,
-                  memory boxes, designer mirrors, and handcrafted home decor.
-                  Every product is crafted with intention, using sustainable and
-                  responsibly sourced materials, rooted in a tradition of
-                  quality and cultural pride.
+                  Born from a love of heritage and skilled hands, 
+                  CraftHive is a craft and art store where every piece is made with intention — from bespoke Shadow Boxes rooted in Adinkra symbolism, 
+                  to custom framing, laser engraving, personalised gifts, and handcrafted home decor. Quality materials. Cultural pride. Built to last.
                 </h2>
               </Copy>
             </div>
@@ -142,15 +139,11 @@ const StudioPage = () => {
             <div className="mission-intro-copy">
               <Copy>
                 <h3>
-                  We preserve stories, celebrate heritage, 
-                  and transform memories into lasting works of art 
-                  through bespoke framing, handcrafted décor,
-                   and culturally inspired craftsmanship.
-                </h3>
-                <h3>
-                  At CraftHive, every frame, artefact, 
-                  and handcrafted creation is designed to honour culture, 
-                  capture moments, and bring timeless beauty into everyday spaces.
+                  We are craftspeople, storytellers, and guardians of culture.
+                   Every piece that leaves CraftHive has been shaped by careful hands
+                    and genuine care — for the family preserving a precious memory, 
+                    the business commissioning a statement piece,
+                     and the gift-giver searching for something that truly means something.
                 </h3>
               </Copy>
 
@@ -176,14 +169,8 @@ const StudioPage = () => {
               <div className="tapered-body">
                 {/* Desktop Pyramid Shape (Max 65 chars to prevent wrapping on laptops) */}
                 <p className="desktop-tapered hidden md:block">
-                  Our work is valued by homeowners, businesses, collectors, and art <br />
-                  enthusiasts who appreciate quality craftsmanship and attention <br />
-                  to detail. From bespoke framing and shadow box artworks <br />
-                  to handcrafted décor and cultural artefacts, every <br />
-                  piece is thoughtfully created to preserve <br />
-                  memories, celebrate heritage, and inspire <br />
-                  meaningful connections for generations <br />
-                  to come.
+                  Our work is trusted by homeowners, businesses, collectors, and designers who know that quality craftsmanship is never accidental. Every piece we create is a quiet declaration that some things are worth doing beautifully — and keeping forever.
+
                 </p>
 
                 {/* Mobile Pyramid Shape */}
@@ -205,6 +192,63 @@ const StudioPage = () => {
             </Copy>
           </div>
         </section>
+
+        {/* Sustainability Section */}
+<section className="about-sustainability">
+  <div className="about-sustainability__overlay" />
+
+  <div className="about-sustainability__content">
+    <span className="about-section-label">
+      Sustainability
+    </span>
+
+    <h2>Crafted Responsibly</h2>
+    <Copy>
+    <p>
+      At CraftHive, sustainability is not a talking point —
+      it shows up in the materials we choose. We work with
+      natural, locally sourced materials including jute,
+      plantain backs and leaves, and coconut husks,
+      giving organic matter a second life as something
+      beautiful and enduring.
+    </p>
+ </Copy>
+ <Animates animateOnScroll={true} delay={0.25}>
+    <p>
+      Where we can reduce waste, we do. Where we can
+      choose a material that respects the environment,
+      we always will.
+    </p>
+    </Animates>
+
+    <blockquote>
+      “Good craft doesn't cost the earth.
+      It honours it.”
+    </blockquote>
+  </div>
+</section>
+
+{/* CTA Section */}
+<section className="about-cta">
+  <div className="about-cta__content">
+    <span className="about-section-label">
+      Let's Create
+    </span>
+
+    <h2>Have something special in mind?</h2>
+
+    <p>
+      Whether it's a commission, a custom gift,
+      or simply an idea you haven't seen anywhere else —
+      we'd love to hear it. Bring it to us and let's
+      make something worth keeping.
+    </p>
+
+    <a href="/contact" className="about-cta-btn">
+      Get in Touch
+    </a>
+  </div>
+</section>
       </div>
       <Footer />
     </>

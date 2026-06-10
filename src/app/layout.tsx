@@ -15,9 +15,9 @@ const outfit = Outfit({
    });
 
 export const metadata: Metadata = {
-  title: "CraftHive — Luxury Art Framing Studio",
+  title: "CraftHive — Framing, Crafts & Art Studio",
   description:
-    "Museum-grade custom framing, art restoration, and gallery consultation. Preview your artwork with our interactive framing tool before placing an order.",
+    "CraftHive is Accra's home for bespoke Shadow Boxes, Custom Picture Framing, Laser Engraving, Personalised Gifts & Memory Boxes, Signs, and artisanal decor. Rooted in Ghanaian heritage. Crafted with intention.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="grain">
+    <html lang="en" className="grain" data-scroll-behavior="smooth">
       <body className={`${outfit.variable} ${inter.variable}`} suppressHydrationWarning>
         <ViewTransitions>
         <ClientLayout>{children}</ClientLayout>

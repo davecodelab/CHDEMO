@@ -7,28 +7,28 @@ import { Plus } from 'lucide-react';
 
 const faqs = [
   {
-    q: 'Can I upload my own artwork to preview?',
-    a: 'Absolutely. Our preview tool accepts JPG, PNG, and WEBP files up to 20MB. Upload your piece, choose a frame and mount, and see a realistic render before placing any order.',
+    q: 'Can I preview how my piece will look before committing?',
+    a: 'Yes — our interactive Frame Preview Tool lets you select frame type, mat margin, mat colour, and frame finish to see how your piece might look before you decide. We also offer a popular hollow frame option with no mat border, which has been in high demand for its clean, contemporary look. For a fully personalised consultation, you are welcome to visit us in-store and we will walk you through your options with real samples.',
   },
   {
-    q: 'Do you offer mount colour recommendations?',
-    a: 'Yes. Our team guides you through the best option based on artwork type, dominant colours, interior style, and budget. You can also experiment freely with our preview tool.',
+    q: 'Do you offer mat colour recommendations?',
+    a: 'Absolutely. Our team will guide you through colour choices that complement your artwork, photograph, or the room it will hang in. Visit us in-store and we will show you physical samples alongside your actual piece. Not sure where to start? Neutral mounts tend to work beautifully with most artworks and photography — and our team is always happy to advise.',
   },
   {
-    q: 'How long does a custom framing order take?',
-    a: 'Standard turnaround is 7–10 working days. Rush orders (3–5 days) are available for an additional fee. Corporate and restoration projects are quoted individually.',
+    q: 'How long does a custom framing or Shadow Box order take?',
+    a: 'Most orders are completed within 2–10 working days, depending on complexity and size. Shadow Box commissions may vary based on the level of customisation involved. Have a deadline? Speak to us directly and we will do our best to work around it.',
   },
   {
     q: 'What glass options do you offer?',
-    a: 'We stock float glass, non-reflective glass, UV-protective conservation glass, and museum-grade Tru Vue® Optium. All are available in standard and custom sizes.',
+    a: 'We offer four options to suit different needs — standard clear glass, UV-protective glass (ideal for preserving photographs and artworks from fading), non-reflective glass for brightly lit spaces, and plexiglass, a lightweight shatter-resistant alternative that is a great choice for larger pieces or anywhere breakage is a concern. Our team will help you choose the right fit for your piece.',
   },
   {
     q: 'Do you handle corporate and hotel installations?',
-    a: "Yes. We've installed in hotels, boardrooms, restaurants, and private residences across the region. We handle everything from curation to white-glove install and lighting recommendations.",
+    a: "Yes. We work with businesses, hotels, offices, and commercial spaces on framing, signage, and decor projects of all scales. Whether it's a single statement piece or a full installation, get in touch and we'll put together a tailored proposal for you.",
   },
   {
     q: 'Can I request a quote before committing?',
-    a: 'Of course. Use our preview tool to build your configuration and click "Request a Quote." One of our framers will contact you within 24 hours with a detailed breakdown.',
+    a: 'Of course — no obligation whatsoever. Reach us via the contact form, by phone, or visit us in-store. The more detail you can share about your piece — size, type, any preferences — the more accurate our initial estimate will be.',
   },
 ];
 

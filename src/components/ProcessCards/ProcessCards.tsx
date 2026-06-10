@@ -22,28 +22,28 @@ const processCardsData: ProcessCardData[] = [
     title: "Craftmanship",
     image: "/process/craftmanship.jpg",
     description:
-      "Excellence in every frame and artwork.",
+      "Every piece is held to the highest standard of finish and durability — because work done well is work that lasts.",
   },
   {
     index: "02",
     title: "Creativity",
     image: "/process/creativity.jpg",
     description:
-      "Unique artistic expression and innovation.",
+      "No two commissions are the same. We bring fresh thinking to every project, always in service of the person it is made for.",
   },
   {
     index: "03",
     title: "Integrity",
     image: "/process/integrity.jpg",
     description:
-      "Honesty and transparency in all we do.",
+      "Honest about process. Clear on pricing. Committed to delivering exactly what we promise.",
   },
   {
     index: "04",
     title: "Preservation",
     image: "/process/preservation.jpg",
     description:
-      "Protecting memories and restoring art for future generations.", 
+      "Whether framing a photograph or crafting a Shadow Box, our goal is always to create something that endures well beyond the moment it was made.", 
   },
 ];
 

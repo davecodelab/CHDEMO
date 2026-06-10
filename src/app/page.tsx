@@ -74,23 +74,16 @@ const Page = () => {
               </Animates>
             </div>
 
-            {/* <div className="hero-footer-outer">
-              <Animates animateOnScroll={false} delay={isInitialLoad ? 6.35 : 1.65}>
-                <p className="sm">&copy; CraftHive</p>
-                <p className="sm">( Design Your Frame )</p>
-              </Animates>
-            </div> */}
-
             <div className="hero-footer">
               <Animates animateOnScroll={false} delay={isInitialLoad ? 6.05 : 1.15}>
                 <p className="lg">
-                  From treasured family photographs to handcrafted African artefacts and Adinkra-inspired art, 
-                  we create custom framing solutions that honour culture, memory, and craftsmanship.
+                  From treasured family photographs and cherished artworks to culturally inspired Shadow Boxes and Adinkra-infused creations — 
+                  CraftHive crafts pieces that honour memory, celebrate heritage, and belong in your home forever.
                 </p>
               </Animates>
 
               <Button delay={isInitialLoad ? 6.35 : 1.55} href="/services#preview">
-                Preview Your Frame
+                See What We Do
               </Button>
             </div>
           </div>
@@ -104,7 +97,7 @@ const Page = () => {
           <div className="featured-work-header-content">
             <div className="featured-work-header">
               <Animates animateOnScroll={true} delay={0.25}>
-                <h1>Featured Work</h1>
+                <h1>From Our Studio</h1>
               </Animates>
             </div>
 
@@ -113,8 +106,7 @@ const Page = () => {
             <div className="featured-work-header-copy">
               <Copy animateOnScroll={true} delay={0.25}>
                 <p className="lg">
-                  From motion to concept, pieces born from quiet sketches, late
-                  nights, and just the right amount of chaos.
+                  A selection of pieces crafted by hand, with care, for people who value what they hold dear.
                 </p>
               </Copy>
             </div>
@@ -131,14 +123,14 @@ const Page = () => {
             <div className="client-reviews-header-content">
               <div className="client-reviews-header">
                 <Copy animateOnScroll={true} delay={0.25}>
-                  <h1>What our clients say</h1>
+                  <h1>What Our Clients Say</h1>
                 </Copy>
               </div>
 
               <div className="client-reviews-header-copy">
                 <Copy animateOnScroll={true} delay={0.25}>
                   <p className="lg">
-                    Hear from those who have experienced our unique craftsmanship.
+                    The trust of every customer is the measure of our work.
                   </p>
                 </Copy>
               </div>
