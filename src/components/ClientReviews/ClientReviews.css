@@ -10,7 +10,9 @@
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   /* Removed scroll-snap to prevent it from stubbornly snapping back ("getting stuck") */
-  scrollbar-width: none;
+  /* Custom thin scrollbar for mobile */
+  scrollbar-width: thin;
+  scrollbar-color: #d1d1d1 transparent;
   gap: 1.5rem;
   width: 100%;
   max-width: 1100px;
@@ -19,7 +21,14 @@
 }
 
 .reviews-grid::-webkit-scrollbar {
-  display: none;
+  height: 6px;
+}
+.reviews-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+.reviews-grid::-webkit-scrollbar-thumb {
+  background-color: #d1d1d1;
+  border-radius: 10px;
 }
 
 @media (min-width: 768px) {
@@ -77,7 +86,7 @@
 .review-stars {
   display: flex;
   gap: 0.25rem;
-  color: #c8a25c; /* Premium gold accent */
+  color: #FFC107; /* Bright star yellow */
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 1;
