@@ -11,6 +11,7 @@
 }
 
 .featured-work-list.manual-scroll {
+  width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
