@@ -4,22 +4,36 @@
 }
 
 .reviews-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  gap: 1rem;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  padding-bottom: 2rem; /* space for shadow */
+}
+
+.reviews-grid::-webkit-scrollbar {
+  display: none;
 }
 
 @media (min-width: 768px) {
   .reviews-grid {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    overflow-x: visible;
+    padding-bottom: 0;
   }
 }
 
 .static-review-card {
+  flex: 0 0 85%; /* On mobile, take up 85% width to reveal the next card */
+  scroll-snap-align: center;
   background: #ffffff;
   border-radius: 0.75rem;
   padding: 2.5rem;
@@ -28,6 +42,12 @@
   gap: 1.5rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .static-review-card {
+    flex: none; /* Revert flex when in CSS Grid on desktop */
+  }
 }
 
 .static-review-card:hover {
