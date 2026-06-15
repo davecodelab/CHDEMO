@@ -319,7 +319,8 @@ nav.scrolled .nav-logo img {
     left: 0;
     width: 100%;
     height: 100vh;
-    height: 100dvh; /* Fix for Safari bottom bar covering the content */
+    height: 100dvh;
+    height: -webkit-fill-available; /* The definitive fix for iOS Safari bottom bar cutoff */
     background: #1a1614;
     display: flex;
     flex-direction: column;
@@ -396,9 +397,10 @@ nav.scrolled .nav-logo img {
 
   .mobile-menu-kente {
     height: 12px;
+    min-height: 12px; /* Prevent Safari flexbox from squashing this to 0 */
     margin-left: -2rem;
     margin-right: -2rem;
-    width: calc(100% + 4rem);
+    width: 100vw; /* Safer than calc on older iOS */
     flex-shrink: 0;
     background: repeating-linear-gradient(
       90deg,
