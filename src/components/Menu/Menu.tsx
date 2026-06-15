@@ -72,7 +72,7 @@ export default function Navbar() {
               Services
             </Link>
             <div className="dropdown-menu">
-              <Link href="/services#printing">Printing</Link>
+              <Link href="/services">All Services</Link>
               <Link href="/services/custom-framing">Custom Framing</Link>
               <Link href="/services/shadow-box">Shadow Boxes</Link>
               <Link href="/services/handicrafts">Handicrafts</Link>
@@ -125,7 +125,7 @@ export default function Navbar() {
           Services
         </button>
         <div className={`mobile-services ${servicesOpen ? "open" : ""}`}>
-          <Link href="/services#printing" onClick={() => setMobileOpen(false)}>Printing</Link>
+          <Link href="/services" onClick={() => setMobileOpen(false)}>All Services</Link>
           <Link href="/services/custom-framing" onClick={() => setMobileOpen(false)}>Custom Framing</Link>
           <Link href="/services/shadow-box" onClick={() => setMobileOpen(false)}>Shadow Boxes</Link>
           <Link href="/services/handicrafts" onClick={() => setMobileOpen(false)}>Handicrafts</Link>
