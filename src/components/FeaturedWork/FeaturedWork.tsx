@@ -59,19 +59,20 @@ export default function FeaturedWork() {
     const links = Array.from(root.querySelectorAll<HTMLAnchorElement>(".featured-work-item-link"));
     links.forEach((link) => link.addEventListener("click", handleClick));
 
-    // Calculate active item based on scroll position
+    // Calculate active item based on center of the screen
     const handleScroll = () => {
       if (!root) return;
-      const scrollLeft = root.scrollLeft;
+      const viewportCenter = window.innerWidth / 2;
       const items = Array.from(root.querySelectorAll(".featured-work-item"));
       
       let closestItem = items[0];
       let minDistance = Infinity;
 
       items.forEach((item) => {
-        // Item's left position relative to the container's scrollable content
-        const itemLeft = (item as HTMLElement).offsetLeft;
-        const distance = Math.abs(itemLeft - scrollLeft);
+        const rect = (item as HTMLElement).getBoundingClientRect();
+        // Item's absolute center on the screen
+        const itemCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(itemCenter - viewportCenter);
 
         if (distance < minDistance) {
           minDistance = distance;
@@ -90,26 +91,36 @@ export default function FeaturedWork() {
 
     root.addEventListener("scroll", handleScroll);
     // Initialize active class
-    setTimeout(handleScroll, 100); // slight delay to ensure layout is ready
+    setTimeout(handleScroll, 100);
 
-    // Auto-scroll logic
+    // Smooth Slideshow Auto-scroll logic
     const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-        // If reached the end, scroll back to start
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          // Scroll right by approximately one item width
-          scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      if (root) {
+        const { scrollLeft, scrollWidth, clientWidth } = root;
+        const firstItem = root.querySelector(".featured-work-item");
+        
+        if (firstItem) {
+          // Calculate the total width to move (item width + gap)
+          const style = window.getComputedStyle(firstItem);
+          const gap = parseFloat(window.getComputedStyle(root).gap) || 32;
+          const moveAmount = firstItem.clientWidth + gap;
+          
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            // Smoothly slide back to start over 1.5 seconds
+            gsap.to(root, { scrollLeft: 0, duration: 1.5, ease: "power2.inOut" });
+          } else {
+            // Smoothly slide to the next item
+            gsap.to(root, { scrollLeft: scrollLeft + moveAmount, duration: 1.5, ease: "power2.inOut" });
+          }
         }
       }
-    }, 4000); // 4 seconds auto-scroll
+    }, 4500); // Wait 4.5s between slides
 
     return () => {
       links.forEach((link) => link.removeEventListener("click", handleClick));
       root.removeEventListener("scroll", handleScroll);
       clearInterval(interval);
+      gsap.killTweensOf(root);
     };
   }, [navigateWithTransition]);
 

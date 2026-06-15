@@ -13,7 +13,6 @@
 .featured-work-list.manual-scroll {
   width: 100%;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
@@ -21,10 +20,6 @@
 
 .featured-work-list.manual-scroll::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
-}
-
-.featured-work-list.manual-scroll .featured-work-item {
-  scroll-snap-align: start;
 }
 
 .featured-work-controls {
