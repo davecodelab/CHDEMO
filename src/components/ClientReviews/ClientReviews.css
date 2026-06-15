@@ -36,8 +36,8 @@
   position: relative;
   overflow: hidden;
   flex: 0 0 85%; 
-  min-width: 280px; /* Ensure it never gets too squished */
-  /* scroll-snap-align removed for free scrolling */
+  min-width: 280px; 
+  user-select: none; /* Prevent text highlighting when mouse dragging */
   background: linear-gradient(145deg, #ffffff, #fcfcfc);
   border: 1px solid rgba(0,0,0,0.04);
   border-radius: 1.25rem;

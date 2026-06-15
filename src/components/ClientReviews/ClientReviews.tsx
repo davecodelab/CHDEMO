@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import "./ClientReviews.css";
 import { clientReviewsData } from "./clientReviewsData";
 
@@ -14,10 +15,41 @@ const StarRating = () => (
 );
 
 const ClientReviews = () => {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    setIsDown(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => setIsDown(false);
+  const handleMouseUp = () => setIsDown(false);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDown || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <div className="client-reviews-wrapper">
       <div className="container">
-        <div className="reviews-grid">
+        <div 
+          className="reviews-grid"
+          ref={sliderRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          style={{ cursor: isDown ? 'grabbing' : 'grab' }}
+        >
           {clientReviewsData.map((item, index) => (
             <div className="static-review-card" key={`review-${index}`}>
               <StarRating />
@@ -25,7 +57,7 @@ const ClientReviews = () => {
               <div className="review-author">
                 <div className="review-avatar">
                   {item.avatar ? (
-                    <img src={item.avatar} alt={item.clientName} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                    <img src={item.avatar} alt={item.clientName} onError={(e) => { e.currentTarget.style.display = 'none'; }} draggable="false" />
                   ) : (
                     <div className="avatar-placeholder"></div>
                   )}
