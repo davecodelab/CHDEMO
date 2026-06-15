@@ -137,6 +137,7 @@ export default function Navbar() {
 
         <Link href="/about">About</Link>
 
+        {/* COMMENTED OUT SERVICES DROPDOWN
         <button
           className="mobile-services-btn"
           onClick={() => setServicesOpen(!servicesOpen)}
@@ -163,6 +164,9 @@ export default function Navbar() {
             Handicrafts
           </Link>
         </div>
+        */}
+
+        <Link href="/services" onClick={() => setMobileOpen(false)}>Services</Link>
 
         <Link href="/gallery">Gallery</Link>
 
