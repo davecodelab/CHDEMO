@@ -134,6 +134,7 @@ export default function Navbar() {
         <Link href="/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
 
         <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact Us</Link>
+        <div className="mobile-menu-kente" />
       </div>
     </>
   );

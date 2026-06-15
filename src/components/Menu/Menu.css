@@ -351,8 +351,23 @@ nav.scrolled .nav-logo img {
     transition: color 0.3s ease, transform 0.3s ease;
   }
 
-  .mobile-menu > a:last-child {
+  .mobile-menu > a:last-of-type {
     border-bottom: none;
+  }
+
+  .mobile-menu-kente {
+    height: 12px;
+    width: 100%;
+    margin-top: 1.5rem;
+    background: repeating-linear-gradient(
+      90deg,
+      #c9a84c 0px, #c9a84c 24px,
+      #b5541a 24px, #b5541a 48px,
+      #1a1614 48px, #1a1614 72px,
+      #2e6b3e 72px, #2e6b3e 96px,
+      #cc1111 96px, #cc1111 120px,
+      #1a1614 120px, #1a1614 144px
+    );
   }
 
   .mobile-menu a:hover,
