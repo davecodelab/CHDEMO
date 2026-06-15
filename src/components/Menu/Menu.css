@@ -322,8 +322,8 @@ nav.scrolled .nav-logo img {
     background: #1a1614;
     display: flex;
     flex-direction: column;
-    padding: 5rem 2rem 2rem 2rem; /* Reduced top and bottom padding to fit on smaller screens */
-    gap: 1rem; /* Reduced gap */
+    padding: 6rem 2rem 0 2rem; /* ZERO bottom padding so colors hit the bottom edge */
+    gap: 1.25rem;
     transform: translateX(100%);
     transition: transform 0.5s ease;
     z-index: 999;
@@ -338,7 +338,7 @@ nav.scrolled .nav-logo img {
   .mobile-services-btn {
     color: white;
     text-decoration: none;
-    font-size: 2rem; /* Reduced font size slightly */
+    font-size: 2.15rem; /* Good size for readability */
     font-family: "Outfit", sans-serif;
     font-weight: 500;
     background: none;
@@ -346,7 +346,7 @@ nav.scrolled .nav-logo img {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     text-align: left;
     cursor: pointer;
-    padding-bottom: 0.5rem; /* Reduced padding */
+    padding-bottom: 1rem; /* Restored padding for links so they take up more space natively */
     width: 100%;
     transition: color 0.3s ease, transform 0.3s ease;
   }
@@ -356,14 +356,13 @@ nav.scrolled .nav-logo img {
   }
 
   .mobile-menu-symbols {
-    margin-top: 1rem; /* Much smaller whitespace between links and symbols */
-    margin-left: -2rem; /* Pulls it out of the padding to span full width */
+    margin-top: auto; /* Pushes the band completely to the bottom of the menu container */
+    margin-left: -2rem; 
     margin-right: -2rem;
     width: calc(100% + 4rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(204,17,17,0.18);
     border-top: 1px solid rgba(204,17,17,0.18);
     background: rgba(10, 10, 10, 0.4);
     flex-shrink: 0;
