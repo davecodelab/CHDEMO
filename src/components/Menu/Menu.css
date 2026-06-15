@@ -383,3 +383,21 @@ nav.scrolled .nav-logo img {
     opacity: 0.8;
   }
 }
+
+/* Dark theme for transparent navbar on dark hero sections */
+nav.dark-theme:not(.scrolled) .nav-link {
+  color: #ffffff;
+}
+
+nav.dark-theme:not(.scrolled) .nav-logo img {
+  filter: brightness(0) invert(1);
+}
+
+nav.dark-theme:not(.scrolled) .mobile-toggle {
+  color: #ffffff;
+}
+
+nav.dark-theme:not(.scrolled) .contact-btn-small {
+  background: #ffffff;
+  color: #1a1614;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import "./Menu.css";
 
@@ -8,6 +9,9 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isDarkTheme = pathname === "/about";
 
   useEffect(() => {
     gsap.from(".nav-link", {
@@ -52,7 +56,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className={mobileOpen ? "menu-open" : ""}>
+      <nav ref={navRef} className={`${mobileOpen ? "menu-open" : ""} ${isDarkTheme ? "dark-theme" : ""}`}>
         {/* LEFT */}
         <div className="nav-links">
           <Link href="/" className="nav-link">
