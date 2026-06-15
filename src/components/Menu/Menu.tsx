@@ -29,7 +29,7 @@ export default function Navbar() {
       ease: "power3.out",
     });
 
-    gsap.from(".contact-btn", {
+    gsap.from(".contact-btn-small", {
       y: -20,
       opacity: 0,
       duration: 0.8,
@@ -74,10 +74,6 @@ export default function Navbar() {
           <Link href="/gallery" className="nav-link">
             Gallery
           </Link>
-
-          <Link href="/contact" className="contact-btn-small">
-            Contact Us
-          </Link>
         </div>
 
         {/* CENTER */}
@@ -93,6 +89,12 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT */}
+        <div className="nav-actions">
+          <Link href="/contact" className="contact-btn-small">
+            Contact Us
+          </Link>
+        </div>
+
         {/* MOBILE BUTTON */}
         <button
           className="mobile-toggle"
