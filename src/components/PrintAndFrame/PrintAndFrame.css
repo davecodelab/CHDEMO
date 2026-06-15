@@ -112,11 +112,16 @@
   
   .print-frame-grid {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 3rem;
   }
   
+  .step-img-container {
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+
   .step-img {
-    height: 200px;
+    height: 220px;
   }
   
   .print-frame-action {
