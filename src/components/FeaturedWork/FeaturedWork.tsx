@@ -59,6 +59,39 @@ export default function FeaturedWork() {
     const links = Array.from(root.querySelectorAll<HTMLAnchorElement>(".featured-work-item-link"));
     links.forEach((link) => link.addEventListener("click", handleClick));
 
+    // Calculate active item based on scroll position
+    const handleScroll = () => {
+      if (!root) return;
+      const scrollLeft = root.scrollLeft;
+      const items = Array.from(root.querySelectorAll(".featured-work-item"));
+      
+      let closestItem = items[0];
+      let minDistance = Infinity;
+
+      items.forEach((item) => {
+        // Item's left position relative to the container's scrollable content
+        const itemLeft = (item as HTMLElement).offsetLeft;
+        const distance = Math.abs(itemLeft - scrollLeft);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      items.forEach((item) => {
+        if (item === closestItem) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    };
+
+    root.addEventListener("scroll", handleScroll);
+    // Initialize active class
+    setTimeout(handleScroll, 100); // slight delay to ensure layout is ready
+
     // Auto-scroll logic
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
@@ -75,6 +108,7 @@ export default function FeaturedWork() {
 
     return () => {
       links.forEach((link) => link.removeEventListener("click", handleClick));
+      root.removeEventListener("scroll", handleScroll);
       clearInterval(interval);
     };
   }, [navigateWithTransition]);
