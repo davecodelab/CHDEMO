@@ -60,37 +60,42 @@ export default function FeaturedWork() {
     const links = Array.from(root.querySelectorAll<HTMLAnchorElement>(".featured-work-item-link"));
     links.forEach((link) => link.addEventListener("click", handleClick));
 
-    // Calculate active item based on center of the screen
+    const items = Array.from(root.querySelectorAll(".featured-work-item"));
+    
+    // Cache the static positions of each item relative to the scroll container's content
+    // This entirely prevents layout thrashing during scroll!
+    const itemCenters = items.map(item => {
+      const el = item as HTMLElement;
+      return el.offsetLeft + el.clientWidth / 2;
+    });
+
     const handleScroll = () => {
       if (!root) return;
-      const viewportCenter = window.innerWidth / 2;
-      const items = Array.from(root.querySelectorAll(".featured-work-item"));
       
-      let closestItem = items[0];
+      // Calculate the center of the scroll container's current viewport
+      const scrollCenter = root.scrollLeft + root.clientWidth / 2;
+      
+      let closestIdx = 0;
       let minDistance = Infinity;
 
-      items.forEach((item) => {
-        const rect = (item as HTMLElement).getBoundingClientRect();
-        // Item's absolute center on the screen
-        const itemCenter = rect.left + rect.width / 2;
-        const distance = Math.abs(itemCenter - viewportCenter);
-
+      itemCenters.forEach((center, idx) => {
+        const distance = Math.abs(center - scrollCenter);
         if (distance < minDistance) {
           minDistance = distance;
-          closestItem = item;
+          closestIdx = idx;
         }
       });
 
-      items.forEach((item) => {
-        if (item === closestItem) {
-          item.classList.add("active");
+      items.forEach((item, idx) => {
+        if (idx === closestIdx) {
+          if (!item.classList.contains("active")) item.classList.add("active");
         } else {
-          item.classList.remove("active");
+          if (item.classList.contains("active")) item.classList.remove("active");
         }
       });
     };
 
-    root.addEventListener("scroll", handleScroll);
+    root.addEventListener("scroll", handleScroll, { passive: true });
     // Initialize active class
     setTimeout(handleScroll, 100);
 
