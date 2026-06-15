@@ -385,19 +385,19 @@ nav.scrolled .nav-logo img {
 }
 
 /* Dark theme for transparent navbar on dark hero sections */
-nav.dark-theme:not(.scrolled) .nav-link {
+nav.dark-theme:not(.scrolled):not(.menu-open) .nav-link {
   color: #ffffff;
 }
 
-nav.dark-theme:not(.scrolled) .nav-logo img {
+nav.dark-theme:not(.scrolled):not(.menu-open) .nav-logo img {
   filter: brightness(0) invert(1);
 }
 
-nav.dark-theme:not(.scrolled) .mobile-toggle {
+nav.dark-theme:not(.scrolled):not(.menu-open) .mobile-toggle {
   color: #ffffff;
 }
 
-nav.dark-theme:not(.scrolled) .contact-btn-small {
+nav.dark-theme:not(.scrolled):not(.menu-open) .contact-btn-small {
   background: #ffffff;
   color: #1a1614;
 }
