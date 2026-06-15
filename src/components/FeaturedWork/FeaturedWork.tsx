@@ -4,6 +4,7 @@ import "./FeaturedWork.css";
 import { useRef, useEffect } from "react";
 import { projects } from "./project";
 import { useViewTransition } from "@/hooks/useViewTransition";
+import gsap from "gsap";
 
 
 
