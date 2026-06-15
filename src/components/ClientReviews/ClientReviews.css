@@ -50,10 +50,10 @@
   background: linear-gradient(145deg, #ffffff, #fcfcfc);
   border: 1px solid rgba(0,0,0,0.04);
   border-radius: 1.25rem;
-  padding: 3rem 2.5rem;
+  padding: 2rem 1.5rem; /* Tighter padding for mobile */
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem; /* Slightly smaller gap on mobile */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
@@ -62,9 +62,9 @@
 .static-review-card::before {
   content: '“';
   position: absolute;
-  top: -3rem;
-  right: 1.5rem;
-  font-size: 15rem;
+  top: -2rem;
+  right: 1rem;
+  font-size: 10rem;
   font-family: serif;
   color: rgba(200, 162, 92, 0.05); /* Very faint gold */
   line-height: 1;
@@ -75,6 +75,14 @@
 @media (min-width: 768px) {
   .static-review-card {
     flex: none; 
+    padding: 3rem 2.5rem; /* Keep massive padding on desktop */
+    gap: 1.5rem;
+  }
+  
+  .static-review-card::before {
+    top: -3rem;
+    right: 1.5rem;
+    font-size: 15rem;
   }
 }
 
