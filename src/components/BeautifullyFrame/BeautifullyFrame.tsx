@@ -26,7 +26,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.45}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-2.jpg" alt="Framed street painting" className="beautifully-img" />
+                <img src="/featured-work/girl-chickens.jpg" alt="Framed girl and chickens painting" className="beautifully-img" />
               </div>
             </Animates>
           </div>

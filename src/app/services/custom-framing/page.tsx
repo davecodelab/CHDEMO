@@ -37,9 +37,9 @@ const CAROUSEL_IMAGES = [
 
 
 const Hero = () => (
-  <section className="hero">
+  <section className="cf-hero">
     <div
-      className="hero-badge"
+      className="cf-hero-badge"
       style={{ top: "22%", left: "5%" }}
     >
       <span className="bdot" />
@@ -47,7 +47,7 @@ const Hero = () => (
     </div>
 
     <div
-      className="hero-badge"
+      className="cf-hero-badge"
       style={{ top: "35%", right: "4%" }}
     >
       <span className="bdot" />
@@ -55,14 +55,14 @@ const Hero = () => (
     </div>
 
     <div
-      className="hero-badge"
+      className="cf-hero-badge"
       style={{ bottom: "22%", left: "7%" }}
     >
       <span className="bdot" />
       Free pickup & delivery
     </div>
 
-    <div className="hero-eyebrow reveal">Preserve</div>
+    <div className="cf-hero-eyebrow reveal">Preserve</div>
 
     <h1 className="reveal delay-1">
       Custom framing that <em>tells your story</em>
@@ -73,12 +73,12 @@ const Hero = () => (
       expert custom framing services tailored to your unique vision.
     </p>
 
-    <div className="hero-btns reveal delay-3">
-      <a href="#preview" className="btn btn-red">
+    <div className="cf-hero-btns reveal delay-3">
+      <a href="#preview" className="cf-btn cf-btn-red">
         Explore
       </a>
 
-      <a href="/contact" className="btn btn-outline">
+      <a href="/contact" className="cf-btn cf-btn-outline">
         Contact
       </a>
     </div>
@@ -123,21 +123,21 @@ const Feature = ({
         flip ? "reveal-left" : "reveal-right"
       }`}
     >
-      <span className="sec-label">{label}</span>
+      <span className="cf-sec-label">{label}</span>
 
       <h2>{title}</h2>
 
       <p>{body}</p>
 
       {list && (
-        <ul className="feature__list">
+        <ul className="cf-feature__list">
           {list.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       )}
 
-      <div className="feature__actions">
+      <div className="cf-feature__actions">
         {actions.map((action) => (
           <a
             key={action.label}
@@ -183,19 +183,19 @@ const WorkCarousel = () => {
   }, []);
 
   return (
-    <section className="luxury-gallery">
-      <div className="gallery-header reveal">
+    <section className="cf-luxury-gallery">
+      <div className="cf-gallery-header reveal">
         <span>Selected Works</span>
         <h2>Crafted For Generations</h2>
       </div>
 
-      <div className="marquee-container">
-        <div ref={trackRef} className="marquee-track">
+      <div className="cf-marquee-container">
+        <div ref={trackRef} className="cf-marquee-track">
           {[...CAROUSEL_IMAGES, ...CAROUSEL_IMAGES].map(
             (img, i) => (
               <div
                 key={i}
-                className="marquee-item"
+                className="cf-marquee-item"
               >
                 <img
                   src={img.src}
@@ -211,14 +211,14 @@ const WorkCarousel = () => {
 };
 
 const Testimonial = () => (
-  <section className="testimonial">
+  <section className="cf-testimonial">
     <blockquote className="reveal">
       "CraftHive transformed my family photos into stunning
       pieces of art. Their attention to detail exceeded my
       expectations."
     </blockquote>
 
-    <div className="testimonial__author reveal">
+    <div className="cf-testimonial__author reveal">
       <strong>Ama Boateng</strong>
       <span>Artist, Freelance</span>
     </div>
@@ -226,18 +226,18 @@ const Testimonial = () => (
 );
 
 const Process = () => (
-  <section className="process">
-    <div className="process__img reveal-left">
+  <section className="cf-process">
+    <div className="cf-process__img reveal-left">
       <img
         src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=900&q=80"
         alt="Framing process"
       />
     </div>
 
-    <div className="process__steps reveal-right">
+    <div className="cf-process__steps reveal-right">
       <h2>Our Framing Process</h2>
 
-      <div className="step">
+      <div className="cf-step">
         <h3>Initial Consultation</h3>
         <p>
           We discuss your artwork and recommend the best
@@ -245,7 +245,7 @@ const Process = () => (
         </p>
       </div>
 
-      <div className="step">
+      <div className="cf-step">
         <h3>Design Selection</h3>
         <p>
           Choose moulding, matting and finishes that suit your
@@ -253,7 +253,7 @@ const Process = () => (
         </p>
       </div>
 
-      <div className="step">
+      <div className="cf-step">
         <h3>Craftsmanship</h3>
         <p>
           Every frame is handcrafted with precision and care.
@@ -264,7 +264,7 @@ const Process = () => (
 );
 
 const CTABanner = () => (
-  <section className="cta-banner">
+  <section className="cf-cta-banner">
     <h2 className="reveal">
       Ready to frame your memories?
     </h2>
@@ -274,12 +274,12 @@ const CTABanner = () => (
       timeless.
     </p>
 
-    <div className="cta-banner-btns reveal">
-      <a href="#" className="btn btn-red">
+    <div className="cf-cta-banner-btns reveal">
+      <a href="#" className="cf-btn cf-btn-red">
         Consult
       </a>
 
-      <a href="/contact" className="btn btn-outline">
+      <a href="/contact" className="cf-btn cf-btn-outline">
         Contact
       </a>
     </div>

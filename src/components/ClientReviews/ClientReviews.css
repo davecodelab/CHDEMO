@@ -48,3 +48,10 @@
   color: #666666;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .simple-testimonial-quote {
+    text-align: center;
+    font-size: 1.35rem; /* slightly smaller on mobile to help fit words */
+  }
+}
