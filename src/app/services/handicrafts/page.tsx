@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import Footer from "@/components/ui/Footer";
+import Link from "next/link";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -120,7 +122,7 @@ export default function HandicraftsPage() {
 
         <div className="story-image parallax">
           <Image
-            src="/handicrafts/table.jpg"
+            src="/handicrafts/table.png"
             alt=""
             fill
           />
@@ -152,7 +154,7 @@ export default function HandicraftsPage() {
       <section className="showcase reveal">
         <div className="showcase-image parallax">
           <Image
-            src="/handicrafts/baskets.jpg"
+            src="/handicrafts/bags.jpg"
             alt=""
             fill
           />
@@ -160,7 +162,7 @@ export default function HandicraftsPage() {
 
         <div className="showcase-copy">
           <h2>
-            Decorative baskets
+            Decorative bags
             woven by hand
           </h2>
 
@@ -174,11 +176,11 @@ export default function HandicraftsPage() {
       <section className="gallery-section">
         <div className="gallery-track">
           {[
-            "/gallery/1.jpg",
-            "/gallery/2.jpg",
-            "/gallery/3.jpg",
-            "/gallery/4.jpg",
-            "/gallery/5.jpg",
+            "/handicrafts/.jpg",
+            "/handicrafts/.jpg",
+            "/handicrafts/.jpg",
+            "/handicrafts/.jpg",
+            "/handicrafts/.jpg",
           ].map((src, i) => (
             <div className="gallery-item" key={i}>
               <Image src={src} alt="" fill />
@@ -193,10 +195,14 @@ export default function HandicraftsPage() {
           luxury into your home
         </h2>
 
-        <a href="/contact">
+        <Link href="/contact">
           Explore Collection
-        </a>
+        </Link>
       </section>
+
+      <div>
+        <Footer />
+      </div>
 
       <style jsx>{`
         .page {

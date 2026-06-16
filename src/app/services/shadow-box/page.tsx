@@ -20,11 +20,11 @@ const ArtBoxesPage = () => (
       </div>
       <div className="ab-hero__img">
         <img
-          src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1000&q=80"
+          src="/shadow/art_4.jpg"
           alt="Ornate African art box with decorative medallions"
         />
-        <span className="bracket bracket--tl" />
-        <span className="bracket bracket--br" />
+        {/* <span className="bracket bracket--tl" />
+        <span className="bracket bracket--br" /> */}
       </div>
     </section>
 
@@ -32,7 +32,7 @@ const ArtBoxesPage = () => (
     <section className="feature" id="work">
       <div className="feature__img">
         <img
-          src="https://images.unsplash.com/photo-1614036634955-ae5e90f9b9eb?w=900&q=80"
+          src="/shadow/art_5.jpg"
           alt="Traditional African symbolic artwork detail"
         />
       </div>
@@ -80,7 +80,7 @@ const ArtBoxesPage = () => (
     <section className="feature flip">
       <div className="feature__img">
         <img
-          src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=900&q=80"
+          src="/shadow/setup.jpg"
           alt="Close detail of an art box surface pattern"
         />
       </div>
@@ -107,11 +107,11 @@ const ArtBoxesPage = () => (
       </div>
       <div className="gallery-grid">
         {[
-          { wide: true,  src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1000&q=75", alt: "Featured art box" },
-          { wide: false, src: "https://images.unsplash.com/photo-1605465017374-2a2d00e4cb4f?w=600&q=75",  alt: "Art box detail 2" },
-          { wide: false, src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75",  alt: "Art box detail 3" },
-          { wide: false, src: "https://images.unsplash.com/photo-1614036634955-ae5e90f9b9eb?w=600&q=75", alt: "Art box detail 4" },
-          { wide: true,  src: "https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=1000&q=75", alt: "Art box gallery wide" },
+          { wide: true,  src: "/shadow/art_9.jpg", alt: "Featured art box" },
+          { wide: false, src: "/shadow/art_2.jpg",  alt: "Art box detail 2" },
+          { wide: false, src: "/shadow/art_6.jpg",  alt: "Art box detail 3" },
+          { wide: false, src: "/shadow/art_7.jpg", alt: "Art box detail 4" },
+          { wide: true,  src: "/shadow/art_8.jpg", alt: "Art box gallery wide" },
         ].map((g, i) => (
           <div className={`g-item${g.wide ? " g-item--wide" : ""}`} key={i}>
             <img src={g.src} alt={g.alt} loading="lazy" />
