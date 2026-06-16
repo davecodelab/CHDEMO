@@ -16,7 +16,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.3}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-1.png" alt="Beautifully framed polaroids" className="beautifully-img" />
+                <img src="/featured-work/work-1.jpg" alt="Framed Adinkra symbols" className="beautifully-img" />
               </div>
             </Animates>
           </div>
@@ -24,7 +24,7 @@ const BeautifullyFrame = () => {
           <div className="beautifully-frame-item portrait">
             <Animates animateOnScroll={true} delay={0.45}>
               <div className="beautifully-frame-img-wrapper">
-                <img src="/featured-work/work-2.jpg" alt="Beautifully framed painting" className="beautifully-img" />
+                <img src="/featured-work/work-2.jpg" alt="Framed Kente cloth" className="beautifully-img" />
               </div>
             </Animates>
           </div>
