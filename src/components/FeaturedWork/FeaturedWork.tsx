@@ -39,13 +39,32 @@ function FeaturedWorkItem({ project }: FeaturedWorkItemProps) {
 
 export default function FeaturedWork() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const { navigateWithTransition } = useViewTransition();
 
+  const scrollToIdx = (idxOffset: number) => {
+    const root = scrollContainerRef.current;
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll(".featured-work-item"));
+    if (items.length === 0) return;
+    
+    const activeIdx = items.findIndex(item => item.classList.contains("active"));
+    let targetIdx = activeIdx + idxOffset;
+    
+    if (targetIdx < 0) targetIdx = items.length - 1;
+    if (targetIdx >= items.length) targetIdx = 0;
 
+    const targetEl = items[targetIdx] as HTMLElement;
+    if (targetEl) {
+      const targetScrollLeft = targetEl.offsetLeft - root.clientWidth / 2 + targetEl.clientWidth / 2;
+      gsap.to(root, { scrollLeft: targetScrollLeft, duration: 1.2, ease: "power2.inOut" });
+    }
+  };
 
   useEffect(() => {
     const root = scrollContainerRef.current;
-    if (!root) return;
+    const container = containerRef.current;
+    if (!root || !container) return;
 
     const handleClick = (event: MouseEvent) => {
       const anchor = event.currentTarget as HTMLAnchorElement;
@@ -68,7 +87,6 @@ export default function FeaturedWork() {
       let closestIdx = 0;
       let minDistance = Infinity;
 
-      // Dynamically calculate because widths change when active
       items.forEach((item, idx) => {
         const el = item as HTMLElement;
         const center = el.offsetLeft + el.clientWidth / 2;
@@ -89,7 +107,7 @@ export default function FeaturedWork() {
     };
 
     root.addEventListener("scroll", handleScroll, { passive: true });
-    // Initialize active class and start at the first item
+    
     setTimeout(() => {
       handleScroll();
       if (items.length > 0) {
@@ -98,17 +116,33 @@ export default function FeaturedWork() {
       }
     }, 100);
 
-    // Smooth Slideshow Auto-scroll logic
+    let isHovered = false;
+    const setHovered = () => { isHovered = true; };
+    const setUnhovered = () => { isHovered = false; };
+    
+    let touchTimeout: NodeJS.Timeout;
+    const setTouchHovered = () => {
+      isHovered = true;
+      clearTimeout(touchTimeout);
+    };
+    const setTouchUnhovered = () => {
+      clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(() => { isHovered = false; }, 2000);
+    };
+
+    container.addEventListener("mouseenter", setHovered);
+    container.addEventListener("mouseleave", setUnhovered);
+    container.addEventListener("focusin", setHovered);
+    container.addEventListener("focusout", setUnhovered);
+    container.addEventListener("touchstart", setTouchHovered, { passive: true });
+    container.addEventListener("touchend", setTouchUnhovered, { passive: true });
+
     const interval = setInterval(() => {
-      if (!root) return;
+      if (!root || isHovered) return;
       
-      // Find current active index
       const activeIdx = items.findIndex(item => item.classList.contains("active"));
       let nextIdx = activeIdx + 1;
-      
-      if (nextIdx >= items.length) {
-        nextIdx = 0; // loop back to start
-      }
+      if (nextIdx >= items.length) nextIdx = 0;
       
       const nextEl = items[nextIdx] as HTMLElement;
       if (nextEl) {
@@ -120,13 +154,36 @@ export default function FeaturedWork() {
     return () => {
       links.forEach((link) => link.removeEventListener("click", handleClick));
       root.removeEventListener("scroll", handleScroll);
+      container.removeEventListener("mouseenter", setHovered);
+      container.removeEventListener("mouseleave", setUnhovered);
+      container.removeEventListener("focusin", setHovered);
+      container.removeEventListener("focusout", setUnhovered);
+      container.removeEventListener("touchstart", setTouchHovered);
+      container.removeEventListener("touchend", setTouchUnhovered);
       clearInterval(interval);
+      clearTimeout(touchTimeout);
       gsap.killTweensOf(root);
     };
   }, [navigateWithTransition]);
 
   return (
-    <div className="featured-work-carousel-container">
+    <div className="featured-work-carousel-container" ref={containerRef}>
+      <div className="featured-work-controls">
+        <button 
+          className="carousel-btn prev" 
+          onClick={() => scrollToIdx(-1)} 
+          aria-label="Previous work"
+        >
+          &#8592;
+        </button>
+        <button 
+          className="carousel-btn next" 
+          onClick={() => scrollToIdx(1)} 
+          aria-label="Next work"
+        >
+          &#8594;
+        </button>
+      </div>
 
       <div className="featured-work-carousel-wrapper">
         <div className="featured-work-list manual-scroll" ref={scrollContainerRef}>
