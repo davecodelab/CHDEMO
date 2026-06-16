@@ -63,7 +63,7 @@
 .beautifully-frame-text-content {
   max-width: 800px;
   margin: 5rem auto 0;
-  text-align: left;
+  text-align: justify;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
