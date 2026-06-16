@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./PrintAndFrame.css";
 import Animates from "@/components/Animates/Animate";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -21,8 +26,30 @@ const steps = [
 ];
 
 const PrintAndFrame = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const stepElements = gsap.utils.toArray(".print-frame-step");
+    
+    gsap.fromTo(stepElements, 
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.25,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".print-frame-grid",
+          start: "top 85%",
+          once: true,
+        }
+      }
+    );
+  }, { scope: containerRef });
+
   return (
-    <section className="print-frame-section">
+    <section className="print-frame-section" ref={containerRef}>
       <div className="container">
         <Animates animateOnScroll={true} delay={0.2}>
           <div className="print-frame-header">
@@ -31,20 +58,14 @@ const PrintAndFrame = () => {
         </Animates>
 
         <div className="print-frame-grid">
-          {steps.map((step, index) => (
-            <Animates
-              key={step.id}
-              animateOnScroll={true}
-              delay={0.3 + index * 0.15}
-            >
-              <div className="print-frame-step">
-                <div className="step-img-container">
-                  <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
-                </div>
-                <div className="step-number">{step.id}</div>
-                <p className="step-desc">{step.title}</p>
+          {steps.map((step) => (
+            <div className="print-frame-step" key={step.id}>
+              <div className="step-img-container">
+                <img src={step.img} alt={`Step ${step.id}`} className="step-img" />
               </div>
-            </Animates>
+              <div className="step-number">{step.id}</div>
+              <p className="step-desc">{step.title}</p>
+            </div>
           ))}
         </div>
 
