@@ -148,29 +148,23 @@ const Page = () => {
         <ClientReviews />
       </div>
 
-      <section className="gallery-wall-section" style={{ backgroundColor: '#ffffff', padding: '6rem 1.5rem' }}>
-        <div className="container">
-          <Animates animateOnScroll={true} delay={0.2}>
-            <div style={{ 
-              width: '100%', 
-              borderRadius: '24px', 
-              overflow: 'hidden',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
-            }}>
-              <img 
-                src="/gallery-wall.jpg" 
-                alt="A beautiful collection of framed artwork from CraftHive" 
-                style={{ 
-                  width: '100%', 
-                  height: '70vh', 
-                  minHeight: '400px',
-                  display: 'block', 
-                  objectFit: 'cover' 
-                }} 
-              />
-            </div>
-          </Animates>
-        </div>
+      <section className="gallery-wall-parallax" style={{
+        position: 'relative',
+        width: '100%',
+        height: '60vh',
+        minHeight: '500px',
+        backgroundImage: 'url(/gallery-wall.jpg)',
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}>
+        {/* Optional subtle overlay to make it look more premium/editorial */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3))'
+        }}></div>
       </section>
 
       <CTACard />
