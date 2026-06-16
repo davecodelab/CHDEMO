@@ -20,7 +20,7 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  const isDarkTheme = pathname === "/about";
+  const isDarkTheme = pathname === "/about" || pathname === "/contact";
 
   useEffect(() => {
     gsap.from(".nav-link", {

@@ -1,5 +1,5 @@
 .print-frame-section {
-  padding: 6rem 0;
+  padding: 6rem 2rem;
   background-color: #ffffff;
   color: #333333;
 }
@@ -39,14 +39,16 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+  background-color: #ffffff; /* Provide a solid background within the stacking context */
 }
 
 .step-img {
-  height: 250px;
+  height: 320px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply; /* ensures any residual white perfectly blends in */
+  mix-blend-mode: multiply; /* Blends perfectly against the container's white background */
+  filter: contrast(1.15) brightness(1.08); /* Blows out grey backgrounds */
 }
 
 .step-number {
@@ -108,7 +110,7 @@
 
 @media (max-width: 768px) {
   .print-frame-section {
-    padding: 4rem 0;
+    padding: 4rem 1.5rem;
   }
   
   .print-frame-grid {
@@ -128,7 +130,7 @@
   }
 
   .step-img {
-    height: 180px;
+    height: 220px;
   }
   
   .step-desc {

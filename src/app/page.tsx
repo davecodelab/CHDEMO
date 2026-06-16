@@ -8,6 +8,7 @@ import FeaturedWork from "@/components/FeaturedWork/FeaturedWork";
 import ClientReviews from "@/components/ClientReviews/ClientReviews";
 import BrandTicker from "@/components/BrandTicker/BrandTicker";
 import PrintAndFrame from "@/components/PrintAndFrame/PrintAndFrame";
+import BeautifullyFrame from "@/components/BeautifullyFrame/BeautifullyFrame";
 import CTACard from "@/components/CTACard/CTACard";
 import Footer from "@/components/ui/Footer";
 import Copy from "@/components/Copy/Copy"
@@ -38,23 +39,27 @@ const Page = () => {
   }, []);
 
   useGSAP(() => {
-    // 1. Hero Curtain Effect: Hero pins, and the Video slides over it
+    // 1. Hero Curtain Effect: Removed as requested
+    /*
     ScrollTrigger.create({
       trigger: ".hero",
       start: "top top",
-      endTrigger: ".showreel",
-      end: "bottom top", // Unpins exactly when the Video finishes scrolling up
+      endTrigger: ".press-recognition",
+      end: "bottom top", 
       pin: true,
       pinSpacing: false,
     });
+    */
 
-    // 2. Video Curtain Effect: Video pins, and the Featured Work slides over it
+    // 2. Video Curtain Effect: Commented out since Showreel is removed
+    /*
     ScrollTrigger.create({
       trigger: ".showreel",
       start: "top top",
       pin: true,
       pinSpacing: false,
     });
+    */
   }, { scope: theaterWrapperRef });
 
   return (
@@ -90,7 +95,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <Showreel />
+      {/* <Showreel /> */}
       <BrandTicker />
 
       <section className="featured-work">
@@ -98,11 +103,9 @@ const Page = () => {
           <div className="featured-work-header-content">
             <div className="featured-work-header">
               <Animates animateOnScroll={true} delay={0.25}>
-                <h1>From Our Studio</h1>
+                <h1 className="section-heading">From Our Studio</h1>
               </Animates>
             </div>
-
-
 
             <div className="featured-work-header-copy">
               <Copy animateOnScroll={true} delay={0.25}>
@@ -118,6 +121,7 @@ const Page = () => {
         </div>
       </section>
 
+      <BeautifullyFrame />
       <PrintAndFrame />
 
       <div className="reviews-curtain-wrapper">
@@ -126,7 +130,7 @@ const Page = () => {
             <div className="client-reviews-header-content">
               <div className="client-reviews-header">
                 <Copy animateOnScroll={true} delay={0.25}>
-                  <h1>What Our Clients Say</h1>
+                  <h1 className="section-heading">What Our Clients Say</h1>
                 </Copy>
               </div>
 
@@ -143,6 +147,18 @@ const Page = () => {
 
         <ClientReviews />
       </div>
+
+      <section className="gallery-wall-section" style={{ backgroundColor: '#f4f4f4', padding: 0 }}>
+        <Animates animateOnScroll={true} delay={0.2}>
+          <div style={{ width: '100%', overflow: 'hidden' }}>
+            <img 
+              src="/gallery-wall.jpg" 
+              alt="A beautiful collection of framed artwork from CraftHive" 
+              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} 
+            />
+          </div>
+        </Animates>
+      </section>
 
       <CTACard />
       </div>
