@@ -16,7 +16,7 @@ const steps = [
   {
     id: 3,
     title: "We'll print and frame your photo and ship it to your door.",
-    img: "/process/step3.png",
+    img: "/process/step3.jpg",
   },
 ];
 
