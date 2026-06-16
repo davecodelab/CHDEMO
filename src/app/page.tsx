@@ -8,6 +8,7 @@ import FeaturedWork from "@/components/FeaturedWork/FeaturedWork";
 import ClientReviews from "@/components/ClientReviews/ClientReviews";
 import BrandTicker from "@/components/BrandTicker/BrandTicker";
 import PrintAndFrame from "@/components/PrintAndFrame/PrintAndFrame";
+import BeautifullyFrame from "@/components/BeautifullyFrame/BeautifullyFrame";
 import CTACard from "@/components/CTACard/CTACard";
 import Footer from "@/components/ui/Footer";
 import Copy from "@/components/Copy/Copy"
@@ -120,6 +121,7 @@ const Page = () => {
         </div>
       </section>
 
+      <BeautifullyFrame />
       <PrintAndFrame />
 
       <div className="reviews-curtain-wrapper">

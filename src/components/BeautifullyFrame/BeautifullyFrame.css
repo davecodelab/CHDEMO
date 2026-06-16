@@ -1,0 +1,83 @@
+.beautifully-frame-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.beautifully-frame-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.beautifully-frame-header h2 {
+  font-family: var(--font-body), "Inter", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.beautifully-frame-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.beautifully-frame-item {
+  width: 100%;
+}
+
+.beautifully-frame-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Aspect ratio mimicking the screenshot */
+  overflow: hidden;
+  background-color: #f0f0f0; /* Light gray placeholder background */
+}
+
+.beautifully-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .beautifully-frame-item:hover .beautifully-img {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 1024px) {
+  .beautifully-frame-grid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .beautifully-frame-section {
+    padding: 4rem 0;
+  }
+  
+  .beautifully-frame-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .beautifully-frame-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .beautifully-frame-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .beautifully-frame-img-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+}
