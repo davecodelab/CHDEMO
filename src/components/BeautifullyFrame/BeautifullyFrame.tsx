@@ -6,11 +6,13 @@ const BeautifullyFrame = () => {
   return (
     <section className="beautifully-frame-section">
       <div className="container">
-        <Animates animateOnScroll={true} delay={0.15}>
-          <h2 className="beautifully-frame-heading">
-            Gallery-quality custom framing, delivered.
-          </h2>
-        </Animates>
+        <div className="beautifully-frame-header">
+          <Animates animateOnScroll={true} delay={0.15}>
+            <h1>
+              Gallery-quality custom framing, delivered.
+            </h1>
+          </Animates>
+        </div>
 
         <div className="beautifully-frame-grid">
           <div className="beautifully-frame-item portrait">
