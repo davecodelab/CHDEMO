@@ -96,8 +96,6 @@ const Page = () => {
         </div>
       </section>
       {/* <Showreel /> */}
-      <BrandTicker />
-
       <section className="featured-work">
         <div className="container">
           <div className="featured-work-header-content">
@@ -120,6 +118,8 @@ const Page = () => {
 
         </div>
       </section>
+
+      <BrandTicker />
 
       <BeautifullyFrame />
       <PrintAndFrame />
