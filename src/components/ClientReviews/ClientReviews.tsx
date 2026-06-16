@@ -16,7 +16,7 @@ const ClientReviews = () => {
         <div className="simple-testimonial">
           <Animates animateOnScroll={true} delay={0.2}>
             <p className="simple-testimonial-quote">
-              "It's still not even close. @crafthive is still the absolute best / fastest / most affordable way to frame a thing. Seriously."
+              "There's simply no comparison. @crafthive is hands down the absolute finest / easiest / most premium way to custom frame your art. Period."
             </p>
           </Animates>
           
