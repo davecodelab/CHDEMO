@@ -1,5 +1,5 @@
 .print-frame-section {
-  padding: 6rem 0;
+  padding: 6rem 2rem;
   background-color: #ffffff;
   color: #333333;
 }
@@ -110,7 +110,7 @@
 
 @media (max-width: 768px) {
   .print-frame-section {
-    padding: 4rem 0;
+    padding: 4rem 1.5rem;
   }
   
   .print-frame-grid {
