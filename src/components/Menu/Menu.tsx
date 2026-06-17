@@ -38,7 +38,7 @@ export default function Navbar() {
       ease: "power3.out",
     });
 
-    gsap.from(".contact-btn-small", {
+    gsap.from(".nav-actions", {
       y: -20,
       opacity: 0,
       duration: 0.8,
