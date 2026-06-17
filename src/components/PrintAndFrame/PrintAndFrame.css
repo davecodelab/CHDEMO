@@ -47,6 +47,8 @@
   width: auto;
   max-width: 100%;
   object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.05);
 }
 
 .step-number {
