@@ -324,11 +324,11 @@ nav.scrolled .nav-logo img {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -150px; /* Bleed far behind the iOS address bar */
     background: #1a1614;
     display: flex;
     flex-direction: column;
-    padding: 6rem 2rem 0 2rem; /* ZERO bottom padding so colors hit the bottom edge */
+    padding: 6rem 2rem 150px 2rem; /* 150px bottom padding keeps content exactly above the address bar */
     gap: 1.25rem;
     transform: translateX(100%);
     transition: transform 0.5s ease;

@@ -127,5 +127,11 @@
   .preloader-copy {
     width: 80%;
     padding: 0 2rem;
+    bottom: calc(5rem + 150px); /* Offset to counteract the extended bottom */
+  }
+
+  /* Force the preloader to bleed deep under the iOS address bar */
+  .preloader {
+    bottom: -150px; 
   }
 }
