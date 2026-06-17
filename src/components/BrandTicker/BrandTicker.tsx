@@ -1,12 +1,12 @@
 import "./BrandTicker.css";
 
 const pressLogos = [
-  "VOGUE",
-  "MONOCLE",
-  "KINFOLK",
-  "ELLE DECOR",
-  "GQ",
-  "ARCHITECTURAL DIGEST",
+  { type: "image", src: "/logos/art-africa.png", alt: "Art Africa" },
+  { type: "text", content: "MONOCLE" },
+  { type: "text", content: "KINFOLK" },
+  { type: "text", content: "ELLE DECOR" },
+  { type: "text", content: "GQ" },
+  { type: "text", content: "ARCHITECTURAL DIGEST" },
 ];
 
 export default function BrandTicker() {
@@ -27,8 +27,12 @@ export default function BrandTicker() {
             <p className="also-loved-heading">Also Featured In</p>
             <div className="press-logos-row">
               {pressLogos.map((logo, i) => (
-                <div className="press-logo-placeholder" key={i}>
-                  {logo}
+                <div className={`press-logo-placeholder ${logo.type === 'image' ? 'has-image' : ''}`} key={i}>
+                  {logo.type === "image" ? (
+                    <img src={logo.src} alt={logo.alt} className="press-logo-img" />
+                  ) : (
+                    logo.content
+                  )}
                 </div>
               ))}
             </div>
