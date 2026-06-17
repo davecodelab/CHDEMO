@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 import gsap from "gsap";
 import "./Menu.css";
 
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
+  const lenis = useLenis();
 
   const isDarkTheme = pathname === "/about" || pathname === "/contact";
 
@@ -68,16 +70,19 @@ export default function Navbar() {
     if (mobileOpen) {
       document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
+      if (lenis) lenis.stop();
     } else {
       document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
+      if (lenis) lenis.start();
     }
     
     return () => {
       document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
+      if (lenis) lenis.start();
     };
-  }, [mobileOpen]);
+  }, [mobileOpen, lenis]);
 
   return (
     <>
