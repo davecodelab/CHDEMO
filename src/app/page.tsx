@@ -13,6 +13,7 @@ import CTACard from "@/components/CTACard/CTACard";
 import Footer from "@/components/ui/Footer";
 import Copy from "@/components/Copy/Copy"
 import Animates from "@/components/Animates/Animate";
+import GalleryParallax from "@/components/GalleryParallax/GalleryParallax";
 import Preloader, { isInitialLoad } from "@/components/Preloader/Preloader";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -148,24 +149,7 @@ const Page = () => {
         <ClientReviews />
       </div>
 
-      <section className="gallery-wall-parallax" style={{
-        position: 'relative',
-        width: '100%',
-        height: '60vh',
-        minHeight: '500px',
-        backgroundImage: 'url(/gallery-wall.jpg)',
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      }}>
-        {/* Optional subtle overlay to make it look more premium/editorial */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3))'
-        }}></div>
-      </section>
+      <GalleryParallax />
 
       <CTACard />
       </div>
