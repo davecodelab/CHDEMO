@@ -97,7 +97,6 @@ export default function Navbar() {
               Services
             </Link>
             <div className="dropdown-menu">
-              <Link href="/services">All Services</Link>
               <Link href="/services/custom-framing">Custom Framing</Link>
               <Link href="/services/shadow-box">Shadow Boxes</Link>
               <Link href="/services/handicrafts">Handicrafts</Link>
