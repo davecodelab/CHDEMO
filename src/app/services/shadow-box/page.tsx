@@ -1,5 +1,6 @@
 import Footer from "@/components/ui/Footer";
 import "./shadow.css";
+import ArtGallery from "@/components/ArtGallery";
 
 const ArtBoxesPage = () => (
   <div className="page">
@@ -23,8 +24,6 @@ const ArtBoxesPage = () => (
           src="/shadow/art_4.jpg"
           alt="Ornate African art box with decorative medallions"
         />
-        {/* <span className="bracket bracket--tl" />
-        <span className="bracket bracket--br" /> */}
       </div>
     </section>
 
@@ -100,26 +99,7 @@ const ArtBoxesPage = () => (
     </section>
 
     {/* ── Gallery ────────────────────────────────────────── */}
-    <section className="gallery" id="gallery">
-      <div className="gallery__head">
-        <h2>Art Box Gallery</h2>
-        <p>A curated collection of unique mixed-media art compositions.</p>
-      </div>
-      <div className="gallery-grid">
-        {[
-          { wide: true,  src: "/shadow/art_9.jpg", alt: "Featured art box" },
-          { wide: false, src: "/shadow/art_2.jpg",  alt: "Art box detail 2" },
-          { wide: false, src: "/shadow/art_6.jpg",  alt: "Art box detail 3" },
-          { wide: false, src: "/shadow/art_7.jpg", alt: "Art box detail 4" },
-          { wide: true,  src: "/shadow/art_8.jpg", alt: "Art box gallery wide" },
-        ].map((g, i) => (
-          <div className={`g-item${g.wide ? " g-item--wide" : ""}`} key={i}>
-            <img src={g.src} alt={g.alt} loading="lazy" />
-          </div>
-        ))}
-      </div>
-    </section>
-
+    <ArtGallery/>
     {/* ── Footer strip ──────────────────────────────────── */}
     <Footer />
   </div>
