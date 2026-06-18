@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Footer from '@/components/ui/Footer';
+import Link from "next/link"
 
 import { Mail, Phone, MapPin, ArrowRight, Loader2, CheckCircle, XCircle } from 'lucide-react';
 import { sendContactEmail } from '@/lib/EmailAction';
@@ -79,16 +80,29 @@ export default function Contact() {
             className="space-y-6"
           >
             <div>
-              <h3 className="font-serif text-2xl text-[#ce1a06] mb-4">Visit the Studio</h3>
+              <h3 className="font-serif text-2xl text-[#ce1a06] mb-4">Visit Us</h3>
               <p className="font-body text-[#cdcec6] leading-relaxed">
-                Our studio is open by appointment. We invite you to bring your artwork in person for a hands-on consultation.
+                Feel free to walk in during our working hours
               </p>
             </div>
 
             {[
-              { icon: MapPin, label: 'Location', value: 'Tuba Road, Weija Tollbooth, Accra' },
-              { icon: Phone, label: 'Phone', value: '0244699121 / 0206564018' },
-              { icon: Mail, label: 'Email', value: 'crafthiveghana@gmail.com' },
+              { icon: MapPin,
+                label: 'Location', 
+                value: 'Tuba Road, Weija Tollbooth, Accra', 
+                href: "https://tinyurl.com/yvku9s54",
+              },
+              { icon: Phone, 
+                label: 'Phone',
+                 value: '0244699121 / 0206564018',
+                 href: "tel:0244699121",
+               },
+
+              { icon: Mail,
+                label: 'Email', 
+                value: 'crafthiveghana@gmail.com', 
+                href: "mailto:crafthiveghana@gmail.com",
+               },
             ].map((item) => (
               <div key={item.label} className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[#c31b07]/10 flex items-center justify-center shrink-0 mt-0.5">
@@ -96,7 +110,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-body text-ivory-dim/50 text-xs tracking-widest uppercase mb-0.5">{item.label}</p>
-                  <p className="font-body text-ivory text-sm">{item.value}</p>
+                  <Link
+                   href={item.href}
+                   className="font-body text-ivory text-sm">{item.value}</Link>
                 </div>
               </div>
             ))}

@@ -108,7 +108,7 @@ const StudioPage = () => {
 
         <section className="studio-hero-img">
           <div className="studio-hero-img-wrapper">
-            <img src="/about/hero_image.jpg" alt="Andinkra Symbols" />
+            <img src="/about/about-hero.png" alt="Adinkra Symbols" />
           </div>
         </section>
 
@@ -181,7 +181,7 @@ const StudioPage = () => {
                 </p>
 
                 {/* Mobile Pyramid Shape */}
-                <p className="mobile-tapered block md:hidden">
+                <p className="mobile-pyramid block md:hidden">
                   Our work is valued by homeowners, businesses, <br />
                   collectors, and art enthusiasts who appreciate <br />
                   quality craftsmanship and attention to detail. <br />

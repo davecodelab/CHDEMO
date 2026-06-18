@@ -1,24 +1,19 @@
-import ScrollExpandHero from '@/components/blocks/ScrollExpandHero';
-import Services from '@/components/sections/Services';
+// import ScrollExpandHero from '@/components/blocks/ScrollExpandHero';
+import Services from '@/components/FramePreview/FramePreview';
 import FAQ from '@/components/sections/FAQ';
 import Footer from '@/components/ui/Footer';
+import ServicesPage from '@/components/sections/ServicesPage';
+
+
 
 export default function Home() {
   return (
         <>
-      {/* Hero with scroll-expand */}
-      <ScrollExpandHero
-        mediaSrc="/services/mini.jpg"
-        bgImageSrc="/services/services.jpg"
-        title="Preserve what your walls deserve"
-        scrollToExpand="Create statements."
-      >
-        {/* Content revealed after hero expands */}
-        <div id="services" />
-        <Services />
+    <ServicesPage/>
+        {/* Content revealed after hero expands  and the Services below is the framing tool Preview */}
+        <Services /> 
         <FAQ />
         <Footer />
-      </ScrollExpandHero>
-    </>
+       </>
   );
 }
