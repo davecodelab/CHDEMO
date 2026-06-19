@@ -117,6 +117,9 @@ export default function Animates({
         } else {
           gsap.to(lines.current, animationProps);
         }
+
+        // Recalculate ScrollTrigger positions since SplitText asynchronously modifies the DOM height
+        ScrollTrigger.refresh();
       };
 
       initializeSplitText();

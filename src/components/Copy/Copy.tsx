@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useRef } from "react";
 import "./Copy.css";
@@ -123,6 +123,9 @@ export default function Copy({
         } else {
           gsap.to(lines.current, animationProps);
         }
+
+        // Recalculate ScrollTrigger positions since SplitText asynchronously modifies the DOM height
+        ScrollTrigger.refresh();
       };
 
       initializeSplitText();

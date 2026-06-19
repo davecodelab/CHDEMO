@@ -21,10 +21,10 @@ export default function GalleryParallax() {
       end: "bottom top",
       animation: gsap.fromTo(
         imageRef.current,
-        { yPercent: -25 }, // More dramatic start
-        { yPercent: 25, ease: "none" } // More dramatic end
+        { yPercent: -15 },
+        { yPercent: 15, ease: "none" }
       ),
-      scrub: true,
+      scrub: 1,
     });
   }, { scope: containerRef });
 
