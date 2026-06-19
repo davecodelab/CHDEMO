@@ -36,54 +36,124 @@ const CAROUSEL_IMAGES = [
 ];
 
 
-const Hero = () => (
-  <section className="cf-hero">
-    <div
-      className="cf-hero-badge"
-      style={{ top: "22%", left: "5%" }}
+const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const titleBgRef = useRef<HTMLDivElement>(null);
+  const artRef = useRef<HTMLDivElement>(null);
+  const mouldingRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    // 1. Framing load animation: outer frame draws in and image fades in/zooms out
+    gsap.fromTo(
+      mouldingRef.current,
+      { borderWidth: 0, borderColor: "transparent" },
+      {
+        borderWidth: "16px",
+        borderColor: "#1a1614",
+        duration: 1.5,
+        ease: "power3.out",
+      }
+    );
+
+    gsap.fromTo(
+      imageRef.current,
+      { scale: 1.15, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.5, ease: "power3.out", delay: 0.2 }
+    );
+
+    // 2. Scroll Parallax effect: image container zooms in and background text moves out of view
+    const scrollAnimation = ScrollTrigger.create({
+      trigger: heroRef.current,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+      animation: gsap.timeline()
+        .to(artRef.current, { scale: 1.12, y: 40, ease: "none" })
+        .to(titleBgRef.current, { y: -80, opacity: 0.05, ease: "none" }, 0)
+    });
+
+    return () => {
+      scrollAnimation.kill();
+    };
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!artRef.current) return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    
+    // Calculate mouse position relative to window center (-1 to 1)
+    const x = (clientX - innerWidth / 2) / (innerWidth / 2);
+    const y = (clientY - innerHeight / 2) / (innerHeight / 2);
+
+    gsap.to(artRef.current, {
+      rotateY: x * 12, // Tilt up to 12 degrees on Y axis
+      rotateX: -y * 12, // Tilt up to 12 degrees on X axis
+      transformPerspective: 1200,
+      ease: "power2.out",
+      duration: 0.5,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    if (!artRef.current) return;
+    gsap.to(artRef.current, {
+      rotateY: 0,
+      rotateX: 0,
+      ease: "power2.out",
+      duration: 0.8,
+    });
+  };
+
+  return (
+    <section 
+      className="cf-hero" 
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      <span className="bdot" />
-      500+ frames crafted
-    </div>
+      <div className="cf-hero-title-bg" ref={titleBgRef}>
+        CRAFTED TO BE SEEN
+      </div>
 
-    <div
-      className="cf-hero-badge"
-      style={{ top: "35%", right: "4%" }}
-    >
-      <span className="bdot" />
-      Same-day consultation
-    </div>
+      <div className="cf-hero-content">
+        <div className="cf-hero-left">
+          <span className="cf-hero-eyebrow">Services</span>
+          <h1>HERITAGE PRESERVED</h1>
+          <p>
+            From treasured family heirlooms and fine art prints to traditional textiles and custom shadow boxes—our master artisans frame the pieces that tell your story for generations.
+          </p>
+          <div className="cf-hero-btns">
+            <a href="#preview" className="cf-btn cf-btn-red">
+              Explore
+            </a>
+            <a href="/contact" className="cf-btn cf-btn-outline">
+              Contact Us
+            </a>
+          </div>
+        </div>
 
-    <div
-      className="cf-hero-badge"
-      style={{ bottom: "22%", left: "7%" }}
-    >
-      <span className="bdot" />
-      Free pickup & delivery
-    </div>
-
-    <div className="cf-hero-eyebrow reveal">Preserve</div>
-
-    <h1 className="reveal delay-1">
-      Custom framing that <em>tells your story</em>
-    </h1>
-
-    <p className="reveal delay-2">
-      Transform your cherished memories into timeless art with our
-      expert custom framing services tailored to your unique vision.
-    </p>
-
-    <div className="cf-hero-btns reveal delay-3">
-      <a href="#preview" className="cf-btn cf-btn-red">
-        Explore
-      </a>
-
-      <a href="/contact" className="cf-btn cf-btn-outline">
-        Contact
-      </a>
-    </div>
-  </section>
-);
+        <div className="cf-hero-right">
+          <div className="cf-framed-art-container">
+            <div className="cf-framed-art" ref={artRef}>
+              <div className="cf-frame-moulding" ref={mouldingRef}>
+                <div className="cf-frame-mat">
+                  <img 
+                    src="/services/custom-framing-hero.jpg" 
+                    alt="Framed textile display" 
+                    className="cf-frame-image" 
+                    ref={imageRef} 
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 interface FeatureProps {
   flip?: boolean;

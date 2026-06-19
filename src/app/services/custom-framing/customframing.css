@@ -32,42 +32,195 @@
 
 /* ── Hero ── */
 .cf-hero {
-  padding-top: var(--nav-h);
-  min-height: 100svh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding-left: 1.5rem; padding-right: 1.5rem;
-  position: relative; overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: calc(var(--nav-h) + 2rem);
+  padding-bottom: 4rem;
+  background-color: #faf9f6; /* Off-white canvas background */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cf-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 110%, rgba(227,34,28,.07) 0%, transparent 70%);
-  pointer-events: none;
-}
-.cf-hero-eyebrow {
-  display: inline-flex; align-items: center; gap: .6rem;
-  font-size: .7rem; font-weight: 500; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 1.75rem;
-}
-.cf-hero-eyebrow::before, .cf-hero-eyebrow::after { content: ''; display: block; width: 24px; height: 1px; background: var(--red); }
-.cf-hero h1 { font-family: var(--fd); font-size: clamp(2.8rem, 6vw, 7rem); font-weight: 700; line-height: 1.04; letter-spacing: -.04rem; max-width: 780px; margin-bottom: 1.5rem; }
-.cf-hero h1 em { font-style: italic; color: var(--red); }
-.cf-hero p { font-size: clamp(.9rem, 1.2vw, 1.05rem); color: var(--muted); max-width: 480px; line-height: 1.72; margin-bottom: 2.5rem; }
-.cf-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-.cf-hero-badge {
+.cf-hero-title-bg {
   position: absolute;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 6px; padding: .6rem 1rem;
-  display: flex; align-items: center; gap: .5rem;
-  font-size: .78rem; font-weight: 500;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading), 'Outfit', sans-serif;
+  font-size: clamp(6rem, 15vw, 12rem);
+  font-weight: 900;
+  color: #1a1614;
+  opacity: 0.04;
+  white-space: nowrap;
   pointer-events: none;
-  animation: floatBadge 5s ease-in-out infinite;
+  z-index: 1;
+  letter-spacing: -0.03em;
+  user-select: none;
 }
-.cf-hero-badge .bdot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
-@keyframes floatBadge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-@media (max-width: 700px) { .cf-hero-badge { display: none; } }
+
+.cf-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.cf-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.cf-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c31b07;
+  margin-bottom: 1.5rem;
+}
+.cf-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: #c31b07;
+}
+
+.cf-hero-left h1 {
+  font-family: var(--font-heading), 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1a1614;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.cf-hero-left p {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: #555555;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+.cf-hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cf-hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px; /* Enable 3D rendering context on container */
+}
+
+/* Framed Art Container with Shadow Box Styling */
+.cf-framed-art-container {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  justify-content: center;
+}
+
+.cf-framed-art {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Thick outer frame border - moulding */
+.cf-frame-moulding {
+  border-style: solid;
+  border-color: #1a1614;
+  /* border-width is animated dynamically by GSAP on load */
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.15),
+    0 5px 15px rgba(0,0,0,0.1),
+    inset 0 0 10px rgba(0,0,0,0.6); /* simulates inner frame bevel shadow */
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+  width: 100%;
+}
+
+.cf-framed-art:hover .cf-frame-moulding {
+  box-shadow: 
+    0 25px 55px rgba(0,0,0,0.22),
+    0 10px 25px rgba(0,0,0,0.15),
+    inset 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* Off-white matboard styling */
+.cf-frame-mat {
+  background-color: #f6f5f0; /* Textured off-white mat */
+  padding: 8%; /* Matboard breathing space around the photo */
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05); /* subtle mat shadow */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The actual artwork image */
+.cf-frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18); /* shadow cast by mat onto image */
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Responsive adjustment */
+@media (max-width: 991px) {
+  .cf-hero {
+    padding-top: calc(var(--nav-h) + 3rem);
+    min-height: auto;
+  }
+  
+  .cf-hero-content {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+  
+  .cf-hero-left {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cf-hero-left p {
+    max-width: 550px;
+  }
+  
+  .cf-hero-right {
+    perspective: none; /* Disable 3D tilt on smaller screens */
+  }
+  
+  .cf-framed-art {
+    transform: none !important; /* Disable any active mouse tilt rotation */
+  }
+}
 
 /* ── Buttons ── */
 .cf-btn {
