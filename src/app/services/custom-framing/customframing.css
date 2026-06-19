@@ -101,13 +101,20 @@
 }
 
 .cf-hero-left h1 {
-  font-family: var(--font-heading), 'Outfit', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: var(--fd);
+  font-size: clamp(3rem, 5.5vw, 4.8rem);
+  font-weight: 500;
+  line-height: 1.05;
   color: #1a1614;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.cf-italic {
+  font-style: italic;
+  font-family: var(--fd);
+  font-weight: 400;
+  color: #c31b07; /* Warm red accent on the serif italicized word */
 }
 
 .cf-hero-left p {
@@ -219,6 +226,66 @@
   
   .cf-framed-art {
     transform: none !important; /* Disable any active mouse tilt rotation */
+  }
+}
+
+/* Exhibit description card styling */
+.cf-exhibit-label {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.65rem 1rem;
+  border-left: 2px solid #c31b07; /* red line on the left */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: var(--fb);
+  z-index: 5;
+  pointer-events: none;
+  border-radius: 0 4px 4px 0;
+  transition: transform 0.3s ease;
+}
+
+.cf-framed-art-container:hover .cf-exhibit-label {
+  transform: translateY(-5px);
+}
+
+.cf-exhibit-id {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #1a1614;
+  letter-spacing: 0.12em;
+  font-family: var(--fb);
+}
+
+.cf-exhibit-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.55rem;
+  color: #666;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--fb);
+  line-height: 1.4;
+}
+
+/* responsive adjustment for exhibit label */
+@media (max-width: 991px) {
+  .cf-exhibit-label {
+    bottom: -2rem;
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 4px;
+    border-left: none;
+    border-top: 2px solid #c31b07;
+    align-items: center;
+    text-align: center;
+  }
+  .cf-framed-art-container:hover .cf-exhibit-label {
+    transform: translateX(50%) translateY(-2px);
   }
 }
 

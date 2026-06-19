@@ -125,7 +125,9 @@ const Hero = () => {
       <div className="cf-hero-content">
         <div className="cf-hero-left">
           <span className="cf-hero-eyebrow">Services</span>
-          <h1>HERITAGE PRESERVED</h1>
+          <h1>
+            Heritage <span className="cf-italic">Preserved</span>
+          </h1>
           <p>
             From treasured family heirlooms and fine art prints to traditional textiles and custom shadow boxes—our master artisans frame the pieces that tell your story for generations.
           </p>
@@ -140,7 +142,7 @@ const Hero = () => {
         </div>
 
         <div className="cf-hero-right">
-          <div className="cf-framed-art-container">
+          <div className="cf-framed-art-container" style={{ position: "relative" }}>
             <div className="cf-framed-art" ref={artRef}>
               <div className="cf-frame-moulding" ref={mouldingRef}>
                 <div className="cf-frame-mat">
@@ -151,6 +153,14 @@ const Hero = () => {
                     ref={imageRef} 
                   />
                 </div>
+              </div>
+            </div>
+            
+            <div className="cf-exhibit-label">
+              <span className="cf-exhibit-id">EXHIBIT NO. 3012</span>
+              <div className="cf-exhibit-details">
+                <span>MOULDING: 1.5" Roasted Walnut</span>
+                <span>MATBOARD: Warm White Cotton</span>
               </div>
             </div>
           </div>
