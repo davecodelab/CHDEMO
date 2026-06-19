@@ -40,13 +40,12 @@ const CAROUSEL_IMAGES = [
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleBgRef = useRef<HTMLDivElement>(null);
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-  const card4Ref = useRef<HTMLDivElement>(null);
+  const focalFrameRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // 1. Text SplitText animation
+    // 1. SplitText animation for background heading
     const h1Bg = titleBgRef.current;
     let split: SplitText | null = null;
     if (h1Bg) {
@@ -62,39 +61,37 @@ const Hero = () => {
       gsap.set(split.chars, { y: "100%" });
       gsap.to(split.chars, {
         y: "0%",
-        duration: 1.1,
-        stagger: 0.12,
-        delay: 0.4,
+        duration: 1.2,
+        stagger: 0.1,
+        delay: 0.2,
         ease: "power4.out",
       });
     }
 
-    // 2. Image clip-path reveals
-    const cards = [card1Ref.current, card2Ref.current, card3Ref.current, card4Ref.current];
-    cards.forEach((card, i) => {
-      if (!card) return;
-      // Start hidden with a clipping path and offset
-      gsap.set(card, {
+    // 2. Focal Frame Clip Path and Slide Up Reveal
+    if (focalFrameRef.current) {
+      gsap.set(focalFrameRef.current, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-        y: 80,
-        opacity: 0
+        y: 120,
+        opacity: 0,
+        scale: 0.95
       });
-      // Staggered slide up & clip-path reveal
-      gsap.to(card, {
+      gsap.to(focalFrameRef.current, {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         y: 0,
         opacity: 1,
-        duration: 1.5,
-        delay: 0.5 + i * 0.2,
+        scale: 1,
+        duration: 1.6,
+        delay: 0.6,
         ease: "power4.out"
       });
-    });
+    }
 
-    // 3. Scroll Parallax effects
+    // 3. Scroll Parallax and Catalogue reveals
     const ctx = gsap.context(() => {
-      // Parallax on background title
+      // Background title parallax
       gsap.to(titleBgRef.current, {
-        y: -150,
+        y: -100,
         ease: "none",
         scrollTrigger: {
           trigger: heroRef.current,
@@ -104,54 +101,54 @@ const Hero = () => {
         }
       });
 
-      // Parallax on image cards (staggered directions & speeds)
-      if (card1Ref.current) {
-        gsap.to(card1Ref.current, {
-          y: -100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true
+      // Focal frame parallax
+      gsap.to(focalFrameRef.current, {
+        y: 40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // Stagger reveal exhibition grid items on scroll
+      const gridItems = gridRef.current?.querySelectorAll(".cf-exhibit-card");
+      if (gridItems && gridItems.length > 0) {
+        gsap.fromTo(
+          gridItems,
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: "top 80%"
+            }
           }
-        });
+        );
       }
-      if (card2Ref.current) {
-        gsap.to(card2Ref.current, {
-          y: -40,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true
+
+      // Editorial intro fade-in
+      if (introRef.current) {
+        gsap.fromTo(
+          introRef.current,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: introRef.current,
+              start: "top 85%"
+            }
           }
-        });
-      }
-      if (card3Ref.current) {
-        gsap.to(card3Ref.current, {
-          y: -160,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-          }
-        });
-      }
-      if (card4Ref.current) {
-        gsap.to(card4Ref.current, {
-          y: -70,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-          }
-        });
+        );
       }
     }, heroRef);
 
@@ -161,150 +158,146 @@ const Hero = () => {
     };
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, ref: React.RefObject<HTMLDivElement | null>) => {
-    const card = ref.current;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = focalFrameRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    
     const normX = x / (rect.width / 2);
     const normY = y / (rect.height / 2);
 
     gsap.to(card, {
-      rotateY: normX * 10,
-      rotateX: -normY * 10,
-      transformPerspective: 1000,
-      scale: 1.025,
+      rotateY: normX * 8,
+      rotateX: -normY * 8,
+      transformPerspective: 1200,
       ease: "power2.out",
-      duration: 0.4
+      duration: 0.5
     });
   };
 
-  const handleMouseLeave = (ref: React.RefObject<HTMLDivElement | null>) => {
-    const card = ref.current;
+  const handleMouseLeave = () => {
+    const card = focalFrameRef.current;
     if (!card) return;
     gsap.to(card, {
       rotateY: 0,
       rotateX: 0,
-      scale: 1,
       ease: "power2.out",
-      duration: 0.6
+      duration: 0.8
     });
   };
 
   return (
-    <section className="cf-hero" ref={heroRef}>
-      <h1 className="cf-hero-title-bg-massive" ref={titleBgRef}>
-        FRAMED
-      </h1>
+    <section className="cf-hero-museum" ref={heroRef}>
+      {/* 1. Header Section with Focal Frame and Title */}
+      <div className="cf-hero-header-wrap">
+        <h1 className="cf-hero-museum-title" ref={titleBgRef}>
+          FRAMED
+        </h1>
 
-      <div className="cf-hero-grid">
-        <div className="cf-hero-left-editorial">
-          <span className="cf-hero-eyebrow-luxury">Bespoke Framing</span>
-          <h2 className="cf-hero-heading-editorial">
-            Heritage <br />
-            <span className="cf-italic">Preserved</span>
-          </h2>
-          <p className="cf-hero-description-editorial">
-            From treasured family heirlooms and fine art prints to traditional textiles and custom shadow boxes. Our master artisans handcraft every frame with conservation-grade materials.
-          </p>
-          <div className="cf-hero-btns-editorial">
-            <a href="#preview" className="cf-btn-editorial-red">
-              Interactive Studio
-            </a>
-            <a href="/contact" className="cf-btn-editorial-outline">
-              Get in Touch
-            </a>
-          </div>
-        </div>
-
-        <div className="cf-hero-collage-container">
-          {/* Card 1: Museum Shadow Box */}
-          <div 
-            className="cf-collage-card card-shadowbox" 
-            ref={card1Ref}
-            onMouseMove={(e) => handleMouseMove(e, card1Ref)}
-            onMouseLeave={() => handleMouseLeave(card1Ref)}
-          >
+        <div 
+          className="cf-hero-focal-frame-container"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="cf-hero-focal-frame" ref={focalFrameRef}>
             <div className="cf-frame-moulding-custom frame-walnut">
               <div className="cf-frame-mat-custom">
                 <img 
                   src="/services/framing-hero-2.jpg" 
-                  alt="Museum Shadow Box Framing" 
+                  alt="Masterpiece Custom Shadow Box" 
                   className="cf-frame-img-custom"
                 />
               </div>
             </div>
-            <div className="cf-card-label">
-              <span className="label-num">EXHIBIT NO. 3052</span>
-              <span className="label-desc">Museum Shadow Box &bull; Roasted Walnut</span>
+            
+            <div className="cf-museum-tag">
+              <span className="cf-tag-exhibit">EXHIBIT NO. 3052</span>
+              <span className="cf-tag-title">Custom Shadow Box</span>
+              <span className="cf-tag-spec">Moulding: Roasted Walnut &bull; Mat: Warm Cotton</span>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Card 2: Gallery Wall */}
-          <div 
-            className="cf-collage-card card-gallerywall" 
-            ref={card2Ref}
-            onMouseMove={(e) => handleMouseMove(e, card2Ref)}
-            onMouseLeave={() => handleMouseLeave(card2Ref)}
-          >
-            <div className="cf-frame-moulding-custom frame-white-oak">
-              <div className="cf-frame-mat-custom">
-                <img 
-                  src="/services/framing-hero-3.jpg" 
-                  alt="Custom Living Room Gallery Wall" 
-                  className="cf-frame-img-custom"
-                />
-              </div>
-            </div>
-            <div className="cf-card-label">
-              <span className="label-num">EXHIBIT NO. 3016</span>
-              <span className="label-desc">Home Gallery &bull; White Walnut Collection</span>
-            </div>
+      {/* 2. Editorial Description Strip */}
+      <div className="cf-hero-intro" ref={introRef}>
+        <div className="cf-intro-label">
+          <span>(01 / Philosophy)</span>
+        </div>
+        <div className="cf-intro-content">
+          <h2>
+            Some pieces deserve more than storage—they demand to be seen. 
+            We handcraft museum-grade frames designed with perfect proportion, 
+            authentic materials, and archival preservation to capture your story forever.
+          </h2>
+          <div className="cf-intro-actions">
+            <a href="#preview" className="cf-btn-luxury">
+              Interactive Studio
+            </a>
+            <a href="/contact" className="cf-btn-luxury-outline">
+              Contact Workshop
+            </a>
           </div>
+        </div>
+      </div>
 
-          {/* Card 3: Market Painting */}
-          <div 
-            className="cf-collage-card card-painting" 
-            ref={card3Ref}
-            onMouseMove={(e) => handleMouseMove(e, card3Ref)}
-            onMouseLeave={() => handleMouseLeave(card3Ref)}
-          >
-            <div className="cf-frame-moulding-custom frame-gold-gilt">
-              <div className="cf-frame-mat-custom">
+      {/* 3. Three-Column Exhibition Catalogue Grid */}
+      <div className="cf-exhibition-grid-container">
+        <div className="cf-exhibition-grid-header">
+          <span>(02 / Selection)</span>
+          <h3>Exhibition Catalogue</h3>
+        </div>
+        
+        <div className="cf-exhibition-grid" ref={gridRef}>
+          {/* Card 1: Vibrant Market Painting */}
+          <div className="cf-exhibit-card">
+            <div className="cf-exhibit-frame-wrap frame-gold-gilt">
+              <div className="cf-exhibit-mat-wrap">
                 <img 
                   src="/services/framing-hero-4.jpg" 
                   alt="Framed Market Scene Painting" 
-                  className="cf-frame-img-custom"
                 />
               </div>
             </div>
-            <div className="cf-card-label">
-              <span className="label-num">EXHIBIT NO. 3074</span>
-              <span className="label-desc">Ornate Gold &bull; Linen Mat</span>
+            <div className="cf-exhibit-label-card">
+              <h4>Fine Art Framing</h4>
+              <p>Ornate Gold moulding with archival acid-free matting for canvas paintings.</p>
+              <span className="cf-exhibit-specs">EXHIBIT NO. 3074 &bull; Gold Gilt Frame</span>
             </div>
           </div>
 
-          {/* Card 4: Sculptures */}
-          <div 
-            className="cf-collage-card card-sculptures" 
-            ref={card4Ref}
-            onMouseMove={(e) => handleMouseMove(e, card4Ref)}
-            onMouseLeave={() => handleMouseLeave(card4Ref)}
-          >
-            <div className="cf-frame-moulding-custom frame-natural-oak">
-              <div className="cf-frame-mat-custom">
+          {/* Card 2: Bronze Sculptures */}
+          <div className="cf-exhibit-card">
+            <div className="cf-exhibit-frame-wrap frame-natural-oak">
+              <div className="cf-exhibit-mat-wrap">
                 <img 
                   src="/services/framing-hero-1.jpg" 
                   alt="African Bronze Sculptures display" 
-                  className="cf-frame-img-custom"
                 />
               </div>
             </div>
-            <div className="cf-card-label">
-              <span className="label-num">EXHIBIT NO. 3046</span>
-              <span className="label-desc">Gallery Pedestal Setup &bull; Natural Oak</span>
+            <div className="cf-exhibit-label-card">
+              <h4>Three-Dimensional Objects</h4>
+              <p>Natural oak shadowbox showcases displaying artifacts with structural depth.</p>
+              <span className="cf-exhibit-specs">EXHIBIT NO. 3046 &bull; Natural Oak Frame</span>
+            </div>
+          </div>
+
+          {/* Card 3: Gallery Wall */}
+          <div className="cf-exhibit-card">
+            <div className="cf-exhibit-frame-wrap frame-white-oak">
+              <div className="cf-exhibit-mat-wrap">
+                <img 
+                  src="/services/framing-hero-3.jpg" 
+                  alt="Custom Living Room Gallery Wall" 
+                />
+              </div>
+            </div>
+            <div className="cf-exhibit-label-card">
+              <h4>Gallery Wall Collections</h4>
+              <p>Chalky white oak frame sets curated to hang together in modern interiors.</p>
+              <span className="cf-exhibit-specs">EXHIBIT NO. 3016 &bull; White Walnut Frame</span>
             </div>
           </div>
         </div>

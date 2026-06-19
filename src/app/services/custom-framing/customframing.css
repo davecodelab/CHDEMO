@@ -30,26 +30,37 @@
 
 
 
-/* ── Hero ── */
-.cf-hero {
+/* ── Museum Exhibition Hero ── */
+.cf-hero-museum {
   position: relative;
   width: 100%;
-  min-height: 120vh;
-  padding-top: calc(var(--nav-h) + 6rem);
-  padding-bottom: 8rem;
-  background-color: #fbfaf8; /* Soft museum plaster canvas */
+  background-color: #fbfaf8; /* Soft gallery plaster canvas */
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  padding-top: calc(var(--nav-h) + 2rem);
+  padding-bottom: 8rem;
 }
 
-.cf-hero-title-bg-massive {
+.cf-hero-header-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  margin-bottom: 6rem;
+}
+
+.cf-hero-museum-title {
   position: absolute;
-  top: 45%;
-  left: 55%;
+  top: 40%;
+  left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--fd); /* Cormorant Garamond */
-  font-size: clamp(8rem, 25vw, 25rem);
+  font-size: clamp(8rem, 28vw, 32rem);
   font-weight: 700;
   color: #1a1614;
   opacity: 0.035; /* Extremely subtle massive background text */
@@ -61,186 +72,39 @@
   line-height: 0.8;
 }
 
-.cf-hero-grid {
+.cf-hero-focal-frame-container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-/* Left Column: Museum Info Panel */
-.cf-hero-left-editorial {
+  max-width: 900px;
+  padding: 0 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 10; /* Float above the background text */
-  text-align: left;
+  justify-content: center;
+  perspective: 1200px;
 }
 
-.cf-hero-eyebrow-luxury {
-  font-family: var(--fb);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-.cf-hero-eyebrow-luxury::before {
-  content: '';
-  width: 20px;
-  height: 1.5px;
-  background: var(--red);
-}
-
-.cf-hero-heading-editorial {
-  font-family: var(--fd);
-  font-size: clamp(3.2rem, 5.5vw, 5.5rem);
-  font-weight: 500;
-  line-height: 1.05;
-  color: #1c1816;
-  margin-bottom: 2rem;
-  letter-spacing: -0.02em;
-}
-
-.cf-italic {
-  font-style: italic;
-  font-family: var(--fd);
-  font-weight: 400;
-  color: #c31b07; /* Warm red accent */
-}
-
-.cf-hero-description-editorial {
-  font-family: var(--fb);
-  font-size: 1.08rem;
-  color: #4a4744;
-  line-height: 1.8;
-  margin-bottom: 3rem;
-  max-width: 380px;
-}
-
-.cf-hero-btns-editorial {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.cf-btn-editorial-red {
-  display: inline-flex;
-  align-items: center;
-  padding: 1rem 2.2rem;
-  background: var(--red);
-  color: var(--white);
-  font-family: var(--fb);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(227, 34, 28, 0.15);
-}
-.cf-btn-editorial-red:hover {
-  background: var(--black);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.cf-btn-editorial-outline {
-  display: inline-flex;
-  align-items: center;
-  padding: 1rem 2.2rem;
-  border: 1px solid rgba(0,0,0,0.15);
-  color: var(--black);
-  font-family: var(--fb);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.cf-btn-editorial-outline:hover {
-  border-color: var(--black);
-  background: rgba(0,0,0,0.03);
-  transform: translateY(-2px);
-}
-
-/* Right Column: Scattered Collage Container */
-.cf-hero-collage-container {
-  position: relative;
-  height: 850px;
+.cf-hero-focal-frame {
   width: 100%;
-}
-
-/* Individual Collage Card styling */
-.cf-collage-card {
-  position: absolute;
+  max-width: 650px;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.16);
   transform-style: preserve-3d;
   will-change: transform, clip-path, opacity;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.4s ease;
-  background: #fbfbfa;
+  position: relative;
 }
 
-.cf-collage-card:hover {
-  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.15);
-  z-index: 100 !important;
-}
-
-/* Positions of the cards on the canvas */
-.card-shadowbox {
-  top: 18%;
-  left: 18%;
-  width: 48%;
-  aspect-ratio: 4 / 3;
-  z-index: 5;
-}
-
-.card-gallerywall {
-  bottom: 0%;
-  left: 0%;
-  width: 42%;
-  aspect-ratio: 4 / 3;
-  z-index: 6;
-}
-
-.card-painting {
-  top: 0%;
-  right: 0%;
-  width: 35%;
-  aspect-ratio: 1 / 1;
-  z-index: 4;
-}
-
-.card-sculptures {
-  bottom: 12%;
-  right: 3%;
-  width: 35%;
-  aspect-ratio: 3 / 4;
-  z-index: 7;
-}
-
-/* Frame Mouldings */
+/* Specific custom frames mouldings */
 .cf-frame-moulding-custom {
   border-style: solid;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* Walnut Shadowbox styling */
 .frame-walnut {
-  border-width: 18px;
+  border-width: 24px;
   border-color: #271f1b; /* Rich dark walnut wood */
   box-shadow: 
     0 15px 35px rgba(0,0,0,0.18),
@@ -249,7 +113,7 @@
 
 /* White Oak Frame styling */
 .frame-white-oak {
-  border-width: 12px;
+  border-width: 14px;
   border-color: #e6e3dc; /* Modern chalky off-white wood */
   box-shadow: 
     0 12px 28px rgba(0,0,0,0.12),
@@ -258,7 +122,7 @@
 
 /* Gold Gilt Frame styling */
 .frame-gold-gilt {
-  border-width: 16px;
+  border-width: 18px;
   border-color: #c9a054; /* Gold leaf/warm metallic tone */
   box-shadow: 
     0 16px 38px rgba(0,0,0,0.22),
@@ -267,7 +131,7 @@
 
 /* Natural Oak Frame styling */
 .frame-natural-oak {
-  border-width: 14px;
+  border-width: 16px;
   border-color: #ba9d7e; /* Honey oak tone */
   box-shadow: 
     0 14px 30px rgba(0,0,0,0.14),
@@ -284,7 +148,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 .cf-frame-img-custom {
@@ -294,18 +158,25 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Shadow cast onto image by the frame border */
 }
 
-/* Minimal Museum Exhibit Labels under cards */
-.cf-card-label {
+/* Museum Tag next to focal frame */
+.cf-museum-tag {
   position: absolute;
-  bottom: -2.8rem;
-  left: 0.5rem;
+  bottom: -2.5rem;
+  right: -2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.8rem 1.2rem;
+  border-left: 2.5px solid #c31b07;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  z-index: 5;
   pointer-events: none;
+  text-align: left;
 }
 
-.label-num {
+.cf-tag-exhibit {
   font-family: var(--fb);
   font-size: 0.62rem;
   font-weight: 700;
@@ -313,11 +184,205 @@
   letter-spacing: 0.15em;
 }
 
-.label-desc {
+.cf-tag-title {
+  font-family: var(--fd);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1614;
+}
+
+.cf-tag-spec {
   font-family: var(--fb);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   color: #666;
   letter-spacing: 0.02em;
+}
+
+/* 2. Editorial Description Strip */
+.cf-hero-intro {
+  width: 100%;
+  max-width: 1200px;
+  padding: 6rem 3rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 3rem;
+  align-items: start;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.cf-intro-label {
+  font-family: var(--fb);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c31b07;
+  padding-top: 0.5rem;
+}
+
+.cf-intro-content h2 {
+  font-family: var(--fd);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: #1c1816;
+  margin-bottom: 3.5rem;
+  letter-spacing: -0.01em;
+}
+
+.cf-intro-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cf-btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.1rem 2.5rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--fb);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cf-btn-luxury:hover {
+  background: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(227, 34, 28, 0.18);
+}
+
+.cf-btn-luxury-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.1rem 2.5rem;
+  border: 1.5px solid var(--black);
+  color: var(--black);
+  font-family: var(--fb);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cf-btn-luxury-outline:hover {
+  background: var(--black);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* 3. Three-Column Exhibition Catalogue Grid */
+.cf-exhibition-grid-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 6rem 3rem 4rem;
+  border-top: 1px solid var(--border);
+  box-sizing: border-box;
+}
+
+.cf-exhibition-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4.5rem;
+}
+
+.cf-exhibition-grid-header span {
+  font-family: var(--fb);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c31b07;
+}
+
+.cf-exhibition-grid-header h3 {
+  font-family: var(--fd);
+  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+  font-weight: 500;
+  color: #1a1614;
+  letter-spacing: -0.01em;
+}
+
+.cf-exhibition-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.5rem;
+  box-sizing: border-box;
+}
+
+.cf-exhibit-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  will-change: transform, opacity;
+}
+
+.cf-exhibit-frame-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.cf-exhibit-mat-wrap {
+  background-color: #fbfaf6;
+  padding: 6%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.cf-exhibit-mat-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cf-exhibit-card:hover .cf-exhibit-mat-wrap img {
+  transform: scale(1.05);
+}
+
+.cf-exhibit-label-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cf-exhibit-label-card h4 {
+  font-family: var(--fd);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1c1816;
+}
+
+.cf-exhibit-label-card p {
+  font-family: var(--fb);
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cf-exhibit-specs {
+  font-family: var(--fb);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #c31b07;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
 }
 
 .char-mask {
@@ -329,58 +394,69 @@
   display: inline-block;
 }
 
-/* Responsive collapse on smaller viewports */
-@media (max-width: 1200px) {
-  .cf-hero-grid {
+/* ── Responsive Styling ── */
+@media (max-width: 1024px) {
+  .cf-hero-intro {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 1.5rem;
+    padding: 4rem 2rem;
   }
   
-  .cf-hero-left-editorial {
-    align-items: center;
-    text-align: center;
+  .cf-exhibition-grid-container {
+    padding: 4rem 2rem;
   }
   
-  .cf-hero-collage-container {
-    height: 750px;
+  .cf-exhibition-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
   }
   
-  .card-shadowbox { left: 15%; width: 55%; }
-  .card-gallerywall { width: 45%; }
-  .card-painting { width: 38%; }
-  .card-sculptures { width: 40%; }
-}
-
-@media (max-width: 768px) {
-  .cf-hero {
-    min-height: auto;
-    padding-bottom: 4rem;
-  }
-  
-  .cf-hero-collage-container {
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3.5rem 2rem;
-    position: static;
-  }
-  
-  .cf-collage-card {
-    position: static;
-    width: 100% !important;
+  .cf-exhibit-frame-wrap {
     aspect-ratio: 4 / 3 !important;
   }
   
-  .card-sculptures {
-    aspect-ratio: 3 / 4 !important;
+  .cf-hero-focal-frame-container {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cf-hero-museum {
+    padding-bottom: 4rem;
   }
   
-  .cf-card-label {
-    bottom: -2.8rem;
+  .cf-hero-header-wrap {
+    min-height: 60vh;
+    margin-bottom: 3rem;
   }
   
-  .cf-hero-title-bg-massive {
-    display: none; /* Hide massive text on mobile to avoid layout breaking */
+  .cf-hero-museum-title {
+    display: none; /* Hide huge background title on mobile for clean layout */
+  }
+  
+  .cf-museum-tag {
+    right: 0;
+    bottom: -3.5rem;
+    left: 0;
+    border-left: none;
+    border-top: 2.5px solid #c31b07;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .cf-intro-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .cf-intro-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cf-btn-luxury, .cf-btn-luxury-outline {
+    width: 100%;
+    justify-content: center;
   }
 }
 
