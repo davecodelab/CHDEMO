@@ -13,18 +13,12 @@ const QuoteIcon = () => (
 const reviews = [
   {
     id: 1,
-    quote: "There's simply no comparison. @crafthive is hands down the absolute finest / easiest / most premium way to custom frame your art. Period.",
-    author: "@dave.sthetics",
-    role: "Founder at Dave Studios",
-  },
-  {
-    id: 2,
     quote: "Crafthive is a creative hub that delivers nothing but perfection. Expect a very high standard of innovation and professionalism.",
     author: "Sarah Koranteng",
     role: "African Urban Village",
   },
   {
-    id: 3,
+    id: 2,
     quote: "CraftHive has been our trusted partner for printing, framing and wall art installations for many years. Their work is consistently neat, professional, and reliable, making them our go-to company for our interior design projects. We are always pleased with their service and highly recommend them!",
     author: "Natalie",
     role: "Design Express",
