@@ -73,12 +73,79 @@
   box-sizing: border-box;
 }
 
-/* Curatorial Signage (Vinyl lettering on the wall) */
-.cf-vinyl-signage {
+/* Plaster-texture overlay details for a tactile museum feel */
+.cf-plaster-texture-overlay {
   position: absolute;
-  top: 15%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 0),
+    linear-gradient(to right, rgba(0,0,0,0.003) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.003) 1px, transparent 1px);
+  background-size: 24px 24px, 120px 120px, 120px 120px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Massive Background H1 Typography ── */
+.cf-gallery-title-massive {
+  position: absolute;
+  top: 18%;
   left: 4%;
-  width: 380px;
+  width: 92%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.85;
+  pointer-events: none;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+}
+
+.cf-title-row {
+  display: block;
+  font-family: var(--fd);
+  white-space: nowrap;
+}
+
+.cf-title-row-1 {
+  font-size: 13vw;
+  font-weight: 700;
+  color: #1c1a17; /* Dark charcoal */
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.cf-title-row-2 {
+  font-size: 14vw;
+  font-weight: 400;
+  font-style: italic;
+  color: #c31b07; /* Warm red accent */
+  letter-spacing: -0.02em;
+  text-align: right;
+  padding-right: 8%;
+  margin-top: -1.5vw;
+}
+
+/* Character Slide Up Masking */
+.cf-char-mask {
+  vertical-align: bottom;
+}
+
+.cf-char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ── Minimal monospaced Curator's Note Column ── */
+.cf-curator-note-block {
+  position: absolute;
+  top: 12%;
+  left: 4%;
+  width: 320px;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -86,62 +153,37 @@
   text-align: left;
 }
 
-.cf-vinyl-eyebrow {
+.cf-curator-eyebrow {
   font-family: var(--fb);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   color: #c31b07;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
-.cf-vinyl-title {
-  font-family: var(--fd);
-  font-size: clamp(3rem, 5vw, 4.8rem);
-  font-weight: 500;
-  line-height: 1.05;
-  color: #1a1614;
-  margin-bottom: 2rem;
-  letter-spacing: -0.02em;
-}
-
-.cf-vinyl-curator-note {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-  border-left: 2px solid rgba(0, 0, 0, 0.08);
+.cf-curator-description {
+  font-family: var(--fb);
+  font-size: 0.95rem;
+  color: #4a4744;
+  line-height: 1.65;
+  margin-bottom: 2.2rem;
+  border-left: 2px solid rgba(195, 27, 7, 0.25);
   padding-left: 1.25rem;
 }
 
-.cf-vinyl-curator-note .note-label {
-  font-family: var(--fb);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #666;
-}
-
-.cf-vinyl-curator-note p {
-  font-family: var(--fb);
-  font-size: 0.98rem;
-  color: #4a4744;
-  line-height: 1.7;
-}
-
-.cf-vinyl-actions {
+.cf-curator-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
-.cf-vinyl-btn {
+.cf-curator-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.9rem 2rem;
+  padding: 0.8rem 1.6rem;
   font-family: var(--fb);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -150,23 +192,23 @@
   text-decoration: none;
 }
 
-.cf-vinyl-btn-red {
+.cf-curator-btn-red {
   background: var(--red);
   color: var(--white);
   box-shadow: 0 4px 12px rgba(227, 34, 28, 0.15);
 }
-.cf-vinyl-btn-red:hover {
-  background: #1a1614;
+.cf-curator-btn-red:hover {
+  background: #1c1a17;
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.cf-vinyl-btn-outline {
-  border: 1.5px solid #1a1614;
-  color: #1a1614;
+.cf-curator-btn-outline {
+  border: 1.5px solid #1c1a17;
+  color: #1c1a17;
 }
-.cf-vinyl-btn-outline:hover {
-  background: #1a1614;
+.cf-curator-btn-outline:hover {
+  background: #1c1a17;
   color: var(--white);
   transform: translateY(-2px);
 }
@@ -315,10 +357,17 @@
     padding: 0 2rem;
   }
   
-  .cf-vinyl-signage {
-    width: 320px;
+  .cf-curator-note-block {
+    width: 280px;
     top: 10%;
   }
+  
+  .cf-gallery-title-massive {
+    top: 22%;
+  }
+
+  .cf-title-row-1 { font-size: 14vw; }
+  .cf-title-row-2 { font-size: 15vw; }
   
   .frame-walnut-shadowbox { width: 34%; left: 34%; }
   .frame-gold-painting { width: 25%; }
@@ -342,8 +391,31 @@
     padding: 0 2rem;
   }
   
-  .cf-vinyl-signage {
-    position: static;
+  .cf-gallery-title-massive {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-bottom: 3rem;
+    line-height: 0.9;
+  }
+  
+  .cf-title-row-1 {
+    font-size: 12vw;
+    text-align: center;
+  }
+  
+  .cf-title-row-2 {
+    font-size: 13vw;
+    text-align: center;
+    padding-right: 0;
+    margin-top: 0;
+  }
+
+  .cf-curator-note-block {
+    position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
     max-width: 650px;
     align-items: center;
@@ -351,19 +423,16 @@
     margin-bottom: 5rem;
   }
   
-  .cf-vinyl-curator-note {
+  .cf-curator-description {
     border-left: none;
-    border-top: 1.5px solid rgba(0, 0, 0, 0.08);
+    border-top: 1.5px solid rgba(195, 27, 7, 0.25);
     padding-left: 0;
     padding-top: 1.5rem;
     align-items: center;
+    text-align: center;
   }
   
-  .cf-vinyl-curator-note p {
-    max-width: 500px;
-  }
-  
-  .cf-vinyl-actions {
+  .cf-curator-actions {
     justify-content: center;
   }
   
@@ -390,17 +459,20 @@
 }
 
 @media (max-width: 640px) {
-  .cf-vinyl-signage h1 {
-    font-size: 2.8rem;
+  .cf-gallery-title-massive {
+    margin-bottom: 2rem;
   }
+
+  .cf-title-row-1 { font-size: 14vw; }
+  .cf-title-row-2 { font-size: 15vw; }
   
-  .cf-vinyl-actions {
+  .cf-curator-actions {
     flex-direction: column;
     width: 100%;
     gap: 1rem;
   }
   
-  .cf-vinyl-btn {
+  .cf-curator-btn {
     width: 100%;
     justify-content: center;
   }
