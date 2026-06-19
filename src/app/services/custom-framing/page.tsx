@@ -195,11 +195,8 @@ const HeroHeader = () => {
       <div className="cf-header-col-lg">
         <div className="cf-header-copy">
           <h2>
-            Preserving history with precision. Our workshop designs bespoke architectural frames, 
-            blending heritage craftsmanship with archival protection. From hand-finished 
-            roasted walnut shadow boxes to classic gold gilt profiles and modern chalky white oak, 
-            every frame is shaped to transform your artwork, 3D artifacts, and fine art canvases 
-            into generational masterworks.
+            Bespoke architectural frames, handcrafted with archival precision 
+            to transform your memories into generational masterworks.
           </h2>
           <div className="cf-header-actions">
             <a href="#preview" className="cf-btn cf-btn-red">
