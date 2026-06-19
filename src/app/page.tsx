@@ -131,7 +131,7 @@ const Page = () => {
             <div className="client-reviews-header-content">
               <div className="client-reviews-header">
                 <Copy animateOnScroll={true} delay={0.25}>
-                  <h1 className="section-heading">What Our Clients Say</h1>
+                  <h1 className="section-heading">WHAT OUR CLIENTS SAY</h1>
                 </Copy>
               </div>
 
