@@ -34,258 +34,353 @@
 .cf-hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  padding-top: calc(var(--nav-h) + 2rem);
-  padding-bottom: 4rem;
-  background-color: #faf9f6; /* Off-white canvas background */
+  min-height: 120vh;
+  padding-top: calc(var(--nav-h) + 6rem);
+  padding-bottom: 8rem;
+  background-color: #fbfaf8; /* Soft museum plaster canvas */
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-.cf-hero-title-bg {
+.cf-hero-title-bg-massive {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 55%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-heading), 'Outfit', sans-serif;
-  font-size: clamp(6rem, 15vw, 12rem);
-  font-weight: 900;
+  font-family: var(--fd); /* Cormorant Garamond */
+  font-size: clamp(8rem, 25vw, 25rem);
+  font-weight: 700;
   color: #1a1614;
-  opacity: 0.04;
+  opacity: 0.035; /* Extremely subtle massive background text */
   white-space: nowrap;
   pointer-events: none;
   z-index: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   user-select: none;
+  line-height: 0.8;
 }
 
-.cf-hero-content {
+.cf-hero-grid {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  align-items: center;
+  grid-template-columns: 420px 1fr;
   gap: 4rem;
+  align-items: center;
 }
 
-.cf-hero-left {
+/* Left Column: Museum Info Panel */
+.cf-hero-left-editorial {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  z-index: 10; /* Float above the background text */
   text-align: left;
 }
 
-.cf-hero-eyebrow {
+.cf-hero-eyebrow-luxury {
+  font-family: var(--fb);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1.5rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #c31b07;
-  margin-bottom: 1.8rem;
+  gap: 0.7rem;
 }
-.cf-hero-eyebrow::before {
+.cf-hero-eyebrow-luxury::before {
   content: '';
-  display: block;
-  width: 24px;
+  width: 20px;
   height: 1.5px;
-  background: #c31b07;
+  background: var(--red);
 }
 
-.cf-hero-left h1 {
+.cf-hero-heading-editorial {
   font-family: var(--fd);
-  font-size: clamp(4rem, 8.2vw, 6.8rem);
+  font-size: clamp(3.2rem, 5.5vw, 5.5rem);
   font-weight: 500;
-  line-height: 1.02;
-  color: #1a1614;
+  line-height: 1.05;
+  color: #1c1816;
   margin-bottom: 2rem;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 .cf-italic {
   font-style: italic;
   font-family: var(--fd);
   font-weight: 400;
-  color: #c31b07; /* Warm red accent on the serif italicized word */
+  color: #c31b07; /* Warm red accent */
 }
 
-.cf-hero-left p {
-  font-family: var(--font-body), 'Inter', sans-serif;
-  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
-  color: #2b2725; /* Darker warm charcoal for readability */
+.cf-hero-description-editorial {
+  font-family: var(--fb);
+  font-size: 1.08rem;
+  color: #4a4744;
   line-height: 1.8;
-  margin-bottom: 2.8rem;
-  max-width: 580px;
+  margin-bottom: 3rem;
+  max-width: 380px;
 }
 
-.cf-hero-btns {
+.cf-hero-btns-editorial {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
 }
 
-.cf-hero-right {
-  display: flex;
-  justify-content: center;
+.cf-btn-editorial-red {
+  display: inline-flex;
   align-items: center;
-  perspective: 1200px; /* Enable 3D rendering context on container */
+  padding: 1rem 2.2rem;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--fb);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(227, 34, 28, 0.15);
+}
+.cf-btn-editorial-red:hover {
+  background: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Framed Art Container with Shadow Box Styling */
-.cf-framed-art-container {
-  width: 100%;
-  max-width: 580px;
-  display: flex;
-  justify-content: center;
+.cf-btn-editorial-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.2rem;
+  border: 1px solid rgba(0,0,0,0.15);
+  color: var(--black);
+  font-family: var(--fb);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cf-btn-editorial-outline:hover {
+  border-color: var(--black);
+  background: rgba(0,0,0,0.03);
+  transform: translateY(-2px);
 }
 
-.cf-framed-art {
+/* Right Column: Scattered Collage Container */
+.cf-hero-collage-container {
+  position: relative;
+  height: 850px;
   width: 100%;
-  aspect-ratio: 4 / 3;
+}
+
+/* Individual Collage Card styling */
+.cf-collage-card {
+  position: absolute;
   transform-style: preserve-3d;
-  will-change: transform;
+  will-change: transform, clip-path, opacity;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.4s ease;
+  background: #fbfbfa;
 }
 
-/* Thick outer frame border - moulding */
-.cf-frame-moulding {
+.cf-collage-card:hover {
+  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.15);
+  z-index: 100 !important;
+}
+
+/* Positions of the cards on the canvas */
+.card-shadowbox {
+  top: 18%;
+  left: 18%;
+  width: 48%;
+  aspect-ratio: 4 / 3;
+  z-index: 5;
+}
+
+.card-gallerywall {
+  bottom: 0%;
+  left: 0%;
+  width: 42%;
+  aspect-ratio: 4 / 3;
+  z-index: 6;
+}
+
+.card-painting {
+  top: 0%;
+  right: 0%;
+  width: 35%;
+  aspect-ratio: 1 / 1;
+  z-index: 4;
+}
+
+.card-sculptures {
+  bottom: 12%;
+  right: 3%;
+  width: 35%;
+  aspect-ratio: 3 / 4;
+  z-index: 7;
+}
+
+/* Frame Mouldings */
+.cf-frame-moulding-custom {
   border-style: solid;
-  border-color: #1a1614;
-  /* border-width is animated dynamically by GSAP on load */
-  box-shadow: 
-    0 15px 35px rgba(0,0,0,0.15),
-    0 5px 15px rgba(0,0,0,0.1),
-    inset 0 0 10px rgba(0,0,0,0.6); /* simulates inner frame bevel shadow */
-  transition: box-shadow 0.3s ease;
-  height: 100%;
-  width: 100%;
-}
-
-.cf-framed-art:hover .cf-frame-moulding {
-  box-shadow: 
-    0 25px 55px rgba(0,0,0,0.22),
-    0 10px 25px rgba(0,0,0,0.15),
-    inset 0 0 10px rgba(0,0,0,0.6);
-}
-
-/* Off-white matboard styling */
-.cf-frame-mat {
-  background-color: #f6f5f0; /* Textured off-white mat */
-  padding: 8%; /* Matboard breathing space around the photo */
   width: 100%;
   height: 100%;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05); /* subtle mat shadow */
   overflow: hidden;
+}
+
+/* Walnut Shadowbox styling */
+.frame-walnut {
+  border-width: 18px;
+  border-color: #271f1b; /* Rich dark walnut wood */
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.18),
+    inset 0 0 15px rgba(0,0,0,0.6);
+}
+
+/* White Oak Frame styling */
+.frame-white-oak {
+  border-width: 12px;
+  border-color: #e6e3dc; /* Modern chalky off-white wood */
+  box-shadow: 
+    0 12px 28px rgba(0,0,0,0.12),
+    inset 0 0 8px rgba(0,0,0,0.15);
+}
+
+/* Gold Gilt Frame styling */
+.frame-gold-gilt {
+  border-width: 16px;
+  border-color: #c9a054; /* Gold leaf/warm metallic tone */
+  box-shadow: 
+    0 16px 38px rgba(0,0,0,0.22),
+    inset 0 0 12px rgba(0,0,0,0.4);
+}
+
+/* Natural Oak Frame styling */
+.frame-natural-oak {
+  border-width: 14px;
+  border-color: #ba9d7e; /* Honey oak tone */
+  box-shadow: 
+    0 14px 30px rgba(0,0,0,0.14),
+    inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Frame Mat (Breathing Space) */
+.cf-frame-mat-custom {
+  background-color: #fbfaf6; /* Soft natural paper white */
+  padding: 7%;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.04);
 }
 
-/* The actual artwork image */
-.cf-frame-image {
+.cf-frame-img-custom {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.18); /* shadow cast by mat onto image */
-  transform-origin: center;
-  will-change: transform;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Shadow cast onto image by the frame border */
 }
 
-/* Responsive adjustment */
-@media (max-width: 991px) {
-  .cf-hero {
-    padding-top: calc(var(--nav-h) + 3rem);
-    min-height: auto;
-  }
-  
-  .cf-hero-content {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-    text-align: center;
-  }
-  
-  .cf-hero-left {
-    align-items: center;
-    text-align: center;
-  }
-  
-  .cf-hero-left p {
-    max-width: 550px;
-  }
-  
-  .cf-hero-right {
-    perspective: none; /* Disable 3D tilt on smaller screens */
-  }
-  
-  .cf-framed-art {
-    transform: none !important; /* Disable any active mouse tilt rotation */
-  }
-}
-
-/* Exhibit description card styling */
-.cf-exhibit-label {
+/* Minimal Museum Exhibit Labels under cards */
+.cf-card-label {
   position: absolute;
-  bottom: -1.5rem;
-  right: -1rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 0.65rem 1rem;
-  border-left: 2px solid #c31b07; /* red line on the left */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  bottom: -2.8rem;
+  left: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  font-family: var(--fb);
-  z-index: 5;
+  gap: 0.15rem;
   pointer-events: none;
-  border-radius: 0 4px 4px 0;
-  transition: transform 0.3s ease;
 }
 
-.cf-framed-art-container:hover .cf-exhibit-label {
-  transform: translateY(-5px);
-}
-
-.cf-exhibit-id {
-  font-size: 0.65rem;
+.label-num {
+  font-family: var(--fb);
+  font-size: 0.62rem;
   font-weight: 700;
-  color: #1a1614;
-  letter-spacing: 0.12em;
-  font-family: var(--fb);
+  color: #c31b07;
+  letter-spacing: 0.15em;
 }
 
-.cf-exhibit-details {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.55rem;
+.label-desc {
+  font-family: var(--fb);
+  font-size: 0.68rem;
   color: #666;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-family: var(--fb);
-  line-height: 1.4;
+  letter-spacing: 0.02em;
 }
 
-/* responsive adjustment for exhibit label */
-@media (max-width: 991px) {
-  .cf-exhibit-label {
-    bottom: -2rem;
-    right: 50%;
-    transform: translateX(50%);
-    border-radius: 4px;
-    border-left: none;
-    border-top: 2px solid #c31b07;
+.char-mask {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+}
+
+/* Responsive collapse on smaller viewports */
+@media (max-width: 1200px) {
+  .cf-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .cf-hero-left-editorial {
     align-items: center;
     text-align: center;
   }
-  .cf-framed-art-container:hover .cf-exhibit-label {
-    transform: translateX(50%) translateY(-2px);
+  
+  .cf-hero-collage-container {
+    height: 750px;
+  }
+  
+  .card-shadowbox { left: 15%; width: 55%; }
+  .card-gallerywall { width: 45%; }
+  .card-painting { width: 38%; }
+  .card-sculptures { width: 40%; }
+}
+
+@media (max-width: 768px) {
+  .cf-hero {
+    min-height: auto;
+    padding-bottom: 4rem;
+  }
+  
+  .cf-hero-collage-container {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem 2rem;
+    position: static;
+  }
+  
+  .cf-collage-card {
+    position: static;
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+  
+  .card-sculptures {
+    aspect-ratio: 3 / 4 !important;
+  }
+  
+  .cf-card-label {
+    bottom: -2.8rem;
+  }
+  
+  .cf-hero-title-bg-massive {
+    display: none; /* Hide massive text on mobile to avoid layout breaking */
   }
 }
 
