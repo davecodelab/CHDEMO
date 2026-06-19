@@ -70,7 +70,12 @@ const Hero = () => {
       scrub: true,
       animation: gsap.timeline()
         .to(artRef.current, { scale: 1.12, y: 40, ease: "none" })
-        .to(titleBgRef.current, { y: -80, opacity: 0.05, ease: "none" }, 0)
+        .fromTo(
+          titleBgRef.current,
+          { y: 0, opacity: 0.04 },
+          { y: -80, opacity: 0.01, ease: "none" },
+          0
+        )
     });
 
     return () => {
@@ -113,7 +118,7 @@ const Hero = () => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="cf-hero-title-bg" ref={titleBgRef}>
+      <div className="cf-hero-title-bg" ref={titleBgRef} style={{ opacity: 0.04 }}>
         CRAFTED TO BE SEEN
       </div>
 
