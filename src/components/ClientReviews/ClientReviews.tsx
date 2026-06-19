@@ -1,32 +1,125 @@
 "use client";
 
+import React, { useState, useRef } from "react";
 import "./ClientReviews.css";
-import Animates from "@/components/Animates/Animate";
+import gsap from "gsap";
 
-const TwitterIcon = () => (
-  <svg width="36" height="36" viewBox="0 0 24 24" fill="#55acee" xmlns="http://www.w3.org/2000/svg">
-    <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 0 0 2.048-2.578 9.3 9.3 0 0 1-2.958 1.13 4.66 4.66 0 0 0-7.938 4.25 13.229 13.229 0 0 1-9.602-4.868 4.659 4.659 0 0 0 1.441 6.216 4.63 4.63 0 0 1-2.11-.583v.06a4.66 4.66 0 0 0 3.737 4.568 4.662 4.662 0 0 1-2.104.08 4.66 4.66 0 0 0 4.352 3.234 9.348 9.348 0 0 1-5.786 1.995 9.4 9.4 0 0 1-1.112-.065 13.175 13.175 0 0 0 7.14 2.093c8.57 0 13.255-7.1 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 0 0 2.323-2.41l-.002-.001z"/>
+const QuoteIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" className="quote-icon" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-2.638 3.995-4.848h-4v-11h10zm14 0v7.391c0 5.704-3.748 9.57-9 10.609l-.996-2.151c2.433-.917 3.996-2.638 3.996-4.848h-4v-11h10z"/>
   </svg>
 );
 
+const reviews = [
+  {
+    id: 1,
+    quote: "There's simply no comparison. @crafthive is hands down the absolute finest / easiest / most premium way to custom frame your art. Period.",
+    author: "@dave.sthetics",
+    role: "Founder at Dave Studios",
+  },
+  {
+    id: 2,
+    quote: "Crafthive is a creative hub that delivers nothing but perfection. Expect a very high standard of innovation and professionalism.",
+    author: "Sarah Koranteng",
+    role: "African Urban Village",
+  },
+  {
+    id: 3,
+    quote: "CraftHive has been our trusted partner for printing, framing and wall art installations for many years. Their work is consistently neat, professional, and reliable, making them our go-to company for our interior design projects. We are always pleased with their service and highly recommend them!",
+    author: "Natalie",
+    role: "Design Express",
+  }
+];
+
 const ClientReviews = () => {
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const testimonialRef = useRef<HTMLDivElement>(null);
+
+  const handleNext = () => {
+    if (!testimonialRef.current) return;
+    gsap.to(testimonialRef.current, {
+      opacity: 0,
+      y: -15,
+      duration: 0.25,
+      onComplete: () => {
+        setCurrentIdx((prev) => (prev + 1) % reviews.length);
+        gsap.fromTo(testimonialRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+        );
+      }
+    });
+  };
+
+  const handlePrev = () => {
+    if (!testimonialRef.current) return;
+    gsap.to(testimonialRef.current, {
+      opacity: 0,
+      y: -15,
+      duration: 0.25,
+      onComplete: () => {
+        setCurrentIdx((prev) => (prev - 1 + reviews.length) % reviews.length);
+        gsap.fromTo(testimonialRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+        );
+      }
+    });
+  };
+
+  const handleDotClick = (idx: number) => {
+    if (idx === currentIdx || !testimonialRef.current) return;
+    gsap.to(testimonialRef.current, {
+      opacity: 0,
+      y: -15,
+      duration: 0.25,
+      onComplete: () => {
+        setCurrentIdx(idx);
+        gsap.fromTo(testimonialRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+        );
+      }
+    });
+  };
+
   return (
     <div className="client-reviews-wrapper">
       <div className="container">
-        <div className="simple-testimonial">
-          <Animates animateOnScroll={true} delay={0.2}>
+        <div className="simple-testimonial-slider">
+          <button className="slider-nav-btn prev" onClick={handlePrev} aria-label="Previous review">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <div className="testimonial-content-wrapper" ref={testimonialRef}>
+            <QuoteIcon />
             <p className="simple-testimonial-quote">
-              "There's simply no comparison. @crafthive is hands down the absolute finest / easiest / most premium way to custom frame your art. Period."
+              "{reviews[currentIdx].quote}"
             </p>
-          </Animates>
-          
-          <Animates animateOnScroll={true} delay={0.4}>
             <div className="simple-testimonial-author">
-              <TwitterIcon />
-              <h3>@dave.sthetics</h3>
-              <p>Founder at Dave Studios</p>
+              <h3>{reviews[currentIdx].author}</h3>
+              <p>{reviews[currentIdx].role}</p>
             </div>
-          </Animates>
+          </div>
+
+          <button className="slider-nav-btn next" onClick={handleNext} aria-label="Next review">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="slider-indicators">
+          {reviews.map((_, idx) => (
+            <button
+              key={idx}
+              className={`indicator-dot ${idx === currentIdx ? "active" : ""}`}
+              onClick={() => handleDotClick(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>
