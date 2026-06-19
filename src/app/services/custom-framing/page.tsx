@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -37,55 +37,153 @@ const CAROUSEL_IMAGES = [
 ];
 
 
+type ProfileKey = "walnut" | "gold" | "whiteOak" | "honeyOak";
+
+const PROFILES = {
+  walnut: {
+    name: "Roasted Walnut",
+    image: "/services/framing-hero-2.jpg",
+    mouldingSpec: '2.0" Roasted Walnut wood profile',
+    matSpec: '2.5" Double Bevel Silk Matboard',
+    glazingSpec: "Museum Acrylic with 99% UV protection",
+    className: "moulding-walnut",
+    desc: "A rich dark brown timber profile finished with organic wax, highlighting deep growth rings.",
+  },
+  gold: {
+    name: "Ornate Gold Gilt",
+    image: "/services/framing-hero-4.jpg",
+    mouldingSpec: '1.8" Hand-Applied Gold Leaf Gilt',
+    matSpec: '2.0" Warm Cotton Beveled Matboard',
+    glazingSpec: "Anti-Reflective Museum Glazing",
+    className: "moulding-gold",
+    desc: "Bespoke gold leafing with subtle hand-burnished distressing to give classical warmth.",
+  },
+  whiteOak: {
+    name: "Chalky White Oak",
+    image: "/services/framing-hero-3.jpg",
+    mouldingSpec: '1.5" Chalky White Oak profile',
+    matSpec: '3.0" Minimal Off-White Matboard',
+    glazingSpec: "Museum Glare-Free Acrylic",
+    className: "moulding-white-oak",
+    desc: "A modern, chalky-rubbed white finish showing off-white oak grain texture underneath.",
+  },
+  honeyOak: {
+    name: "Natural Honey Oak",
+    image: "/services/framing-hero-1.jpg",
+    mouldingSpec: '1.4" Natural Honey Oak timber',
+    matSpec: '2.5" Chalk White Matboard',
+    glazingSpec: "Optium Museum Glazing",
+    className: "moulding-honey-oak",
+    desc: "Natural honey oak timber preserved under transparent matte lacquer for a clean, raw look.",
+  },
+};
+
 const Hero = () => {
+  const [selectedKey, setSelectedKey] = useState<ProfileKey>("walnut");
+  const frameRef = useRef<HTMLDivElement>(null);
+
+  const selected = PROFILES[selectedKey];
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    const rect = frame.getBoundingClientRect();
+    const fx = rect.left + rect.width / 2;
+    const fy = rect.top + rect.height / 2;
+    const dx = e.clientX - fx;
+    const dy = e.clientY - fy;
+
+    const angleX = -dy * 0.05;
+    const angleY = dx * 0.05;
+
+    gsap.to(frame, {
+      rotateX: Math.max(-10, Math.min(10, angleX)),
+      rotateY: Math.max(-10, Math.min(10, angleY)),
+      transformPerspective: 1200,
+      z: 35,
+      boxShadow: `${-dx * 0.08}px ${-dy * 0.08 + 25}px 45px rgba(0,0,0,0.22)`,
+      duration: 0.35,
+      ease: "power2.out"
+    });
+  };
+
+  const handleMouseLeave = () => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    gsap.to(frame, {
+      rotateX: 0,
+      rotateY: 0,
+      z: 0,
+      boxShadow: "0 20px 50px rgba(0,0,0,0.15)",
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  };
+
   return (
-    <section className="cf-hero">
-      <h1 className="cf-hero-title caps">FRAME</h1>
+    <section className="cf-workbench-hero" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+      <div className="cf-workbench-grid-bg" />
+      <h1 className="cf-workbench-bg-title caps">WORKSHOP</h1>
+
+      <div className="cf-workbench-area">
+        <div className="cf-workbench-interactive-container">
+          
+          {/* Blueprint Specs Callouts */}
+          <div className="cf-blueprint-callout callout-moulding">
+            <span className="cf-blueprint-title">[01] MOULDING</span>
+            <span>{selected.mouldingSpec}</span>
+          </div>
+
+          <div className="cf-blueprint-callout callout-matting">
+            <span className="cf-blueprint-title">[02] MATBOARD</span>
+            <span>{selected.matSpec}</span>
+          </div>
+
+          <div className="cf-blueprint-callout callout-glazing">
+            <span className="cf-blueprint-title">[03] GLAZING</span>
+            <span>{selected.glazingSpec}</span>
+          </div>
+
+          {/* Interactive Beveled Frame */}
+          <div ref={frameRef} className={`cf-workbench-frame-wrapper ${selected.className}`}>
+            <div className="cf-frame-mat">
+              <div className="cf-frame-inner">
+                <div className="cf-frame-glaze" />
+                <img src={selected.image} alt={selected.name} />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Dynamic spec note & Controls */}
+        <div className="cf-workbench-controls">
+          {(Object.keys(PROFILES) as ProfileKey[]).map((key) => {
+            const prof = PROFILES[key];
+            return (
+              <button
+                key={key}
+                className={`cf-workbench-btn ${selectedKey === key ? "active" : ""}`}
+                onClick={() => setSelectedKey(key)}
+              >
+                <span className={`cf-swatch-dot dot-${key}`} />
+                {prof.name}
+              </button>
+            );
+          })}
+        </div>
+
+      </div>
     </section>
   );
 };
 
 const HeroImage = () => {
-  return (
-    <section className="cf-hero-img">
-      <div className="cf-hero-img-wrapper">
-        <img src="/services/custom-framing-hero.jpg" alt="Artisanal Framing Studio" />
-      </div>
-    </section>
-  );
+  return null;
 };
 
 const Showcase = () => {
-  return (
-    <section className="cf-showcase-section">
-      <div className="cf-showcase-bg-title">EXHIBIT</div>
-      <div className="cf-showcase-grid">
-        {/* Frame 1: Museum Shadow Box (Walnut) */}
-        <div className="cf-showcase-frame cf-showcase-walnut">
-          <img src="/services/framing-hero-2.jpg" alt="Roasted Walnut Shadow Box" />
-          <div className="cf-showcase-label">01 &mdash; Walnut Shadowbox</div>
-        </div>
-
-        {/* Frame 2: Ornate Gold Gilt */}
-        <div className="cf-showcase-frame cf-showcase-gold">
-          <img src="/services/framing-hero-4.jpg" alt="Ornate Gold Gilt Frame" />
-          <div className="cf-showcase-label">02 &mdash; Ornate Gold Gilt</div>
-        </div>
-
-        {/* Frame 3: White Oak Gallery */}
-        <div className="cf-showcase-frame cf-showcase-white-oak">
-          <img src="/services/framing-hero-3.jpg" alt="Chalky White Oak Setup" />
-          <div className="cf-showcase-label">03 &mdash; White Oak Set</div>
-        </div>
-
-        {/* Frame 4: Natural Honey Oak */}
-        <div className="cf-showcase-frame cf-showcase-oak">
-          <img src="/services/framing-hero-1.jpg" alt="Natural Honey Oak Frame" />
-          <div className="cf-showcase-label">04 &mdash; Natural Honey Oak</div>
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 };
 
 const HeroHeader = () => {
@@ -327,13 +425,15 @@ export default function CustomFramingPage() {
     const root = pageRef.current;
     if (!root) return;
 
-    const heroH1 = root.querySelector<HTMLHeadingElement>(".cf-hero-title");
-    const heroImgWrapper = root.querySelector<HTMLElement>(".cf-hero-img-wrapper");
+    const bgTitle = root.querySelector<HTMLHeadingElement>(".cf-workbench-bg-title");
+    const frameWrapper = root.querySelector<HTMLElement>(".cf-workbench-frame-wrapper");
+    const callouts = root.querySelectorAll(".cf-blueprint-callout");
+    const controls = root.querySelector(".cf-workbench-controls");
 
     let split: SplitText | null = null;
 
-    if (heroH1) {
-      split = SplitText.create(heroH1, {
+    if (bgTitle) {
+      split = SplitText.create(bgTitle, {
         type: "chars",
         charsClass: "char++",
       });
@@ -352,23 +452,55 @@ export default function CustomFramingPage() {
       gsap.to(split.chars, {
         y: "0%",
         duration: 0.8,
-        stagger: 0.15,
-        delay: 0.5,
+        stagger: 0.1,
+        delay: 0.3,
         ease: "power3.out",
       });
     }
 
-    if (heroImgWrapper) {
-      gsap.set(heroImgWrapper, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-      });
+    if (frameWrapper) {
+      gsap.fromTo(
+        frameWrapper,
+        { opacity: 0, scale: 0.85, y: 50, rotateX: 15 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 1.4,
+          delay: 0.6,
+          ease: "power4.out",
+        }
+      );
+    }
 
-      gsap.to(heroImgWrapper, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-        duration: 1.2,
-        delay: 0.7,
-        ease: "power3.out",
-      });
+    if (callouts.length > 0) {
+      gsap.fromTo(
+        callouts,
+        { opacity: 0, x: (i) => (i % 2 === 0 ? -40 : 40) },
+        {
+          opacity: 0.85,
+          x: 0,
+          duration: 1.0,
+          stagger: 0.15,
+          delay: 1.0,
+          ease: "power3.out",
+        }
+      );
+    }
+
+    if (controls) {
+      gsap.fromTo(
+        controls,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 1.2,
+          ease: "power3.out",
+        }
+      );
     }
 
     gsap.utils.toArray(".reveal").forEach((el: any) => {
@@ -439,9 +571,7 @@ export default function CustomFramingPage() {
   return (
     <div className="custom-framing-wrapper" ref={pageRef}>
       <Hero />
-      <HeroImage />
       <HeroHeader />
-      <Showcase />
 
       <Feature
         label="Craft"
@@ -456,8 +586,8 @@ export default function CustomFramingPage() {
           { label: "Consult", outline: true },
           { label: "View", outline: true },
         ]}
-        imgSrc="/services/custom-framing-hero.jpg"
-        imgAlt="Artisanal shelf displaying pottery and framed textile"
+        imgSrc="/services/textile-artwork.jpg"
+        imgAlt="Close-up of a custom-framed textured textile artwork with raw wood moulding"
       />
 
       <Feature
