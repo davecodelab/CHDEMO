@@ -226,7 +226,7 @@ const CuratorialSpread = () => {
           <div className="cf-hanging-wire-frame frame-walnut-shadowbox">
             <div className="cf-frame-mat">
               <div className="cf-frame-inner">
-                <img src="/services/framing-hero-2.jpg" alt="Archival shadow box display" />
+                <img src="/services/curatorial-archival.jpg" alt="Archival shadow box display" />
               </div>
             </div>
           </div>
@@ -260,7 +260,7 @@ const CuratorialSpread = () => {
           <div className="cf-hanging-wire-frame frame-white-oak-mitered">
             <div className="cf-frame-mat">
               <div className="cf-frame-inner">
-                <img src="/services/framing-hero-3.jpg" alt="Miter joint timber frame" />
+                <img src="/services/curatorial-workshop.jpg" alt="Miter joint timber frame" />
               </div>
             </div>
           </div>
