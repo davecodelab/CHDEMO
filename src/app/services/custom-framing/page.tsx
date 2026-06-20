@@ -207,74 +207,82 @@ const HeroHeader = () => {
 
 
 
-interface FeatureProps {
-  flip?: boolean;
-  label: string;
-  title: string;
-  body: string;
-  list?: string[];
-  actions: {
-    label: string;
-    outline?: boolean;
-  }[];
-  imgSrc: string;
-  imgAlt: string;
-}
+const CuratorialSpread = () => {
+  return (
+    <section className="cf-catalog-spread">
+      {/* Drafting Guidelines Line */}
+      <div className="cf-blueprint-draft-line" />
 
-const Feature = ({
-  flip,
-  label,
-  title,
-  body,
-  list,
-  actions,
-  imgSrc,
-  imgAlt,
-}: FeatureProps) => (
-  <section className={`cf-feature ${flip ? "flip" : ""}`}>
-    <div
-      className={`cf-feature__img ${
-        flip ? "reveal-right" : "reveal-left"
-      }`}
-    >
-      <img src={imgSrc} alt={imgAlt} />
-    </div>
+      {/* Spread Section 1: Archival Science */}
+      <div className="cf-spread-section section-archival">
+        <div className="cf-vertical-watermark watermark-left">ARCHIVAL</div>
+        
+        {/* The Hanging Frame */}
+        <div className="cf-hanging-frame-container container-right">
+          <div className="cf-peg-hanger">
+            <div className="cf-peg" />
+            <div className="cf-wire" />
+          </div>
+          <div className="cf-hanging-wire-frame frame-walnut-shadowbox">
+            <div className="cf-frame-mat">
+              <div className="cf-frame-inner">
+                <img src="/services/framing-hero-2.jpg" alt="Archival shadow box display" />
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <div
-      className={`cf-feature__copy ${
-        flip ? "reveal-left" : "reveal-right"
-      }`}
-    >
-      <span className="cf-sec-label">{label}</span>
-
-      <h2>{title}</h2>
-
-      <p>{body}</p>
-
-      {list && (
-        <ul className="cf-feature__list">
-          {list.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      )}
-
-      <div className="cf-feature__actions">
-        {actions.map((action) => (
-          <a
-            key={action.label}
-            href="#"
-            className={`cf-btn cf-btn-sm ${
-              action.outline ? "cf-btn-outline" : "cf-btn-red"
-            }`}
-          >
-            {action.label}
-          </a>
-        ))}
+        {/* Floating linen placard card */}
+        <div className="cf-placard-card placard-left reveal-left">
+          <span className="cf-placard-tag">[ STUDY 01 // CONSERVATION ]</span>
+          <h3 className="cf-placard-title">PRESERVING THE STORIES THAT SHAPE US</h3>
+          <p className="cf-placard-body">
+            Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved.
+          </p>
+          <div className="cf-placard-specs">
+            <span>pH BALANCE: 8.5</span>
+            <span>CORES: 100% COTTON</span>
+            <span>GLAZE: UV 99%</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+
+      {/* Spread Section 2: The Workshop */}
+      <div className="cf-spread-section section-workshop">
+        <div className="cf-vertical-watermark watermark-right">WORKSHOP</div>
+
+        {/* The Hanging Frame */}
+        <div className="cf-hanging-frame-container container-left">
+          <div className="cf-peg-hanger">
+            <div className="cf-peg" />
+            <div className="cf-wire" />
+          </div>
+          <div className="cf-hanging-wire-frame frame-white-oak-mitered">
+            <div className="cf-frame-mat">
+              <div className="cf-frame-inner">
+                <img src="/services/framing-hero-3.jpg" alt="Miter joint timber frame" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating linen placard card */}
+        <div className="cf-placard-card placard-right reveal-right">
+          <span className="cf-placard-tag">[ STUDY 02 // MITER JOINERY ]</span>
+          <h3 className="cf-placard-title">THE ARCHITECTURE OF SOLID TIMBER</h3>
+          <p className="cf-placard-body">
+            We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents wrapping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision.
+          </p>
+          <div className="cf-placard-specs">
+            <span>TIMBERS: WALNUT & OAK</span>
+            <span>JOINT: MITER SPLINES</span>
+            <span>FINISH: RAW OIL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const WorkCarousel = () => {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -564,38 +572,7 @@ export default function CustomFramingPage() {
       <HeroHeader />
 
 
-      <Feature
-        label="Archival Science"
-        title="Preserving the stories that shape us"
-        body="Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved."
-        list={[
-          "Museum-grade UV protective glazing",
-          "100% cotton rag acid-free matboards",
-          "Reversible archival mounting hinges",
-        ]}
-        actions={[
-          { label: "Consult Workshop", outline: true },
-        ]}
-        imgSrc="/services/framing-hero-2.jpg"
-        imgAlt="Precision-framed shadow box holding delicate artifacts"
-      />
-
-      <Feature
-        flip
-        label="The Workshop"
-        title="The architecture of solid timber"
-        body="We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents warping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision."
-        list={[
-          "Solid walnut, white oak, and maple",
-          "Splined corner joints for lifetime stability",
-          "Hand-rubbed oil and gold leaf finishes",
-        ]}
-        actions={[
-          { label: "View Profiles", outline: true },
-        ]}
-        imgSrc="/services/framing-hero-3.jpg"
-        imgAlt="White oak frame set showing clean mitered corner joints"
-      />
+      <CuratorialSpread />
 
       <WorkCarousel />
 

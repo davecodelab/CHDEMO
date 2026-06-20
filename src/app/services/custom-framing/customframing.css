@@ -531,21 +531,370 @@
 }
 .cf-sec-label::before { content: ''; display: block; width: 18px; height: 1.5px; background: var(--red); }
 
-/* ── Feature strips ── */
-.cf-feature { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); min-height: 520px; overflow: hidden; }
-.cf-feature.flip { direction: rtl; }
-.cf-feature.flip > * { direction: ltr; }
-.cf-feature__img { overflow: hidden; position: relative; }
-.cf-feature__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.25,.46,.45,.94); }
-.cf-feature:hover .cf-feature__img img { transform: scale(1.04); }
-.cf-feature__copy { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3.5rem; border-left: 1px solid var(--border); }
-.cf-feature.flip .cf-feature__copy { border-left: none; border-right: 1px solid var(--border); }
-.cf-feature__copy h2 { font-family: var(--fd); font-size: clamp(1.6rem, 2.5vw, 3rem); font-weight: 600; line-height: 1.12; letter-spacing: -.02rem; margin-bottom: 1rem; }
-.cf-feature__copy p { font-size: .92rem; color: var(--muted); line-height: 1.75; max-width: 400px; margin-bottom: 1.5rem; }
-.cf-feature__list { margin-bottom: 2rem; display: flex; flex-direction: column; gap: .45rem; }
-.cf-feature__list li { font-size: .88rem; color: var(--muted); display: flex; align-items: center; gap: .5rem; }
-.cf-feature__list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-.cf-feature__actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+/* ── Curatorial Catalog Spread ── */
+.cf-catalog-spread {
+  position: relative;
+  width: 100%;
+  padding: 12rem 2rem;
+  background-color: #fbfbfa; /* Warm gallery white */
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14rem; /* Large gap between sections to let them breathe */
+}
+
+/* Blueprint drafting coordinate line running horizontally */
+.cf-blueprint-draft-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(195, 27, 7, 0.15); /* Red/crimson drafting color */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cf-blueprint-draft-line::before {
+  content: "COORD // 45.9234° N";
+  position: absolute;
+  left: 4rem;
+  top: -12px;
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: rgba(195, 27, 7, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.cf-blueprint-draft-line::after {
+  content: "GRID SYSTEM // ARCHIVAL SPREAD";
+  position: absolute;
+  right: 4rem;
+  top: -12px;
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: rgba(195, 27, 7, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.cf-spread-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 550px;
+  z-index: 2;
+}
+
+/* Section 1 styling (Archival Science) */
+.cf-spread-section.section-archival {
+  justify-content: flex-end; /* Image on right, text on left overlapping */
+}
+
+/* Section 2 styling (Workshop) */
+.cf-spread-section.section-workshop {
+  justify-content: flex-start; /* Image on left, text on right overlapping */
+}
+
+/* Vertical faint watermark text */
+.cf-vertical-watermark {
+  position: absolute;
+  top: 50%;
+  font-family: var(--fd);
+  font-size: clamp(6rem, 10vw, 11rem);
+  font-weight: 700;
+  color: #f3f1eb; /* Extremely faint watermark */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.watermark-left {
+  left: -2rem;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
+}
+
+.watermark-right {
+  right: -2rem;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+}
+
+/* The Hanging Frame Container */
+.cf-hanging-frame-container {
+  position: relative;
+  width: 48%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-right {
+  margin-right: 5%;
+}
+
+.container-left {
+  margin-left: 5%;
+}
+
+/* Peg & Wire Hanger */
+.cf-peg-hanger {
+  position: absolute;
+  top: -85px; /* Sits above the frame */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 85px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cf-peg {
+  width: 12px;
+  height: 12px;
+  background: #5c5450;
+  border-radius: 50%;
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.3),
+    inset 0 1px 2px rgba(255,255,255,0.3);
+  margin: 0 auto;
+}
+
+.cf-wire {
+  width: 100%;
+  height: 73px;
+  position: relative;
+}
+
+.cf-wire::before, .cf-wire::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 1px;
+  background: rgba(14, 14, 12, 0.35);
+  height: 85px;
+}
+
+.cf-wire::before {
+  left: 50%;
+  transform: rotate(-35deg);
+  transform-origin: top left;
+}
+
+.cf-wire::after {
+  right: 50%;
+  transform: rotate(35deg);
+  transform-origin: top right;
+}
+
+/* Hanging Wire Frame itself */
+.cf-hanging-wire-frame {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cf-hanging-wire-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Specific frame mouldings for curatorial spread */
+.frame-walnut-shadowbox {
+  border: 24px solid #271f1b; /* Rich dark walnut */
+  box-shadow: 
+    0 30px 60px rgba(0,0,0,0.16),
+    0 12px 24px rgba(0,0,0,0.08),
+    inset 0 0 12px rgba(0,0,0,0.5);
+}
+
+.frame-white-oak-mitered {
+  border: 18px solid #e6e3dc; /* Chalky white oak */
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.12),
+    0 8px 16px rgba(0,0,0,0.06),
+    inset 0 0 8px rgba(0,0,0,0.15);
+  transform: rotate(-1.5deg); /* Slightly organic rotation as requested */
+}
+
+.frame-white-oak-mitered:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 
+    0 35px 70px rgba(0,0,0,0.18),
+    0 15px 30px rgba(0,0,0,0.08);
+}
+
+.frame-walnut-shadowbox:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 40px 80px rgba(0,0,0,0.22),
+    0 18px 36px rgba(0,0,0,0.1);
+}
+
+/* Floating Linen Placard Card */
+.cf-placard-card {
+  position: absolute;
+  width: 44%;
+  max-width: 440px;
+  background-color: #f7f6f4;
+  border: 1px solid #e4e4e0;
+  padding: 3.5rem 3rem;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.05),
+    0 1px 3px rgba(0,0,0,0.02);
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Placard card textured look - nice premium detail */
+.cf-placard-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(14, 14, 12, 0.1);
+  pointer-events: none;
+}
+
+/* Placard Placement and Overlaps */
+.placard-left {
+  left: 8%;
+  bottom: -40px;
+}
+
+.placard-right {
+  right: 8%;
+  bottom: -40px;
+}
+
+/* Typography on Card */
+.cf-placard-tag {
+  display: block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #c31b07; /* Technical red accent */
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.cf-placard-title {
+  font-family: var(--fd);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--black);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.cf-placard-body {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555552;
+  margin: 0 0 2rem 0;
+}
+
+/* Technical Monospaced Specs */
+.cf-placard-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid #e4e4e0;
+  padding-top: 1.5rem;
+}
+
+.cf-placard-specs span {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #7b7b78;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cf-placard-specs span::before {
+  content: "▪";
+  color: #c31b07;
+  font-size: 0.6rem;
+}
+
+/* Responsive Curatorial Catalog Spread */
+@media (max-width: 1024px) {
+  .cf-catalog-spread {
+    padding: 8rem 1.5rem;
+    gap: 8rem;
+  }
+  
+  .cf-spread-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    min-height: auto;
+  }
+
+  .cf-spread-section.section-archival,
+  .cf-spread-section.section-workshop {
+    justify-content: center;
+  }
+
+  .cf-hanging-frame-container {
+    width: 80%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .container-right,
+  .container-left {
+    margin: 0 auto;
+  }
+
+  .cf-placard-card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+  }
+
+  .cf-vertical-watermark {
+    display: none; /* Hide watermark on tablet/mobile to keep clean */
+  }
+
+  .cf-blueprint-draft-line {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cf-catalog-spread {
+    padding: 6rem 1rem;
+    gap: 6rem;
+  }
+
+  .cf-hanging-frame-container {
+    width: 100%;
+  }
+
+  .frame-white-oak-mitered {
+    transform: none; /* Reset rotation for clean mobile display */
+  }
+}
 
 /* ── Carousel ── */
 .cf-luxury-gallery {
@@ -718,9 +1067,9 @@
 
 /* Responsive */
 @media (max-width: 960px) {
-  .cf-feature, .cf-process { grid-template-columns: 1fr; direction: ltr !important; }
-  .cf-feature__img, .cf-process__img { height: 55vw; min-height: 220px; }
-  .cf-feature__copy, .cf-process__steps { border-left: none !important; border-right: none !important; border-top: 1px solid var(--border); padding: 2.5rem 2rem; }
+  .cf-process { grid-template-columns: 1fr; direction: ltr !important; }
+  .cf-process__img { height: 55vw; min-height: 220px; }
+  .cf-process__steps { border-left: none !important; border-right: none !important; border-top: 1px solid var(--border); padding: 2.5rem 2rem; }
   .tool-layout { grid-template-columns: 1fr; }
   .preview-canvas-wrap { min-height: 320px; }
   .preview-tool { padding: 4rem 1.75rem; }
@@ -730,7 +1079,7 @@
   .nav-links { display: none; }
   .burger { display: flex; }
   .cf-hero { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .cf-feature__copy, .cf-process__steps { padding: 2rem 1.25rem; }
+  .cf-process__steps { padding: 2rem 1.25rem; }
   .work, .cf-testimonial, .cf-cta-banner { padding: 4rem 1.25rem; }
   .carousel { padding: 0 1.25rem 1.5rem; }
   .footer { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
