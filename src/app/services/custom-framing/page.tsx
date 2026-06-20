@@ -11,6 +11,9 @@ import "./customframing.css";
 import FramePreview from "@/components/FramePreview/FramePreview";
 import Footer from "@/components/ui/Footer";
 
+import curatorialArchival from "./curatorial-archival.jpg";
+import curatorialWorkshop from "./curatorial-workshop.jpg";
+
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const CAROUSEL_IMAGES = [
@@ -226,7 +229,7 @@ const CuratorialSpread = () => {
           <div className="cf-hanging-wire-frame frame-walnut-shadowbox">
             <div className="cf-frame-mat">
               <div className="cf-frame-inner">
-                <img src="/services/curatorial-archival.jpg" alt="Archival shadow box display" />
+                <img src={curatorialArchival.src} alt="Archival shadow box display" />
               </div>
             </div>
           </div>
@@ -260,7 +263,7 @@ const CuratorialSpread = () => {
           <div className="cf-hanging-wire-frame frame-white-oak-mitered">
             <div className="cf-frame-mat">
               <div className="cf-frame-inner">
-                <img src="/services/curatorial-workshop.jpg" alt="Miter joint timber frame" />
+                <img src={curatorialWorkshop.src} alt="Miter joint timber frame" />
               </div>
             </div>
           </div>
