@@ -531,372 +531,385 @@
 }
 .cf-sec-label::before { content: ''; display: block; width: 18px; height: 1.5px; background: var(--red); }
 
-/* ── Curatorial Catalog Spread ── */
+/* ── Curatorial Catalog Spread Redesign ── */
 .cf-catalog-spread {
   position: relative;
   width: 100%;
-  padding: 12rem 2rem;
-  background-color: #fbfbfa; /* Warm gallery white */
+  padding: 10rem 4rem;
+  background-color: #F8F6F2; /* Cream-warm gallery white */
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 14rem; /* Large gap between sections to let them breathe */
+  gap: 12rem;
 }
 
-/* Blueprint drafting coordinate line running horizontally */
-.cf-blueprint-draft-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background: rgba(195, 27, 7, 0.15); /* Red/crimson drafting color */
-  pointer-events: none;
-  z-index: 1;
+/* Redesign intro header */
+.cf-spread-header {
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+  position: relative;
+  z-index: 5;
 }
 
-.cf-blueprint-draft-line::before {
-  content: "COORD // 45.9234° N";
-  position: absolute;
-  left: 4rem;
-  top: -12px;
+.cf-spread-subtitle {
   font-family: monospace;
-  font-size: 0.65rem;
-  color: rgba(195, 27, 7, 0.4);
-  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  color: #c31b07;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
 }
 
-.cf-blueprint-draft-line::after {
-  content: "GRID SYSTEM // ARCHIVAL SPREAD";
-  position: absolute;
-  right: 4rem;
-  top: -12px;
-  font-family: monospace;
-  font-size: 0.65rem;
-  color: rgba(195, 27, 7, 0.4);
-  letter-spacing: 0.1em;
+.cf-spread-title {
+  font-family: var(--fd);
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: var(--black);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.02em;
 }
 
+.cf-spread-desc {
+  font-family: var(--fd);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #6e6d68;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Spread Section layout */
 .cf-spread-section {
   position: relative;
   display: flex;
   align-items: center;
+  gap: 8rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 550px;
   z-index: 2;
 }
 
-/* Section 1 styling (Archival Science) */
 .cf-spread-section.section-archival {
-  justify-content: flex-end; /* Image on right, text on left overlapping */
+  flex-direction: row-reverse; /* Text left, Image right */
 }
 
-/* Section 2 styling (Workshop) */
 .cf-spread-section.section-workshop {
-  justify-content: flex-start; /* Image on left, text on right overlapping */
+  flex-direction: row; /* Image left, Text right */
 }
 
-/* Vertical faint watermark text */
-.cf-vertical-watermark {
-  position: absolute;
-  top: 50%;
-  font-family: var(--fd);
-  font-size: clamp(6rem, 10vw, 11rem);
-  font-weight: 700;
-  color: #f3f1eb; /* Extremely faint watermark */
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  pointer-events: none;
-  z-index: 1;
-  white-space: nowrap;
-}
-
-.watermark-left {
-  left: -2rem;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: left center;
-}
-
-.watermark-right {
-  right: -2rem;
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: right center;
-}
-
-/* The Hanging Frame Container */
-.cf-hanging-frame-container {
-  position: relative;
-  width: 48%;
-  max-width: 520px;
+/* Elegant Showcase Placard */
+.cf-gallery-placard {
+  flex: 1;
+  max-width: 460px;
+  background: transparent;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  perspective: 1200px;
-  transform-style: preserve-3d;
 }
 
-.container-right {
-  margin-right: 5%;
-}
-
-.container-left {
-  margin-left: 5%;
-}
-
-/* Peg & Wire Hanger */
-.cf-peg-hanger {
-  position: absolute;
-  top: -85px; /* Sits above the frame */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 85px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.cf-peg {
-  width: 12px;
-  height: 12px;
-  background: #5c5450;
-  border-radius: 50%;
-  box-shadow: 
-    0 2px 4px rgba(0,0,0,0.3),
-    inset 0 1px 2px rgba(255,255,255,0.3);
-  margin: 0 auto;
-}
-
-.cf-wire {
-  width: 100%;
-  height: 73px;
-  position: relative;
-}
-
-.cf-wire::before, .cf-wire::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 1px;
-  background: rgba(14, 14, 12, 0.35);
-  height: 85px;
-}
-
-.cf-wire::before {
-  left: 50%;
-  transform: rotate(-35deg);
-  transform-origin: top left;
-}
-
-.cf-wire::after {
-  right: 50%;
-  transform: rotate(35deg);
-  transform-origin: top right;
-}
-
-/* Hanging Wire Frame itself */
-.cf-hanging-wire-frame {
-  position: relative;
-  width: 100%;
-  background: #fff;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cf-hanging-wire-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Specific frame mouldings for curatorial spread */
-.frame-walnut-shadowbox {
-  border: 24px solid #271f1b; /* Rich dark walnut */
-  aspect-ratio: 4/5;
-  box-shadow: 
-    0 30px 60px rgba(0,0,0,0.16),
-    0 12px 24px rgba(0,0,0,0.08),
-    inset 0 0 12px rgba(0,0,0,0.5);
-}
-
-.frame-white-oak-mitered {
-  border: 18px solid #e6e3dc; /* Chalky white oak */
-  aspect-ratio: 4/5;
-  box-shadow: 
-    0 25px 50px rgba(0,0,0,0.12),
-    0 8px 16px rgba(0,0,0,0.06),
-    inset 0 0 8px rgba(0,0,0,0.15);
-  transform: rotate(-1.5deg); /* Slightly organic rotation as requested */
-}
-
-.frame-white-oak-mitered:hover {
-  transform: rotate(0deg) scale(1.02);
-  box-shadow: 
-    0 35px 70px rgba(0,0,0,0.18),
-    0 15px 30px rgba(0,0,0,0.08);
-}
-
-.frame-walnut-shadowbox:hover {
-  transform: scale(1.02);
-  box-shadow: 
-    0 40px 80px rgba(0,0,0,0.22),
-    0 18px 36px rgba(0,0,0,0.1);
-}
-
-/* Floating Linen Placard Card */
-.cf-placard-card {
-  position: absolute;
-  width: 44%;
-  max-width: 440px;
-  background-color: #f7f6f4;
-  border: 1px solid #e4e4e0;
-  padding: 3.5rem 3rem;
-  box-shadow: 
-    0 20px 40px rgba(0,0,0,0.05),
-    0 1px 3px rgba(0,0,0,0.02);
-  z-index: 10;
-  box-sizing: border-box;
-}
-
-/* Placard card textured look - nice premium detail */
-.cf-placard-card::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border: 1px dashed rgba(14, 14, 12, 0.1);
-  pointer-events: none;
-}
-
-/* Placard Placement and Overlaps */
-.placard-left {
-  left: 8%;
-  bottom: -40px;
-}
-
-.placard-right {
-  right: 8%;
-  bottom: -40px;
-}
-
-/* Typography on Card */
 .cf-placard-tag {
-  display: block;
   font-family: monospace;
-  font-size: 0.72rem;
-  color: #c31b07; /* Technical red accent */
-  letter-spacing: 0.1em;
-  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+  color: #c31b07;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
 }
 
 .cf-placard-title {
   font-family: var(--fd);
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.3;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.25;
   color: var(--black);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 0.5rem 0;
   letter-spacing: -0.01em;
+}
+
+.cf-placard-subtitle {
+  font-family: var(--fd);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #8c8b86;
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
 .cf-placard-body {
   font-family: var(--fd);
-  font-style: italic;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.98rem;
+  line-height: 1.75;
   color: #555552;
   margin: 0 0 2rem 0;
+  font-weight: 300;
 }
 
-/* Technical Monospaced Specs */
+/* Specs list styling */
 .cf-placard-specs {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  border-top: 1px solid #e4e4e0;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding-top: 1.5rem;
 }
 
-.cf-placard-specs span {
+.cf-spec-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cf-spec-item:hover, .cf-spec-item.active {
+  background-color: rgba(195, 27, 7, 0.04);
+}
+
+.cf-spec-label {
   font-family: monospace;
-  font-size: 0.72rem;
-  color: #7b7b78;
+  font-size: 0.75rem;
+  color: #8c8b86;
+  text-transform: uppercase;
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.cf-placard-specs span::before {
-  content: "▪";
-  color: #c31b07;
-  font-size: 0.6rem;
+.cf-spec-label::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #c31b07;
+  opacity: 0.5;
 }
 
-/* Responsive Curatorial Catalog Spread */
+.cf-spec-item:hover .cf-spec-label::before,
+.cf-spec-item.active .cf-spec-label::before {
+  opacity: 1;
+}
+
+.cf-spec-value {
+  font-family: var(--fd);
+  font-size: 0.85rem;
+  color: var(--black);
+  font-weight: 500;
+}
+
+/* Redesigned Gallery Frame Container */
+.cf-gallery-frame-container {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cf-gallery-frame-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 3/4;
+  background-color: #fff;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+/* Realistic moulding borders */
+.frame-walnut-shadowbox-new {
+  border: 22px solid #29211c;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.15),
+    0 15px 30px rgba(0, 0, 0, 0.08),
+    inset 0 0 10px rgba(0, 0, 0, 0.6);
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.frame-white-oak-mitered-new {
+  border: 18px solid #E3DFD5;
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.12),
+    0 12px 25px rgba(0, 0, 0, 0.06),
+    inset 0 0 6px rgba(0, 0, 0, 0.15);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cf-gallery-frame-wrapper:hover {
+  transform: translateY(-8px) scale(1.015);
+}
+
+.frame-walnut-shadowbox-new:hover {
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.2),
+    0 20px 45px rgba(0, 0, 0, 0.12),
+    inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.frame-white-oak-mitered-new:hover {
+  box-shadow: 
+    0 45px 90px rgba(0, 0, 0, 0.16),
+    0 18px 35px rgba(0, 0, 0, 0.08),
+    inset 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Matboard layering & shadowbox depth */
+.cf-frame-mat-new {
+  width: 100%;
+  height: 100%;
+  padding: 3rem; /* Generous matboard border */
+  background-color: #F7F5F0; /* Soft off-white matboard */
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  transition: background-color 0.4s ease;
+}
+
+.cf-frame-mat-new.highlighted {
+  background-color: #EFECE6;
+}
+
+.cf-frame-inner-new {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 2px 2px 5px rgba(0,0,0,0.15),
+    inset -2px -2px 5px rgba(255,255,255,0.7),
+    0 0 0 2px #E1DDD3; /* Mitered cut bevel edge */
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cf-frame-inner-new.highlighted {
+  outline: 2px solid #c31b07;
+  outline-offset: 2px;
+}
+
+.cf-frame-inner-new img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Glass glazing layer & glare shine */
+.cf-frame-glaze-new {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.0) 60%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+}
+
+.cf-frame-glaze-new.highlighted {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0.0) 60%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+}
+
+/* Interactive Technical Overlay Labels on Frame */
+.cf-tech-pointer {
+  position: absolute;
+  background-color: #c31b07;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.65rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  letter-spacing: 0.05em;
+}
+
+.cf-tech-pointer.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pointer-moulding {
+  top: 10px;
+  left: 10px;
+}
+
+.pointer-matting {
+  top: 45px;
+  left: 45px;
+}
+
+.pointer-glazing {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Responsive Curatorial Catalog Spread Redesign */
 @media (max-width: 1024px) {
   .cf-catalog-spread {
-    padding: 8rem 1.5rem;
+    padding: 8rem 2rem;
     gap: 8rem;
   }
-  
+
+  .cf-spread-title {
+    font-size: 2.8rem;
+  }
+
   .cf-spread-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    min-height: auto;
+    flex-direction: column !important;
+    gap: 4rem;
   }
 
-  .cf-spread-section.section-archival,
-  .cf-spread-section.section-workshop {
-    justify-content: center;
-  }
-
-  .cf-hanging-frame-container {
-    width: 80%;
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
-  .container-right,
-  .container-left {
-    margin: 0 auto;
-  }
-
-  .cf-placard-card {
-    position: relative;
+  .cf-gallery-frame-container {
     width: 100%;
-    max-width: 480px;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    padding: 2.5rem 2rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
   }
 
-  .cf-vertical-watermark {
-    display: none; /* Hide watermark on tablet/mobile to keep clean */
-  }
-
-  .cf-blueprint-draft-line {
-    display: none;
+  .cf-gallery-placard {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
 @media (max-width: 640px) {
   .cf-catalog-spread {
-    padding: 6rem 1rem;
+    padding: 6rem 1.25rem;
     gap: 6rem;
   }
 
-  .cf-hanging-frame-container {
-    width: 100%;
+  .cf-spread-title {
+    font-size: 2.2rem;
   }
 
-  .frame-white-oak-mitered {
-    transform: none; /* Reset rotation for clean mobile display */
+  .cf-gallery-frame-wrapper {
+    max-width: 100%;
+  }
+
+  .cf-frame-mat-new {
+    padding: 2rem;
   }
 }
 

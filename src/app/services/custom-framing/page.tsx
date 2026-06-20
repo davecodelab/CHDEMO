@@ -210,13 +210,25 @@ const HeroHeader = () => {
 
 
 
-const HangingFrame = ({ src, alt, frameClass, containerClass }: {
+const GalleryFrame = ({
+  src,
+  alt,
+  frameClass,
+  hoveredSpec,
+  labels,
+}: {
   src: string;
   alt: string;
   frameClass: string;
-  containerClass: string;
+  hoveredSpec: "moulding" | "matboard" | "glazing" | null;
+  labels: {
+    moulding: string;
+    matboard: string;
+    glazing: string;
+  };
 }) => {
   const frameRef = useRef<HTMLDivElement>(null);
+  const glazeRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const frame = frameRef.current;
@@ -227,54 +239,72 @@ const HangingFrame = ({ src, alt, frameClass, containerClass }: {
     const dx = e.clientX - fx;
     const dy = e.clientY - fy;
 
-    const angleX = -dy * 0.04;
-    const angleY = dx * 0.04;
+    // Organic offset movement
+    const moveX = (dx / rect.width) * 12;
+    const moveY = (dy / rect.height) * 12;
 
     gsap.to(frame, {
-      rotateX: Math.max(-8, Math.min(8, angleX)),
-      rotateY: Math.max(-8, Math.min(8, angleY)),
-      transformPerspective: 1000,
-      z: 20,
-      boxShadow: `${-dx * 0.06}px ${-dy * 0.06 + 25}px 50px rgba(0,0,0,0.18)`,
-      duration: 0.3,
+      x: moveX,
+      y: moveY,
+      duration: 0.35,
       ease: "power2.out"
     });
+
+    // Dynamic reflection glaze sheen shift
+    const glaze = glazeRef.current;
+    if (glaze) {
+      const intensity = 0.05 + (dy / rect.height) * 0.03;
+      gsap.to(glaze, {
+        background: `linear-gradient(${135 + (dx / rect.width) * 15}deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, ${intensity}) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.08) 100%)`,
+        duration: 0.3,
+        ease: "power1.out"
+      });
+    }
   };
 
   const handleMouseLeave = () => {
     const frame = frameRef.current;
     if (!frame) return;
-    
-    const baseRotation = frameClass.includes("frame-white-oak-mitered") ? -1.5 : 0;
-    const baseShadow = frameClass.includes("frame-white-oak-mitered")
-      ? "0 25px 50px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06), inset 0 0 8px rgba(0,0,0,0.15)"
-      : "0 30px 60px rgba(0,0,0,0.16), 0 12px 24px rgba(0,0,0,0.08), inset 0 0 12px rgba(0,0,0,0.5)";
-
     gsap.to(frame, {
-      rotateX: 0,
-      rotateY: baseRotation,
-      z: 0,
-      boxShadow: baseShadow,
+      x: 0,
+      y: 0,
       duration: 0.5,
       ease: "power2.out"
     });
+
+    const glaze = glazeRef.current;
+    if (glaze) {
+      gsap.to(glaze, {
+        background: `linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.05) 100%)`,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    }
   };
 
   return (
-    <div className={`cf-hanging-frame-container ${containerClass}`}>
-      <div className="cf-peg-hanger">
-        <div className="cf-peg" />
-        <div className="cf-wire" />
-      </div>
-      <div 
-        ref={frameRef} 
-        className={`cf-hanging-wire-frame ${frameClass}`}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+    <div className="cf-gallery-frame-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+      <div
+        ref={frameRef}
+        className={`cf-gallery-frame-wrapper ${frameClass}`}
       >
-        <div className="cf-frame-mat">
-          <div className="cf-frame-inner">
-            <div className="cf-frame-glaze" />
+        {/* Interactive Pointer Overlays */}
+        <div className={`cf-tech-pointer pointer-moulding ${hoveredSpec === "moulding" ? "active" : ""}`}>
+          {labels.moulding}
+        </div>
+        <div className={`cf-tech-pointer pointer-matting ${hoveredSpec === "matboard" ? "active" : ""}`}>
+          {labels.matboard}
+        </div>
+        <div className={`cf-tech-pointer pointer-glazing ${hoveredSpec === "glazing" ? "active" : ""}`}>
+          {labels.glazing}
+        </div>
+
+        <div className={`cf-frame-mat-new ${hoveredSpec === "matboard" ? "highlighted" : ""}`}>
+          <div className="cf-frame-inner-new">
+            <div
+              ref={glazeRef}
+              className={`cf-frame-glaze-new ${hoveredSpec === "glazing" ? "highlighted" : ""}`}
+            />
             <img src={src} alt={alt} />
           </div>
         </div>
@@ -284,59 +314,120 @@ const HangingFrame = ({ src, alt, frameClass, containerClass }: {
 };
 
 const CuratorialSpread = () => {
+  const [hoveredSpec1, setHoveredSpec1] = useState<"moulding" | "matboard" | "glazing" | null>(null);
+  const [hoveredSpec2, setHoveredSpec2] = useState<"moulding" | "matboard" | "glazing" | null>(null);
+
+  const study1Labels = {
+    moulding: "[01] ROASTED WALNUT MOULDING",
+    matboard: "[02] 100% COTTON RAG MATBOARD",
+    glazing: "[03] UV-FILTERING MUSEUM GLAZING",
+  };
+
+  const study2Labels = {
+    moulding: "[01] MITERED WHITE OAK",
+    matboard: "[02] MAPLE MITER SPLINES",
+    glazing: "[03] RAW DANISH OIL FINISH",
+  };
+
   return (
     <section className="cf-catalog-spread">
-      {/* Drafting Guidelines Line */}
-      <div className="cf-blueprint-draft-line" />
+      {/* Redesigned Intro Header */}
+      <div className="cf-spread-header">
+        <span className="cf-spread-subtitle">Curator's Exhibition</span>
+        <h2 className="cf-spread-title">The Art of Archival Presentation</h2>
+        <p className="cf-spread-desc">
+          A deep dive into conservation science and traditional joinery. Each frame is a custom response to the artwork it protects.
+        </p>
+      </div>
 
-      {/* Spread Section 1: Archival Science */}
+      {/* Study 01 // Conservation */}
       <div className="cf-spread-section section-archival">
-        <div className="cf-vertical-watermark watermark-left">ARCHIVAL</div>
-        
-        <HangingFrame
+        <GalleryFrame
           src={curatorialArchival.src}
           alt="Archival shadow box display"
-          frameClass="frame-walnut-shadowbox"
-          containerClass="container-right"
+          frameClass="frame-walnut-shadowbox-new"
+          hoveredSpec={hoveredSpec1}
+          labels={study1Labels}
         />
 
-        {/* Floating linen placard card */}
-        <div className="cf-placard-card placard-left reveal-left">
+        <div className="cf-gallery-placard">
           <span className="cf-placard-tag">[ STUDY 01 // CONSERVATION ]</span>
-          <h3 className="cf-placard-title">PRESERVING THE STORIES THAT SHAPE US</h3>
+          <h3 className="cf-placard-title">PRESERVING STORIES THAT SHAPE US</h3>
+          <span className="cf-placard-subtitle">Acid-Free Cotton Matting & Glaze Protection</span>
           <p className="cf-placard-body">
             Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved.
           </p>
           <div className="cf-placard-specs">
-            <span>pH BALANCE: 8.5</span>
-            <span>CORES: 100% COTTON</span>
-            <span>GLAZE: UV 99%</span>
+            <div
+              className={`cf-spec-item ${hoveredSpec1 === "moulding" ? "active" : ""}`}
+              onMouseEnter={() => setHoveredSpec1("moulding")}
+              onMouseLeave={() => setHoveredSpec1(null)}
+            >
+              <span className="cf-spec-label">MOULDING Spec</span>
+              <span className="cf-spec-value">Roasted Walnut timber</span>
+            </div>
+            <div
+              className={`cf-spec-item ${hoveredSpec1 === "matboard" ? "active" : ""}`}
+              onMouseEnter={() => setHoveredSpec1("matboard")}
+              onMouseLeave={() => setHoveredSpec1(null)}
+            >
+              <span className="cf-spec-label">MAT Spec</span>
+              <span className="cf-spec-value">100% Acid-Free Cotton Rag</span>
+            </div>
+            <div
+              className={`cf-spec-item ${hoveredSpec1 === "glazing" ? "active" : ""}`}
+              onMouseEnter={() => setHoveredSpec1("glazing")}
+              onMouseLeave={() => setHoveredSpec1(null)}
+            >
+              <span className="cf-spec-label">GLAZING Spec</span>
+              <span className="cf-spec-value">Museum Glare-Free (99% UV)</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Spread Section 2: The Workshop */}
+      {/* Study 02 // Joinery */}
       <div className="cf-spread-section section-workshop">
-        <div className="cf-vertical-watermark watermark-right">WORKSHOP</div>
-
-        <HangingFrame
+        <GalleryFrame
           src={curatorialWorkshop.src}
           alt="Miter joint timber frame"
-          frameClass="frame-white-oak-mitered"
-          containerClass="container-left"
+          frameClass="frame-white-oak-mitered-new"
+          hoveredSpec={hoveredSpec2}
+          labels={study2Labels}
         />
 
-        {/* Floating linen placard card */}
-        <div className="cf-placard-card placard-right reveal-right">
+        <div className="cf-gallery-placard">
           <span className="cf-placard-tag">[ STUDY 02 // MITER JOINERY ]</span>
           <h3 className="cf-placard-title">THE ARCHITECTURE OF SOLID TIMBER</h3>
+          <span className="cf-placard-subtitle">Traditional Splined Corners & Natural Hardwood</span>
           <p className="cf-placard-body">
             We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents wrapping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision.
           </p>
           <div className="cf-placard-specs">
-            <span>TIMBERS: WALNUT & OAK</span>
-            <span>JOINT: MITER SPLINES</span>
-            <span>FINISH: RAW OIL</span>
+            <div
+              className={`cf-spec-item ${hoveredSpec2 === "moulding" ? "active" : ""}`}
+              onMouseEnter={() => setHoveredSpec2("moulding")}
+              onMouseLeave={() => setHoveredSpec2(null)}
+            >
+              <span className="cf-spec-label">TIMBER Spec</span>
+              <span className="cf-spec-value">Hand-Selected White Oak</span>
+            </div>
+            <div
+              className={`cf-spec-item ${hoveredSpec2 === "matboard" ? "active" : ""}`}
+              onMouseEnter={() => setHoveredSpec2("matboard")}
+              onMouseLeave={() => setHoveredSpec2(null)}
+            >
+              <span className="cf-spec-label">JOINERY Spec</span>
+              <span className="cf-spec-value">Maple Corner Splines</span>
+            </div>
+            <div
+              className={`cf-spec-item ${hoveredSpec2 === "glazing" ? "active" : ""}`}
+              onMouseEnter={() => setHoveredSpec2("glazing")}
+              onMouseLeave={() => setHoveredSpec2(null)}
+            >
+              <span className="cf-spec-label">FINISH Spec</span>
+              <span className="cf-spec-value">Danish Oil & Beeswax Rub</span>
+            </div>
           </div>
         </div>
       </div>
