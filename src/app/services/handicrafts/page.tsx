@@ -1,326 +1,119 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
+import {useRef } from "react";
+import Pictures from "@/components/Imagery/Pictures"
 import gsap from "gsap";
 import Footer from "@/components/ui/Footer";
-import Link from "next/link";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TextReveal from "@/components/Handicraft/Textreveal";
+import Handiworks from "@/components/Handiworks/FeaturedProject"
+import Copy from "@/components/Copy/Copy"
+import "./handicraft.css"
+import { useGSAP } from "@gsap/react";
+import { useRouter } from "next/navigation";
 
-gsap.registerPlugin(ScrollTrigger);
+
+
+gsap.registerPlugin(ScrollTrigger,useGSAP);
 
 export default function HandicraftsPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  useGSAP(
+  () => {
+    gsap.from(".cta-tag", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: ".cta",
+    });
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero reveal
-      gsap.from(".hero-title", {
-        y: 120,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power4.out",
-      });
+    gsap.from(".cta h2", {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      scrollTrigger: ".cta",
+    });
 
-      gsap.from(".hero-copy", {
-        y: 50,
-        opacity: 0,
-        delay: 0.3,
-        duration: 1,
-      });
+    gsap.from(".cta p", {
+      y: 40,
+      opacity: 0,
+      delay: 0.2,
+      duration: 1,
+      scrollTrigger: ".cta",
+    });
 
-      // Section reveals
-      gsap.utils.toArray(".reveal").forEach((el: any) => {
-        gsap.from(el, {
-          y: 100,
-          opacity: 0,
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          },
-        });
-      });
-
-      // Parallax images
-      gsap.utils.toArray(".parallax").forEach((el: any) => {
-        gsap.to(el, {
-          y: -120,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      });
-
-      // Background text movement
-      gsap.to(".bg-word", {
-        yPercent: -30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".page",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      });
-
-      // Horizontal gallery
-      gsap.to(".gallery-track", {
-        xPercent: -60,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".gallery-section",
-          start: "top top",
-          end: "+=2500",
-          pin: true,
-          scrub: 1,
-        },
-      });
-    }, pageRef);
-
-    return () => ctx.revert();
-  }, []);
+    gsap.from(".cta-actions", {
+      y: 40,
+      opacity: 0,
+      delay: 0.4,
+      duration: 1,
+      scrollTrigger: ".cta",
+    });
+  },
+  { scope: pageRef }
+);
 
   return (
-    <main ref={pageRef} className="page">
-      <section className="hero">
-        <span className="eyebrow">HANDCRAFTED COLLECTION</span>
-
-        <h1 className="hero-title">
-          Handcrafted
-          <br />
-          With Heritage
-        </h1>
-
-        <p className="hero-copy">
-          Discover furniture, décor and artisan pieces inspired
-          by African craftsmanship and modern luxury.
-        </p>
-
-        <div className="bg-word">HANDCRAFTED</div>
+    <>
+      <main ref={pageRef} className="page">
+        <TextReveal />
+        <section className="featured-projects-container">
+          <div className="featured-projects-header-callout">
+            <Copy delay={0.1}>
+              <p>Handicraft Series</p>
+            </Copy>
+          </div>
+          <div className="featured-projects-header">
+            <Copy delay={0.15}>
+              <h2>Explore our collection of authentic handcrafted décor and art</h2>
+            </Copy>
+          </div>
+        <Handiworks/>
       </section>
 
-      <section className="story reveal">
-        <div className="story-copy">
-          <span>Artisan</span>
+    <section >
+    <Pictures />
+   </section>
 
-          <h2>
-            Rustic coffee tables
-            that tell a story
-          </h2>
+<section className="cta reveal">
+  <div className="cta-content">
+    <span className="cta-tag">CRAFT HIVE</span>
 
-          <p>
-            Crafted from natural materials with unique
-            character and exceptional durability.
-          </p>
-        </div>
+    <h2>
+      Bring Timeless
+      <br />
+      Craftsmanship Into
+      <br />
+      Your Space
+    </h2>
 
-        <div className="story-image parallax">
-          <Image
-            src="/handicrafts/table.png"
-            alt=""
-            fill
-          />
-        </div>
-      </section>
+    <p>
+      Discover handcrafted décor, artisan creations, and bespoke pieces
+      designed to transform ordinary spaces into memorable experiences.
+    </p>
 
-      <section className="features reveal">
-        <div className="feature">
-          <h3>Natural Materials</h3>
-          <p>Authentic handcrafted pieces.</p>
-        </div>
+    <div className="cta-actions">
+      <button 
+      className="cta-btn"
+      onClick={() => router.push("/gallery")}
+      >
+        Explore Collection
+      </button>
 
-        <div className="feature">
-          <h3>Heritage Design</h3>
-          <p>Inspired by African artistry.</p>
-        </div>
+    <button
+    className="cta-btn-outline"
+    onClick={() => router.push("/contact")}
+   >
+    Get In Touch
+  </button>
+    </div>
+  </div>
 
-        <div className="feature">
-          <h3>Premium Quality</h3>
-          <p>Built to last generations.</p>
-        </div>
-
-        <div className="feature">
-          <h3>Custom Creations</h3>
-          <p>Unique one-of-a-kind pieces.</p>
-        </div>
-      </section>
-
-      <section className="showcase reveal">
-        <div className="showcase-image parallax">
-          <Image
-            src="/handicrafts/bags.jpg"
-            alt=""
-            fill
-          />
-        </div>
-
-        <div className="showcase-copy">
-          <h2>
-            Decorative bags
-            woven by hand
-          </h2>
-
-          <p>
-            Every piece is unique and celebrates
-            traditional craftsmanship.
-          </p>
-        </div>
-      </section>
-
-      <section className="gallery-section">
-        <div className="gallery-track">
-          {[
-            "/handicrafts/.jpg",
-            "/handicrafts/.jpg",
-            "/handicrafts/.jpg",
-            "/handicrafts/.jpg",
-            "/handicrafts/.jpg",
-          ].map((src, i) => (
-            <div className="gallery-item" key={i}>
-              <Image src={src} alt="" fill />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="cta reveal">
-        <h2>
-          Bring handcrafted
-          luxury into your home
-        </h2>
-
-        <Link href="/contact">
-          Explore Collection
-        </Link>
-      </section>
-
-      <div>
+  <div className="cta-glow"></div>
+</section>
         <Footer />
-      </div>
-
-      <style jsx>{`
-        .page {
-          background: #fff;
-          color: #111;
-          overflow: hidden;
-        }
-
-        .hero {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 2rem;
-          position: relative;
-        }
-
-        .hero-title {
-          font-size: clamp(4rem, 10vw, 10rem);
-          line-height: 0.9;
-        }
-
-        .hero-copy {
-          max-width: 700px;
-          margin-top: 2rem;
-        }
-
-        .bg-word {
-          position: absolute;
-          font-size: 16vw;
-          font-weight: 900;
-          color: rgba(204, 0, 0, 0.04);
-          white-space: nowrap;
-          z-index: -1;
-        }
-
-        .story,
-        .showcase {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6rem;
-          align-items: center;
-          padding: 8rem 8%;
-        }
-
-        .story-image,
-        .showcase-image {
-          position: relative;
-          height: 700px;
-          overflow: hidden;
-        }
-
-        .features {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-          padding: 8rem 8%;
-        }
-
-        .feature {
-          padding: 3rem;
-          border: 1px solid rgba(0,0,0,.08);
-        }
-
-        .gallery-section {
-          height: 100vh;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .gallery-track {
-          display: flex;
-          gap: 2rem;
-          width: max-content;
-          padding: 0 8%;
-          height: 100%;
-          align-items: center;
-        }
-
-        .gallery-item {
-          width: 600px;
-          height: 800px;
-          position: relative;
-          flex-shrink: 0;
-        }
-
-        .cta {
-          text-align: center;
-          padding: 10rem 2rem;
-        }
-
-        .cta a {
-          display: inline-block;
-          margin-top: 2rem;
-          background: #cc0000;
-          color: white;
-          padding: 1rem 2rem;
-          text-decoration: none;
-        }
-
-        @media (max-width: 1024px) {
-          .story,
-          .showcase {
-            grid-template-columns: 1fr;
-          }
-
-          .features {
-            grid-template-columns: 1fr;
-          }
-
-          .gallery-item {
-            width: 80vw;
-            height: 60vh;
-          }
-        }
-      `}</style>
-    </main>
+      </main>
+    </>
   );
 }

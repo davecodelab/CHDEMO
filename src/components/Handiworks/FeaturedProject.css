@@ -1,0 +1,124 @@
+.featured-projects {
+  position: relative;
+  width: 100vw;
+  /*CraftHive DARK BASE */
+  background-color: #000;
+  color: #ffffff;
+   padding: 1rem; 
+}
+
+/* CARD WRAPPER */
+.featured-projects .featured-project-card {
+  position: sticky;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* MAIN CARD */
+.featured-projects .featured-project-card-inner {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 2rem);
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 2rem;
+  /* ⚫ dark elevated surface */
+  background-color: #111111;
+
+  border: 1px solid rgba(255, 0, 0, 0.08);
+  transform-origin: 50% 100%;
+  will-change: transform;
+  overflow: hidden;
+}
+
+/* LEFT CONTENT */
+.featured-projects .featured-project-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* MAIN TEXT AREA */
+.featured-projects .featured-project-card-content-main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* INFO TEXT (muted) */
+.featured-projects .featured-project-card-info {
+  width: 40%;
+  padding: 2rem;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* TITLE */
+.featured-projects .featured-project-card-title h2 {
+  padding: 2rem 0 1rem 0;
+
+  color: #ffffff;
+}
+
+/* DESCRIPTION */
+.featured-projects .featured-project-card-description {
+  width: 75%;
+  text-align: left;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* IMAGE */
+.featured-projects .featured-project-card-img {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 1.5rem;
+  overflow: hidden;
+
+  /* subtle brand glow */
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.08);
+}
+
+/* OVERLAY (used by GSAP) */
+.featured-projects .featured-project-card-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #000000;
+  opacity: var(--after-opacity, 0);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 🔥 MOBILE */
+@media (max-width: 1000px) {
+  .featured-projects .featured-project-card-inner {
+    flex-direction: column;
+  }
+
+  .featured-projects .featured-project-card-info {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .featured-projects .featured-project-card-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .featured-projects .featured-project-card-description {
+    display: none;
+  }
+}
