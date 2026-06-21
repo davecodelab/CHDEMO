@@ -531,189 +531,92 @@
 }
 .cf-sec-label::before { content: ''; display: block; width: 18px; height: 1.5px; background: var(--red); }
 
-/* ── Curatorial Catalog Spread Redesign ── */
+/* ── Curatorial Catalog Spread Redesign: Asymmetrical Editorial Canvas ── */
 .cf-catalog-spread {
   position: relative;
   width: 100%;
-  padding: 10rem 4rem;
-  background-color: #F8F6F2; /* Cream-warm gallery white */
-  overflow: hidden;
+  padding: 10rem 4rem 14rem 4rem;
+  background-color: #F5F3EF; /* Tactile cream gallery canvas */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 12rem;
 }
 
-/* Redesign intro header */
+/* Redesigned intro header: Left-aligned, editorial sheet look */
 .cf-spread-header {
-  max-width: 800px;
-  margin: 0 auto 4rem auto;
-  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto 6rem auto;
+  border-bottom: 1px solid rgba(14, 14, 12, 0.08);
+  padding-bottom: 3rem;
   position: relative;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .cf-spread-subtitle {
   font-family: monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #c31b07;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .cf-spread-title {
   font-family: var(--fd);
-  font-size: 3.5rem;
-  font-weight: 500;
+  font-size: 4rem;
+  font-weight: 400;
   color: var(--black);
   margin: 0 0 1.5rem 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .cf-spread-desc {
-  font-family: var(--fd);
-  font-size: 1.15rem;
-  line-height: 1.65;
-  color: #6e6d68;
+  font-family: var(--fb);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #555552;
   margin: 0;
+  max-width: 600px;
   font-weight: 300;
 }
 
-/* Spread Section layout */
-.cf-spread-section {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8rem;
+/* Staggered grid exhibition canvas */
+.cf-exhibition-canvas {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 7rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  z-index: 2;
-}
-
-.cf-spread-section.section-archival {
-  flex-direction: row-reverse; /* Text left, Image right */
-}
-
-.cf-spread-section.section-workshop {
-  flex-direction: row; /* Image left, Text right */
-}
-
-/* Elegant Showcase Placard */
-.cf-gallery-placard {
-  flex: 1;
-  max-width: 460px;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-}
-
-.cf-placard-tag {
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: #c31b07;
-  letter-spacing: 0.15em;
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.cf-placard-title {
-  font-family: var(--fd);
-  font-size: 2.2rem;
-  font-weight: 500;
-  line-height: 1.25;
-  color: var(--black);
-  margin: 0 0 0.5rem 0;
-  letter-spacing: -0.01em;
-}
-
-.cf-placard-subtitle {
-  font-family: var(--fd);
-  font-size: 1rem;
-  font-style: italic;
-  font-weight: 400;
-  color: #8c8b86;
-  margin-bottom: 1.5rem;
-  display: block;
-}
-
-.cf-placard-body {
-  font-family: var(--fd);
-  font-size: 0.98rem;
-  line-height: 1.75;
-  color: #555552;
-  margin: 0 0 2rem 0;
-  font-weight: 300;
-}
-
-/* Specs list styling */
-.cf-placard-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  padding-top: 1.5rem;
-}
-
-.cf-spec-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cf-spec-item:hover, .cf-spec-item.active {
-  background-color: rgba(195, 27, 7, 0.04);
-}
-
-.cf-spec-label {
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: #8c8b86;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cf-spec-label::before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: #c31b07;
-  opacity: 0.5;
-}
-
-.cf-spec-item:hover .cf-spec-label::before,
-.cf-spec-item.active .cf-spec-label::before {
-  opacity: 1;
-}
-
-.cf-spec-value {
-  font-family: var(--fd);
-  font-size: 0.85rem;
-  color: var(--black);
-  font-weight: 500;
-}
-
-/* Redesigned Gallery Frame Container */
-.cf-gallery-frame-container {
-  flex: 1.2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: start;
   position: relative;
 }
 
-.cf-gallery-frame-wrapper {
+/* Staggered offset for columns */
+.cf-exhibition-col.col-left {
+  position: relative;
+}
+
+.cf-exhibition-col.col-right {
+  position: relative;
+  margin-top: 140px; /* Offset to create asymmetrical alignment */
+}
+
+/* Individual Showcase Item */
+.cf-exhibition-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.cf-exhibition-frame-wrapper {
   position: relative;
   width: 100%;
   max-width: 480px;
@@ -723,58 +626,42 @@
   box-sizing: border-box;
 }
 
-/* Realistic moulding borders */
+/* Wood frame mouldings */
 .frame-walnut-shadowbox-new {
-  border: 22px solid #29211c;
+  border: 24px solid #29211c;
   box-shadow: 
-    0 40px 80px rgba(0, 0, 0, 0.15),
-    0 15px 30px rgba(0, 0, 0, 0.08),
-    inset 0 0 10px rgba(0, 0, 0, 0.6);
+    0 40px 80px rgba(0, 0, 0, 0.12),
+    0 15px 30px rgba(0, 0, 0, 0.06),
+    inset 0 0 10px rgba(0, 0, 0, 0.65);
   outline: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .frame-white-oak-mitered-new {
   border: 18px solid #E3DFD5;
   box-shadow: 
-    0 35px 70px rgba(0, 0, 0, 0.12),
-    0 12px 25px rgba(0, 0, 0, 0.06),
+    0 35px 70px rgba(0, 0, 0, 0.1),
+    0 12px 25px rgba(0, 0, 0, 0.05),
     inset 0 0 6px rgba(0, 0, 0, 0.15);
   outline: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.cf-gallery-frame-wrapper:hover {
-  transform: translateY(-8px) scale(1.015);
-}
-
-.frame-walnut-shadowbox-new:hover {
+.cf-exhibition-frame-wrapper:hover {
+  transform: translateY(-4px);
   box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.2),
-    0 20px 45px rgba(0, 0, 0, 0.12),
-    inset 0 0 10px rgba(0, 0, 0, 0.6);
+    0 45px 90px rgba(0, 0, 0, 0.15),
+    0 18px 35px rgba(0, 0, 0, 0.08);
 }
 
-.frame-white-oak-mitered-new:hover {
-  box-shadow: 
-    0 45px 90px rgba(0, 0, 0, 0.16),
-    0 18px 35px rgba(0, 0, 0, 0.08),
-    inset 0 0 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Matboard layering & shadowbox depth */
+/* Bevel & matboard details */
 .cf-frame-mat-new {
   width: 100%;
   height: 100%;
-  padding: 3rem; /* Generous matboard border */
-  background-color: #F7F5F0; /* Soft off-white matboard */
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.06);
+  padding: 3rem; /* Generous mat border */
+  background-color: #F7F5F0;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
   display: flex;
   box-sizing: border-box;
   position: relative;
-  transition: background-color 0.4s ease;
-}
-
-.cf-frame-mat-new.highlighted {
-  background-color: #EFECE6;
 }
 
 .cf-frame-inner-new {
@@ -784,16 +671,11 @@
   box-shadow: 
     inset 2px 2px 5px rgba(0,0,0,0.15),
     inset -2px -2px 5px rgba(255,255,255,0.7),
-    0 0 0 2px #E1DDD3; /* Mitered cut bevel edge */
+    0 0 0 2px #E1DDD3;
   background-color: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.cf-frame-inner-new.highlighted {
-  outline: 2px solid #c31b07;
-  outline-offset: 2px;
 }
 
 .cf-frame-inner-new img {
@@ -809,7 +691,7 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.15) 0%,
     rgba(255, 255, 255, 0.03) 40%,
     rgba(255, 255, 255, 0.0) 60%,
     rgba(255, 255, 255, 0.05) 100%
@@ -820,91 +702,191 @@
   transition: opacity 0.3s ease;
 }
 
-.cf-frame-glaze-new.highlighted {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.05) 40%,
-    rgba(255, 255, 255, 0.0) 60%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-}
-
-/* Interactive Technical Overlay Labels on Frame */
-.cf-tech-pointer {
+/* Architectural Leader Line System */
+.cf-leader-line-container {
   position: absolute;
-  background-color: #c31b07;
-  color: #fff;
-  font-family: monospace;
-  font-size: 0.65rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 2px;
-  z-index: 10;
+  inset: -10px;
   pointer-events: none;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  letter-spacing: 0.05em;
+  z-index: 10;
 }
 
-.cf-tech-pointer.active {
-  opacity: 1;
-  transform: scale(1);
+.cf-leader-line {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  pointer-events: none;
 }
 
-.pointer-moulding {
-  top: 10px;
-  left: 10px;
+.cf-leader-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #c31b07; /* crimson architectural red */
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(195, 27, 7, 0.15);
 }
 
-.pointer-matting {
-  top: 45px;
-  left: 45px;
+.cf-leader-path {
+  height: 1px;
+  background-color: rgba(195, 27, 7, 0.3);
 }
 
-.pointer-glazing {
-  bottom: 20px;
-  right: 20px;
+.cf-leader-label {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #c31b07;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  background-color: #F5F3EF; /* Match canvas bg */
+  padding: 0 6px;
 }
 
-/* Responsive Curatorial Catalog Spread Redesign */
+/* Specific Line Positions & Widths */
+/* Study 01 Walnut pointers */
+.line-walnut-moulding {
+  left: 20px;
+  top: 30%;
+  width: 140px;
+  transform: translateX(-140px);
+  flex-direction: row-reverse;
+}
+.line-walnut-moulding .cf-leader-path { width: 40px; }
+
+.line-walnut-matting {
+  right: 52px;
+  top: 48%;
+  width: 160px;
+}
+.line-walnut-matting .cf-leader-path { width: 50px; }
+
+.line-walnut-glazing {
+  left: 65px;
+  bottom: 25%;
+  width: 150px;
+  transform: translateX(-150px);
+  flex-direction: row-reverse;
+}
+.line-walnut-glazing .cf-leader-path { width: 60px; }
+
+/* Study 02 White Oak pointers */
+.line-oak-moulding {
+  right: 18px;
+  top: 25%;
+  width: 150px;
+}
+.line-oak-moulding .cf-leader-path { width: 40px; }
+
+.line-oak-joinery {
+  left: 18px;
+  top: 15px; /* Top corner */
+  width: 170px;
+  transform: translateX(-170px);
+  flex-direction: row-reverse;
+}
+.line-oak-joinery .cf-leader-path { width: 50px; }
+
+.line-oak-glazing {
+  right: 60px;
+  bottom: 30%;
+  width: 150px;
+}
+.line-oak-glazing .cf-leader-path { width: 60px; }
+
+
+/* Editorial Copy Block Layout */
+.cf-editorial-text {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cf-editorial-tag {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #8c8b86;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.cf-editorial-title {
+  font-family: var(--fd);
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--black);
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.cf-editorial-body {
+  font-family: var(--fb);
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: #555552;
+  margin: 0 0 1.5rem 0;
+  font-weight: 300;
+}
+
+.cf-editorial-quote {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #8c8b86;
+  border-left: 2px solid rgba(195, 27, 7, 0.2);
+  padding-left: 1.25rem;
+  margin: 0 0 2rem 0;
+}
+
+
+/* Responsive Styles */
 @media (max-width: 1024px) {
   .cf-catalog-spread {
-    padding: 8rem 2rem;
-    gap: 8rem;
+    padding: 8rem 2.5rem;
   }
 
   .cf-spread-title {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
   }
 
-  .cf-spread-section {
-    flex-direction: column !important;
-    gap: 4rem;
+  .cf-exhibition-canvas {
+    grid-template-columns: 1fr;
+    gap: 8rem;
   }
 
-  .cf-gallery-frame-container {
-    width: 100%;
+  .cf-exhibition-col.col-right {
+    margin-top: 0; /* Align columns */
   }
 
-  .cf-gallery-placard {
+  .cf-exhibition-item {
+    align-items: center;
+  }
+
+  .cf-editorial-text {
     max-width: 100%;
     width: 100%;
+  }
+
+  /* Adjust leader lines on tablet/mobile so they don't clip */
+  .cf-leader-line-container {
+    display: none; /* Hide leader lines on mobile to avoid overflow and clipping */
   }
 }
 
 @media (max-width: 640px) {
   .cf-catalog-spread {
     padding: 6rem 1.25rem;
-    gap: 6rem;
   }
 
   .cf-spread-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
-  .cf-gallery-frame-wrapper {
+  .cf-exhibition-frame-wrapper {
     max-width: 100%;
   }
 

@@ -214,18 +214,12 @@ const GalleryFrame = ({
   src,
   alt,
   frameClass,
-  hoveredSpec,
-  labels,
+  children,
 }: {
   src: string;
   alt: string;
   frameClass: string;
-  hoveredSpec: "moulding" | "matboard" | "glazing" | null;
-  labels: {
-    moulding: string;
-    matboard: string;
-    glazing: string;
-  };
+  children?: React.ReactNode;
 }) => {
   const frameRef = useRef<HTMLDivElement>(null);
   const glazeRef = useRef<HTMLDivElement>(null);
@@ -240,8 +234,8 @@ const GalleryFrame = ({
     const dy = e.clientY - fy;
 
     // Organic offset movement
-    const moveX = (dx / rect.width) * 12;
-    const moveY = (dy / rect.height) * 12;
+    const moveX = (dx / rect.width) * 10;
+    const moveY = (dy / rect.height) * 10;
 
     gsap.to(frame, {
       x: moveX,
@@ -283,30 +277,18 @@ const GalleryFrame = ({
   };
 
   return (
-    <div className="cf-gallery-frame-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <div className="cf-exhibition-frame-wrapper" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+      {children}
       <div
         ref={frameRef}
-        className={`cf-gallery-frame-wrapper ${frameClass}`}
+        className={`cf-frame-mat-new ${frameClass}`}
       >
-        {/* Interactive Pointer Overlays */}
-        <div className={`cf-tech-pointer pointer-moulding ${hoveredSpec === "moulding" ? "active" : ""}`}>
-          {labels.moulding}
-        </div>
-        <div className={`cf-tech-pointer pointer-matting ${hoveredSpec === "matboard" ? "active" : ""}`}>
-          {labels.matboard}
-        </div>
-        <div className={`cf-tech-pointer pointer-glazing ${hoveredSpec === "glazing" ? "active" : ""}`}>
-          {labels.glazing}
-        </div>
-
-        <div className={`cf-frame-mat-new ${hoveredSpec === "matboard" ? "highlighted" : ""}`}>
-          <div className="cf-frame-inner-new">
-            <div
-              ref={glazeRef}
-              className={`cf-frame-glaze-new ${hoveredSpec === "glazing" ? "highlighted" : ""}`}
-            />
-            <img src={src} alt={alt} />
-          </div>
+        <div className="cf-frame-inner-new">
+          <div
+            ref={glazeRef}
+            className="cf-frame-glaze-new"
+          />
+          <img src={src} alt={alt} />
         </div>
       </div>
     </div>
@@ -314,119 +296,97 @@ const GalleryFrame = ({
 };
 
 const CuratorialSpread = () => {
-  const [hoveredSpec1, setHoveredSpec1] = useState<"moulding" | "matboard" | "glazing" | null>(null);
-  const [hoveredSpec2, setHoveredSpec2] = useState<"moulding" | "matboard" | "glazing" | null>(null);
-
-  const study1Labels = {
-    moulding: "[01] ROASTED WALNUT MOULDING",
-    matboard: "[02] 100% COTTON RAG MATBOARD",
-    glazing: "[03] UV-FILTERING MUSEUM GLAZING",
-  };
-
-  const study2Labels = {
-    moulding: "[01] MITERED WHITE OAK",
-    matboard: "[02] MAPLE MITER SPLINES",
-    glazing: "[03] RAW DANISH OIL FINISH",
-  };
-
   return (
     <section className="cf-catalog-spread">
       {/* Redesigned Intro Header */}
       <div className="cf-spread-header">
-        <span className="cf-spread-subtitle">Curator's Exhibition</span>
-        <h2 className="cf-spread-title">The Art of Archival Presentation</h2>
+        <span className="cf-spread-subtitle">Curator's Journal</span>
+        <h2 className="cf-spread-title">The Architecture of Display</h2>
         <p className="cf-spread-desc">
-          A deep dive into conservation science and traditional joinery. Each frame is a custom response to the artwork it protects.
+          An editorial examination of archival science and traditional woodworking joinery.
         </p>
       </div>
 
-      {/* Study 01 // Conservation */}
-      <div className="cf-spread-section section-archival">
-        <GalleryFrame
-          src={curatorialArchival.src}
-          alt="Archival shadow box display"
-          frameClass="frame-walnut-shadowbox-new"
-          hoveredSpec={hoveredSpec1}
-          labels={study1Labels}
-        />
+      {/* Staggered grid exhibition canvas */}
+      <div className="cf-exhibition-canvas">
+        {/* Left Column: Study 01 */}
+        <div className="cf-exhibition-col col-left">
+          <div className="cf-exhibition-item">
+            <GalleryFrame
+              src={curatorialArchival.src}
+              alt="Archival shadow box display"
+              frameClass="frame-walnut-shadowbox-new"
+            >
+              {/* Architectural Technical Lines */}
+              <div className="cf-leader-line-container">
+                <div className="cf-leader-line line-walnut-moulding">
+                  <div className="cf-leader-dot" />
+                  <div className="cf-leader-path" />
+                  <span className="cf-leader-label">2.0" Roasted Walnut</span>
+                </div>
+                <div className="cf-leader-line line-walnut-matting">
+                  <div className="cf-leader-dot" />
+                  <div className="cf-leader-path" />
+                  <span className="cf-leader-label">Beveled Silk Matboard</span>
+                </div>
+                <div className="cf-leader-line line-walnut-glazing">
+                  <div className="cf-leader-dot" />
+                  <div className="cf-leader-path" />
+                  <span className="cf-leader-label">Museum Glass (UV 99%)</span>
+                </div>
+              </div>
+            </GalleryFrame>
 
-        <div className="cf-gallery-placard">
-          <span className="cf-placard-tag">[ STUDY 01 // CONSERVATION ]</span>
-          <h3 className="cf-placard-title">PRESERVING STORIES THAT SHAPE US</h3>
-          <span className="cf-placard-subtitle">Acid-Free Cotton Matting & Glaze Protection</span>
-          <p className="cf-placard-body">
-            Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved.
-          </p>
-          <div className="cf-placard-specs">
-            <div
-              className={`cf-spec-item ${hoveredSpec1 === "moulding" ? "active" : ""}`}
-              onMouseEnter={() => setHoveredSpec1("moulding")}
-              onMouseLeave={() => setHoveredSpec1(null)}
-            >
-              <span className="cf-spec-label">MOULDING Spec</span>
-              <span className="cf-spec-value">Roasted Walnut timber</span>
-            </div>
-            <div
-              className={`cf-spec-item ${hoveredSpec1 === "matboard" ? "active" : ""}`}
-              onMouseEnter={() => setHoveredSpec1("matboard")}
-              onMouseLeave={() => setHoveredSpec1(null)}
-            >
-              <span className="cf-spec-label">MAT Spec</span>
-              <span className="cf-spec-value">100% Acid-Free Cotton Rag</span>
-            </div>
-            <div
-              className={`cf-spec-item ${hoveredSpec1 === "glazing" ? "active" : ""}`}
-              onMouseEnter={() => setHoveredSpec1("glazing")}
-              onMouseLeave={() => setHoveredSpec1(null)}
-            >
-              <span className="cf-spec-label">GLAZING Spec</span>
-              <span className="cf-spec-value">Museum Glare-Free (99% UV)</span>
+            <div className="cf-editorial-text">
+              <span className="cf-editorial-tag">Study 01 // Conservation</span>
+              <h3 className="cf-editorial-title">Preserving Stories That Shape Us</h3>
+              <p className="cf-editorial-body">
+                Custom framing is a vow of preservation. We use acid-free cotton mats to prevent paper discoloration, reversible mounting techniques that protect delicate fibers, and 99% UV-filtering museum glass to shield your memories from light and time. Your history remains untouched, pristine, and preserved.
+              </p>
+              <blockquote className="cf-editorial-quote">
+                "A shadowbox is more than a frame; it is a microclimate of remembrance."
+              </blockquote>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Study 02 // Joinery */}
-      <div className="cf-spread-section section-workshop">
-        <GalleryFrame
-          src={curatorialWorkshop.src}
-          alt="Miter joint timber frame"
-          frameClass="frame-white-oak-mitered-new"
-          hoveredSpec={hoveredSpec2}
-          labels={study2Labels}
-        />
+        {/* Right Column: Study 02 */}
+        <div className="cf-exhibition-col col-right">
+          <div className="cf-exhibition-item">
+            <GalleryFrame
+              src={curatorialWorkshop.src}
+              alt="Miter joint timber frame"
+              frameClass="frame-white-oak-mitered-new"
+            >
+              {/* Architectural Technical Lines */}
+              <div className="cf-leader-line-container">
+                <div className="cf-leader-line line-oak-moulding">
+                  <div className="cf-leader-dot" />
+                  <div className="cf-leader-path" />
+                  <span className="cf-leader-label">Solid White Oak</span>
+                </div>
+                <div className="cf-leader-line line-oak-joinery">
+                  <div className="cf-leader-dot" />
+                  <div className="cf-leader-path" />
+                  <span className="cf-leader-label">Miter Joint & Maple Spline</span>
+                </div>
+                <div className="cf-leader-line line-oak-glazing">
+                  <div className="cf-leader-dot" />
+                  <div className="cf-leader-path" />
+                  <span className="cf-leader-label">Danish Oil Finish</span>
+                </div>
+              </div>
+            </GalleryFrame>
 
-        <div className="cf-gallery-placard">
-          <span className="cf-placard-tag">[ STUDY 02 // MITER JOINERY ]</span>
-          <h3 className="cf-placard-title">THE ARCHITECTURE OF SOLID TIMBER</h3>
-          <span className="cf-placard-subtitle">Traditional Splined Corners & Natural Hardwood</span>
-          <p className="cf-placard-body">
-            We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents wrapping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision.
-          </p>
-          <div className="cf-placard-specs">
-            <div
-              className={`cf-spec-item ${hoveredSpec2 === "moulding" ? "active" : ""}`}
-              onMouseEnter={() => setHoveredSpec2("moulding")}
-              onMouseLeave={() => setHoveredSpec2(null)}
-            >
-              <span className="cf-spec-label">TIMBER Spec</span>
-              <span className="cf-spec-value">Hand-Selected White Oak</span>
-            </div>
-            <div
-              className={`cf-spec-item ${hoveredSpec2 === "matboard" ? "active" : ""}`}
-              onMouseEnter={() => setHoveredSpec2("matboard")}
-              onMouseLeave={() => setHoveredSpec2(null)}
-            >
-              <span className="cf-spec-label">JOINERY Spec</span>
-              <span className="cf-spec-value">Maple Corner Splines</span>
-            </div>
-            <div
-              className={`cf-spec-item ${hoveredSpec2 === "glazing" ? "active" : ""}`}
-              onMouseEnter={() => setHoveredSpec2("glazing")}
-              onMouseLeave={() => setHoveredSpec2(null)}
-            >
-              <span className="cf-spec-label">FINISH Spec</span>
-              <span className="cf-spec-value">Danish Oil & Beeswax Rub</span>
+            <div className="cf-editorial-text">
+              <span className="cf-editorial-tag">Study 02 // Joinery</span>
+              <h3 className="cf-editorial-title">The Honesty of Solid Timber</h3>
+              <p className="cf-editorial-body">
+                We build frames using honest, solid hardwoods — grown by nature and hand-shaped in our workshop. Each corner is joined with hidden maple splines, a centuries-old wood joinery technique that prevents wrapping and ensures structural integrity. No plastic, no composites, just pure timber and mitered precision.
+              </p>
+              <blockquote className="cf-editorial-quote">
+                "Maple splines run perpendicular to the miter joint, locking the timber fibers into a permanent union."
+              </blockquote>
             </div>
           </div>
         </div>
