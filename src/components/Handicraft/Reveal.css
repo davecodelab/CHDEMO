@@ -33,7 +33,7 @@ img {
   width: 100%;
   padding: 2rem;
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .copy-block {
@@ -120,6 +120,7 @@ img {
   top: 12rem;
   right: 2rem;
 }
+
 }
 
 /* Tablet */
@@ -150,8 +151,5 @@ img {
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
 
-}
 
