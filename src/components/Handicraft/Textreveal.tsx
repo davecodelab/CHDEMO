@@ -269,7 +269,7 @@ export default function TextReveal() {
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/gallery-4.png" alt="" />
+              <img src="/handicrafts/gallery-4.jpg" alt="" />
             </div>
 
             <div className="marquee-item">
@@ -281,11 +281,11 @@ export default function TextReveal() {
             </div>
 
             <div className="marquee-item">
-              <img src="/photography/gallery-4.jpg" alt="" />
+              <img src="/handicrafts/pensa.jpg" alt="" />
             </div>
 
             <div className="marquee-item">
-              <img src="/handicrafts/bags.jpg" alt="" />
+              <img src="/handicrafts/nyanks.jpg" alt="" />
             </div>
           </div>
         </div>

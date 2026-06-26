@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import ClientLayout from "@/client-layout";
 import { ViewTransitions } from "next-view-transitions";
 
@@ -9,9 +9,9 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
-const outfit = Outfit({ 
+const manrope = Manrope({ 
   subsets: ["latin"],
-  variable: "--font-outfit"
+  variable: "--font-manrope"
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="grain" data-scroll-behavior="smooth">
-      <body className={`${outfit.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className={`${manrope.variable} ${inter.variable}`} suppressHydrationWarning>
         <ViewTransitions>
           <ClientLayout>{children}</ClientLayout>
         </ViewTransitions>

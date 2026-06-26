@@ -63,8 +63,8 @@ export default function Contact() {
           transition={{ duration: 0.9 }}
           className="text-center mb-10 md:mb-14"
         >
-          <p className="text-[#cd1d0b] font-body text-sm tracking-[0.25em] pt-3 uppercase mt-4 mb-3">Contact</p>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#fff] leading-[0.95]">
+          <p className="text-[#cd1d0b] text-sm tracking-[0.25em] pt-3 uppercase mt-4 mb-3">Contact</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#fff] leading-[0.95]">
             Start with an artwork.
             <br />
             <em>Leave with a statement.</em>
@@ -80,8 +80,8 @@ export default function Contact() {
             className="space-y-6"
           >
             <div>
-              <h3 className="font-serif text-2xl text-[#ce1a06] mb-4">Visit Us</h3>
-              <p className="font-body text-[#cdcec6] leading-relaxed">
+              <h3 className="text-2xl text-[#ce1a06] mb-4">Visit Us</h3>
+              <p className="text-[#cdcec6] leading-relaxed">
                 Feel free to walk in during our working hours
               </p>
             </div>
@@ -109,17 +109,17 @@ export default function Contact() {
                   <item.icon size={16} className="text-[#c31b07]" />
                 </div>
                 <div>
-                  <p className="font-body text-ivory-dim/50 text-xs tracking-widest uppercase mb-0.5">{item.label}</p>
+                  <p className=" text-ivory-dim/50 text-xs tracking-widest uppercase mb-0.5">{item.label}</p>
                   <Link
                    href={item.href}
-                   className="font-body text-ivory text-sm">{item.value}</Link>
+                   className=" text-ivory text-sm">{item.value}</Link>
                 </div>
               </div>
             ))}
 
             <div className="pt-4 border-t border-white/[0.07]">
-              <p className="font-body text-ivory-dim/40 text-xs tracking-widest uppercase mb-4">Studio Hours</p>
-              <div className="space-y-2 font-body text-sm text-ivory-dim">
+              <p className=" text-ivory-dim/40 text-xs tracking-widest uppercase mb-4">Studio Hours</p>
+              <div className="space-y-2 text-sm text-ivory-dim">
                 <p>Mon – Fri &nbsp;&nbsp;8:00am – 5:00pm</p>
                 <p>Saturday &nbsp;10:00am – 3:00pm</p>
                 <p className="text-ivory-dim/40">Sunday — Closed</p>
@@ -136,7 +136,7 @@ export default function Contact() {
             className="bg-white/[0.03] border border-white/[0.07] rounded-3xl p-8"
             encType="multipart/form-data"
           >
-            <h3 className="font-serif text-2xl text-[#cd1d0b] mb-5">
+            <h3 className="text-2xl text-[#cd1d0b] mb-5">
               Send an Enquiry
             </h3>
 
@@ -144,14 +144,14 @@ export default function Contact() {
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center gap-3">
                 <CheckCircle size={20} className="text-green-500 shrink-0" />
-                <p className="font-body text-green-500 text-sm">{statusMessage}</p>
+                <p className=" text-green-500 text-sm">{statusMessage}</p>
               </div>
             )}
 
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center gap-3">
                 <XCircle size={20} className="text-red-500 shrink-0" />
-                <p className="font-body text-red-500 text-sm">{statusMessage}</p>
+                <p className=" text-red-500 text-sm">{statusMessage}</p>
               </div>
             )}
 
@@ -165,7 +165,7 @@ export default function Contact() {
                 name="name"
                 required
                 disabled={isSubmitting}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40 transition-colors disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40 transition-colors disabled:opacity-50"
                 placeholder="Full Name *"
               />
 
@@ -178,7 +178,7 @@ export default function Contact() {
                 name="phone"
                 required
                 disabled={isSubmitting}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors disabled:opacity-50"
                 placeholder="Phone Number *"
               />
 
@@ -191,12 +191,12 @@ export default function Contact() {
                 name="email"
                 required
                 disabled={isSubmitting}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors disabled:opacity-50"
                 placeholder="Email Address *"
               />
 
               <div>
-                <label htmlFor="attachment" className="font-body text-ivory-dim/50 text-xs tracking-widest uppercase mb-2 block">
+                <label htmlFor="attachment" className="text-ivory-dim/50 text-xs tracking-widest uppercase mb-2 block">
                   Upload Artwork (Optional, max 5MB)
                 </label>
                 <input
@@ -205,7 +205,7 @@ export default function Contact() {
                   name="attachment"
                   accept="image/*,.pdf,.doc,.docx"
                   disabled={isSubmitting}
-                  className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 font-body text-ivory-dim text-sm focus:outline-none focus:border-[#c31b07]/40 transition-colors disabled:opacity-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#cd1d0b]/20 file:text-[#cd1d0b] hover:file:bg-[#cd1d0b]/30 cursor-pointer"
+                  className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-3 text-ivory-dim text-sm focus:outline-none focus:border-[#c31b07]/40 transition-colors disabled:opacity-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#cd1d0b]/20 file:text-[#cd1d0b] hover:file:bg-[#cd1d0b]/30 cursor-pointer"
                 />
               </div>
 
@@ -218,14 +218,14 @@ export default function Contact() {
                 required
                 disabled={isSubmitting}
                 rows={5}
-                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 font-body text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors min-h-[150px] resize-none disabled:opacity-50"
+                className="w-full bg-white/[0.04] border border-white/[0.09] rounded-2xl px-4 py-4 text-ivory text-sm placeholder:text-ivory-dim/30 focus:outline-none focus:border-[#c31b07]/40  transition-colors min-h-[150px] resize-none disabled:opacity-50"
                 placeholder="Tell us about your artwork, framing requirements, restoration project, or any enquiry you have... *"
               />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#c31b07]/90  text-white font-body text-sm tracking-widest uppercase font-semibold hover:bg-[#671b12] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#c31b07]/90  text-white text-sm tracking-widest uppercase font-semibold hover:bg-[#671b12] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -241,7 +241,7 @@ export default function Contact() {
               </button>
             </div>
 
-            <p className="font-body text-ivory-dim/30 text-xs text-center mt-4">
+            <p className=" text-ivory-dim/30 text-xs text-center mt-4">
               File uploads are optional (max 5MB). We typically respond within 24 hours.
             </p>
           </motion.form>

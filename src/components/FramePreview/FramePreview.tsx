@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ArrowRight, Ruler, Layers, ImageIcon } from "lucide-react";
 import html2canvas from "html2canvas";
 import "./FramePreview.css";
- import Animates from "@/components/Animates/Animate";
+;
 
 type SizePreset = "small" | "medium" | "large" | "custom";
 

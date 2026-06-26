@@ -13,7 +13,7 @@ type GalleryImage = {
   origin: "left" | "right";
 };
 
-const images: GalleryImage[] = Array.from({ length: 6 }, (_, i) => ({
+const images: GalleryImage[] = Array.from({ length: 8 }, (_, i) => ({
   src: `/photography/gallery-${i + 1}.jpg`,
   origin: i % 2 === 0 ? "left" : "right",
 }));
@@ -119,13 +119,13 @@ export default function Photography() {
     <section className="gallery">
       <div className="gallery-header-content">
         <div className="gallery-header">
-          <Copy animateOnScroll delay={0.25}>
+          <Copy>
             <h1>Collection</h1>
           </Copy>
         </div>
 
         <div className="gallery-header-copy">
-          <Copy animateOnScroll delay={0.25}>
+          <Copy>
             <p className="lg">
               From intricately crafted woodwork to one-of-a-kind artisan pieces, 
               every creation reflects dedication, skill,

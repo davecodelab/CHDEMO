@@ -11,28 +11,28 @@ const featuredProjectsContent: FeaturedProject[] = [
     title: "Custom Indoor Signs",
     description:
       "Precision-carved wooden and mixed-material signs designed for homes, studios, and businesses. Each piece blends typography and texture to create a warm, timeless identity within interior spaces.",
-    image: "/handicrafts/signage.jpg",
+    image: "/handicrafts/nyanks.jpg",
   },
   {
     info: "Meaningful handcrafted gifts tailored to every moment",
     title: "Personalized Gifts",
     description:
       "Custom engraved keepsakes crafted from wood and natural materials. Each piece is personalized for birthdays, weddings, anniversaries, and special milestones that deserve lasting memory.",
-    image: "/handicrafts/gifts.jpg",
+    image: "/handicrafts/afrik_2.jpg",
   },
   {
     info: "Rustic centerpiece furniture with natural craftsmanship",
     title: "Rustic Coffee Tables",
     description:
       "Solid wood coffee tables built with raw textures, organic edges, and artisanal finishing. Designed to bring warmth, grounding, and character into modern and traditional living spaces.",
-    image: "/handicrafts/table.png",
+    image: "/handicrafts/coffee.jpg",
   },
   {
     info: "Artisanal handcrafted bags with natural materials",
     title: "Handmade Wooden & Fabric Bags",
     description:
       "Unique handcrafted bags combining wood accents, leather, and woven materials. Designed for durability and style, each piece reflects a fusion of tradition and contemporary craft.",
-    image: "/handicrafts/bags.jpg",
+    image: "/handicrafts/afrik_5.jpg",
   },
 ];
 

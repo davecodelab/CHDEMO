@@ -42,7 +42,7 @@
 }
 
 .gallery .gallery-header-content .gallery-header-copy {
-  width: 50%;
+  width: 70%;
 } 
 
 /* MOBILE */
@@ -52,9 +52,13 @@
   .gallery .gallery-header-content .gallery-header-copy {
     width: 100%;
   }
+ 
+  .gallery-header h1{
+  padding-top: 2rem;
+}
 
   .gallery .gallery-header-content {
-    gap: 3rem;
+    gap: 2rem;
     padding: 0 1.5rem;
   }
   

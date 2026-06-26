@@ -5,6 +5,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import Image from 'next/image'
+import router from 'next/router';
+import "./ArtGallery.css"
+
+
 
 // If using images from /public
 const g1 = '/shadow/art_7.jpg';
@@ -94,6 +98,7 @@ const pieces: Piece[] = [
 ];
 
 export default function GalleryPage() {
+
   return (
     <SmoothScroll>
       <main className="bg-[#0a0a0a] text-white overflow-hidden">
@@ -202,6 +207,7 @@ function Gallery() {
   }, []);
 
   return (
+    <>
     <section
       id="gallery"
       ref={root}
@@ -211,12 +217,12 @@ function Gallery() {
 
       <div className="grid grid-cols-12 gap-y-10 mb-24">
         <div className="col-span-12 md:col-span-3">
-          <span className="text-[#c31b07] text-xs uppercase tracking-[0.3em]">
+          <span className="text-[#c31b07] text-sm uppercase tracking-[0.3em]">
              A Sneak Peek Into Our Shadow Box
           </span>
         </div>
 
-        <h2 className="section-title col-span-12 md:col-span-9 text-5xl md:text-8xl leading-[0.95]">
+        <h2 className="section-title col-span-12 md:col-span-9 text-4xl md:text-7xl leading-[0.95]">
           {'Six works. Six frames. One obsession with the edge.'
             .split(' ')
             .map((w, i) => (
@@ -251,26 +257,12 @@ function Gallery() {
   'col-span-12 md:col-span-7 md:col-start-4 md:mt-28 aspect-[16/10]',
 ];
 
-const rotations = [
-  '-rotate-1',
-  'rotate-1',
-  '-rotate-2',
-  'rotate-1',
-  '-rotate-1',
-  'rotate-2',
-  '-rotate-1',
-  'rotate-1',
-  '-rotate-2',
-  'rotate-1',
-];
-
 const layout = layouts[i];
-const rotation = rotations[i];
 
           return (
             <article
               key={p.index}
-              className={`piece group relative ${layout} ${rotation}`}
+              className={`piece group relative ${layout}`}
             >
               <div className="relative h-full w-full overflow-hidden bg-[#111]">
               <Image
@@ -285,21 +277,46 @@ const rotation = rotations[i];
    );
 })}
 </div>
-<div className="mt-24 md:mt-32 flex justify-center">
-  <a
-    href="/gallery"
-    className="group relative overflow-hidden rounded-full border border-white/15 px-10 py-5"
-  >
-    <span className="absolute inset-0 bg-[#c31b07] scale-y-0 origin-bottom transition-transform duration-500 group-hover:scale-y-100" />
+ </section>
 
-    <span className="relative z-10 flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-white">
-      Explore Gallery
-      <span className="transition-transform duration-500 group-hover:translate-x-1">
-        →
-      </span>
-    </span>
-  </a>
-</div>
-    </section>
+
+
+ {/* CTA section */}
+    <section className="cta reveal">
+  <div className="cta-content">
+    <span className="cta-tag">CRAFT HIVE</span>
+
+    <h2>
+      Bring Timeless
+      <br />
+      Craftsmanship Into
+      <br />
+      Your Space
+    </h2>
+
+    <p>
+      Discover shadow boxes, artisan creations, and bespoke pieces
+      designed to transform ordinary spaces into memorable experiences.
+    </p>
+
+    <div className="cta-actions">
+      <button 
+      className="cta-btn"
+      onClick={() => router.push("/gallery")}
+      >
+        Explore Collection
+      </button>
+
+    <button
+    className="cta-btn-outline"
+    onClick={() => router.push("/contact")}
+   >
+    Get In Touch
+  </button>
+    </div>
+  </div>
+  <div className="cta-glow"></div>
+</section>
+</>
   );
 }

@@ -76,7 +76,7 @@ export default function HandicraftsPage() {
     <Pictures />
    </section>
 
-<section className="cta reveal">
+<section className="cta">
   <div className="cta-content">
     <span className="cta-tag">CRAFT HIVE</span>
 

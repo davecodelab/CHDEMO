@@ -1,6 +1,9 @@
+
+
 import Footer from "@/components/ui/Footer";
 import "./shadow.css";
 import ArtGallery from "@/components/ArtGallery";
+
 
 const ArtBoxesPage = () => (
   <div className="page">
@@ -100,7 +103,7 @@ const ArtBoxesPage = () => (
 
     {/* ── Gallery ────────────────────────────────────────── */}
     <ArtGallery/>
-    {/* ── Footer strip ──────────────────────────────────── */}
+   
     <Footer />
   </div>
 );

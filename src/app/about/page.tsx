@@ -227,11 +227,12 @@ const StudioPage = () => {
       we always will.
     </p>
     </Animates>
-
+    <Copy>
     <blockquote>
       “Good craft doesn't cost the earth.
       It honours it.”
     </blockquote>
+     </Copy>
   </div>
 </section>
 
