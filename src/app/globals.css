@@ -36,6 +36,11 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .highlight {
   color: #c31b07;
   -webkit-font-smoothing: antialiased;
