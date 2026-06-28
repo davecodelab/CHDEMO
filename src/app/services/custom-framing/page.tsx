@@ -332,19 +332,22 @@ export default function CustomFramingPage() {
   }, []);
 
   return (
-    <div className="custom-framing-wrapper" ref={pageRef}>
-      <HeroImageBg />
-      <MadeForPieces />
-      <ImageGrid />
-      <FramingOriginText />
-      <CustomerPhotos />
-      <CategorySelector />
+    <>
+      <div className="custom-framing-wrapper" ref={pageRef}>
+        <HeroImageBg />
+        <MadeForPieces />
+        <ImageGrid />
+        <FramingOriginText />
+        <CustomerPhotos />
+        <CategorySelector />
 
-      <section id="preview" className="preview-tool">
-      <FramePreview />
-      </section>
-      <CTABanner />
+        <section id="preview" className="preview-tool">
+          <FramePreview />
+        </section>
+
+        <CTABanner />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
