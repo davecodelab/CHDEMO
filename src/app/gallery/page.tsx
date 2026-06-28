@@ -85,10 +85,9 @@ export default function Gallery() {
       </div>
 
       <div className="gallery-background-words">
-        <span className="gallery-word">CUSTOM FRAMING</span>
-        <span className="gallery-word">SHADOW BOXES</span>
-        <span className="gallery-word">LASER ENGRAVING</span>
-        <span className="gallery-word">HANDCRAFTED DECOR</span>
+        <span className="gallery-word">CRAFT</span>
+        <span className="gallery-word">HIVE</span>
+        <span className="gallery-word">GHANA</span>
       </div>
 
       <div className="floating-gallery">

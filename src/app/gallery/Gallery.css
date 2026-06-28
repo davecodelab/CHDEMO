@@ -65,7 +65,6 @@
 
 .floating-gallery {
   position: relative;
-
   min-height: 250vh;
 
   display: grid;

@@ -692,7 +692,7 @@ export default function CustomFramingPage() {
       <Process />
 
       <section id="preview" className="preview-tool">
-        <FramePreview />
+      <FramePreview />
       </section>
 
       <CTABanner />

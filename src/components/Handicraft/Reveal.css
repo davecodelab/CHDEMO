@@ -101,7 +101,7 @@ img {
 @media (max-width: 1000px) {
   .about-copy {
     margin-top: 4rem;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
     padding: 1.5rem;
     gap: 1.5rem;
     top: 20rem;
