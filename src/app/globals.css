@@ -8,6 +8,9 @@
   /* Unified Font System */
   --font-heading: var(--font-outfit);
   --font-body: var(--font-inter);
+  --font-display: var(--font-heading);
+  --fd: var(--font-heading);
+  --fb: var(--font-body);
 
   /* Color palette */
   --background: #07060A;

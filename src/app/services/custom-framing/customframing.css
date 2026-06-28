@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
-
 :root {
   --white:  #ffffff;
   --off:    #f7f6f4;
@@ -9,9 +7,9 @@
   --muted:  #6b6b68;
   --border: #e4e4e0;
   --nav-h:  62px;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --fd: var(--font-display);
-  --fb: var(--font-body), 'Inter', sans-serif;
+  --font-display: var(--font-heading);
+  --fd: var(--font-heading);
+  --fb: var(--font-body);
   --ease: cubic-bezier(.22,.68,0,1.2);
 }
 
