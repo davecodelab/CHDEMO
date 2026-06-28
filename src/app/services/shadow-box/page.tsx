@@ -12,7 +12,7 @@ const ArtBoxesPage = () => (
     <section className="ab-hero">
       <div className="ab-hero__copy">
         <div className="ab-hero__eyebrow"><span>Heritage · Craft · Art</span></div>
-        <h1>Art Boxes<br /><em>Stories Framed</em></h1>
+        <h1>Shadow Boxes<br /><em>Stories Framed</em></h1>
         <p>
           Discover unique mixed-media compositions that celebrate the rich
           cultural heritage of African artistry through sophisticated design.

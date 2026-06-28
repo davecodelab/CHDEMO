@@ -343,9 +343,7 @@ export default function CustomFramingPage() {
       <section id="preview" className="preview-tool">
       <FramePreview />
       </section>
-
       <CTABanner />
-
       <Footer />
     </div>
   );

@@ -4,20 +4,21 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Footer from "@/components/ui/Footer"
 
 import "./Gallery.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const artworks = [
-  "/gallery/art1.jpg",
-  "/gallery/art2.jpg",
-  "/gallery/art3.jpg",
-  "/gallery/art4.jpg",
-  "/gallery/art5.jpg",
-  "/gallery/art6.jpg",
-  "/gallery/art7.jpg",
-  "/gallery/art8.jpg",
+  "/gallery/art_1.jpg",
+  "/gallery/art-2.jpg",
+  "/gallery/art-3.jpg",
+  "/gallery/art-4.jpg",
+  "/gallery/art-5.jpg",
+  "/gallery/art-6.jpg",
+  "/gallery/art-7.jpg",
+  "/gallery/art-8.jpg",
 ];
 
 export default function Gallery() {
@@ -72,7 +73,8 @@ export default function Gallery() {
     });
   }, []);
 
-  return (
+  return(
+  <>
     <section ref={sectionRef} className="gallery-section">
       <div className="gallery-heading">
         <p>Curated Collection</p>
@@ -84,19 +86,15 @@ export default function Gallery() {
         </h2>
       </div>
 
-      <div className="gallery-background-words">
-        <span className="gallery-word">CRAFT</span>
-        <span className="gallery-word">HIVE</span>
-        <span className="gallery-word">GHANA</span>
-      </div>
-
       <div className="floating-gallery">
         {artworks.map((image, index) => (
           <GalleryCard key={index} image={image} />
         ))}
       </div>
     </section>
-  );
+    <Footer />
+  </>
+);
 }
 
 function GalleryCard({ image }: { image: string }) {
@@ -142,5 +140,6 @@ function GalleryCard({ image }: { image: string }) {
         />
       </div>
     </div>
+   
   );
 }

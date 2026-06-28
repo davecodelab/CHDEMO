@@ -294,45 +294,6 @@
   line-height: 1.65;
 }
 
-/* ── Preview tool ── */
-.preview-tool { padding: 6rem 3rem; border-top: 1px solid var(--border); background: var(--black); color: var(--white); }
-.preview-tool__head { text-align: center; margin-bottom: 3.5rem; }
-.preview-tool__head .cf-sec-label { justify-content: center; color: var(--red); }
-.preview-tool__head .cf-sec-label::before { background: var(--red); }
-.preview-tool__head h2 { font-family: var(--fd); font-size: clamp(1.75rem, 3vw, 3.5rem); font-weight: 700; margin-bottom: .75rem; }
-.preview-tool__head p { font-size: .95rem; color: rgba(255,255,255,.55); max-width: 480px; margin: 0 auto; line-height: 1.7; }
-.tool-layout { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; max-width: 1100px; margin: 0 auto; align-items: start; }
-.preview-canvas-wrap { display: flex; align-items: center; justify-content: center; min-height: 440px; background: rgba(255,255,255,.04); border-radius: 8px; border: 1px solid rgba(255,255,255,.08); position: relative; overflow: hidden; }
-.preview-canvas-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(227,34,28,.06) 0%, transparent 70%); }
-.frame-stage { position: relative; display: inline-flex; align-items: center; justify-content: center; transition: all .4s var(--ease); }
-.frame-mat { position: relative; display: flex; align-items: center; justify-content: center; transition: all .4s var(--ease); }
-.frame-inner { overflow: hidden; position: relative; transition: all .4s var(--ease); }
-.frame-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.preview-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; cursor: pointer; background: rgba(255,255,255,.06); border: 2px dashed rgba(255,255,255,.15); border-radius: 4px; transition: background .2s; text-align: center; padding: 1.5rem; width: 100%; height: 100%; }
-.preview-placeholder:hover { background: rgba(255,255,255,.1); }
-.preview-placeholder span { font-size: .78rem; color: rgba(255,255,255,.4); }
-.upload-hint { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); font-size: .72rem; color: rgba(255,255,255,.3); white-space: nowrap; }
-.tool-controls { display: flex; flex-direction: column; gap: 1.75rem; }
-.ctrl-group label { display: block; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: .75rem; }
-.frame-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
-.fswatch { aspect-ratio: 1; border-radius: 4px; cursor: pointer; border: 2px solid transparent; transition: border-color .2s, transform .2s; position: relative; overflow: hidden; }
-.fswatch:hover { transform: scale(1.06); }
-.fswatch.active { border-color: var(--red); }
-.fswatch span { position: absolute; bottom: 0; left: 0; right: 0; font-size: .6rem; text-align: center; padding: .2rem; background: rgba(0,0,0,.5); color: var(--white); }
-.mat-colors { display: flex; flex-wrap: wrap; gap: .5rem; }
-.mswatch { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color .2s, transform .2s; }
-.mswatch:hover { transform: scale(1.1); }
-.mswatch.active { border-color: var(--red); outline: 2px solid rgba(227,34,28,.3); outline-offset: 2px; }
-.size-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
-.size-pill { padding: .4rem .9rem; border-radius: 3px; border: 1px solid rgba(255,255,255,.15); font-size: .78rem; color: rgba(255,255,255,.6); cursor: pointer; transition: all .2s; background: transparent; font-family: var(--fb); }
-.size-pill:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
-.size-pill.active { background: var(--red); border-color: var(--red); color: var(--white); }
-.slider-row { display: flex; align-items: center; gap: 1rem; }
-.slider-row input[type=range] { flex: 1; -webkit-appearance: none; height: 3px; background: rgba(255,255,255,.15); border-radius: 2px; outline: none; }
-.slider-row input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--red); cursor: pointer; transition: transform .2s; }
-.slider-row input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.25); }
-.slider-val { font-size: .82rem; color: rgba(255,255,255,.6); min-width: 34px; text-align: right; }
-.tool-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
 
 /* ── Immersive CTA ── */
 .cf-cta-immersive {
@@ -455,17 +416,7 @@
   }
 }
 
-/* ── Footer ── */
-.footer { border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
-.footer-logo { font-family: var(--fd); font-size: 1.25rem; font-weight: 700; }
-.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-.footer-links a { font-size: .82rem; color: var(--muted); transition: color .2s; }
-.footer-links a:hover { color: var(--black); }
-.footer-socials { display: flex; gap: 1rem; align-items: center; }
-.footer-socials a { width: 32px; height: 32px; border-radius: 50%; background: var(--off); display: flex; align-items: center; justify-content: center; font-size: .78rem; transition: background .2s; }
-.footer-socials a:hover { background: var(--red); color: var(--white); }
-.footer-copy { width: 100%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-.footer-copy span, .footer-copy a { font-size: .75rem; color: var(--muted); }
+
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -476,7 +427,7 @@
 @media (max-width: 960px) {
   .tool-layout { grid-template-columns: 1fr; }
   .preview-canvas-wrap { min-height: 320px; }
-  .preview-tool { padding: 4rem 1.75rem; }
+  
 }
 @media (max-width: 768px) {
   .cf-materials-section {
@@ -500,8 +451,7 @@
   .cf-hero { padding-left: 1.25rem; padding-right: 1.25rem; }
   .work { padding: 4rem 1.25rem; }
   .carousel { padding: 0 1.25rem 1.5rem; }
-  .footer { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
-  .preview-tool { padding: 4rem 1.25rem; }
+  
 }
 .custom-framing-wrapper { background: var(--white); color: var(--black); font-family: var(--fb); overflow-x: hidden; }
 .custom-framing-wrapper img { display: block; max-width: 100%; }
