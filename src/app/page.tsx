@@ -4,16 +4,18 @@ import { useEffect, useRef } from "react";
 import "./home.css";
 import Button from "@/components/Button/Button";
 import Showreel from "@/components/Showreel/Showreel";
-import FeaturedWork from "@/components/FeaturedWork/FeaturedWork";
-import ClientReviews from "@/components/ClientReviews/ClientReviews";
-import BrandTicker from "@/components/BrandTicker/BrandTicker";
-import PrintAndFrame from "@/components/PrintAndFrame/PrintAndFrame";
-import BeautifullyFrame from "@/components/BeautifullyFrame/BeautifullyFrame";
-import CTACard from "@/components/CTACard/CTACard";
+import dynamic from "next/dynamic";
+
+const FeaturedWork = dynamic(() => import("@/components/FeaturedWork/FeaturedWork"));
+const ClientReviews = dynamic(() => import("@/components/ClientReviews/ClientReviews"));
+const BrandTicker = dynamic(() => import("@/components/BrandTicker/BrandTicker"));
+const PrintAndFrame = dynamic(() => import("@/components/PrintAndFrame/PrintAndFrame"));
+const BeautifullyFrame = dynamic(() => import("@/components/BeautifullyFrame/BeautifullyFrame"));
+const CTACard = dynamic(() => import("@/components/CTACard/CTACard"));
+const GalleryParallax = dynamic(() => import("@/components/GalleryParallax/GalleryParallax"));
 import Footer from "@/components/ui/Footer";
-import Copy from "@/components/Copy/Copy"
+import Copy from "@/components/Copy/Copy";
 import Animates from "@/components/Animates/Animate";
-import GalleryParallax from "@/components/GalleryParallax/GalleryParallax";
 import Preloader, { isInitialLoad } from "@/components/Preloader/Preloader";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
