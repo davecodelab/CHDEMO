@@ -19,7 +19,7 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 const HeroImageBg = () => (
   <section className="cf-hero-image-bg">
     <Image 
-      src="/services/cf-hero-new.png" 
+      src="/services/cf-hero.webp" 
       alt="CraftHive custom framing studio hero banner" 
       fill 
       priority
