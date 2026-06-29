@@ -901,7 +901,7 @@
 }
 
 .cf-category-card:hover .cf-category-title {
-  color: var(--primary, #333);
+  color: #c31b07;
 }
 
 @media (max-width: 1024px) {
