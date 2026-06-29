@@ -1,0 +1,169 @@
+
+
+.checkers {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  background: #0A0905;
+  isolation: isolate;
+}
+
+.checkers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(circle at 20% 15%,
+      rgba(200,169,126,.12),
+      transparent 35%),
+
+    radial-gradient(circle at 80% 40%,
+      rgba(74,63,53,.28),
+      transparent 45%),
+
+    radial-gradient(circle at 35% 90%,
+      rgba(200,169,126,.08),
+      transparent 40%);
+}
+
+.checkers::after{
+    content:"";
+    position:absolute;
+    inset:-30%;
+    pointer-events:none;
+    z-index:0;
+
+    background:
+      radial-gradient(circle,
+      rgba(200,169,126,.08) 0%,
+      transparent 65%);
+
+    filter:blur(120px);
+
+    animation:ambientFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat{
+    from{
+        transform:
+        translate(-6%,0)
+        scale(1);
+    }
+
+    to{
+        transform:
+        translate(6%,8%)
+        scale(1.2);
+    }
+
+}
+.checkers-grain{
+    position:absolute;
+    inset:-50%;
+    width:200%;
+    height:200%;
+
+    pointer-events:none;
+
+    opacity:.035;
+
+    mix-blend-mode:overlay;
+    z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain .4s steps(1) infinite;
+}
+
+@keyframes grain{
+
+0%{transform:translate(0,0);}
+25%{transform:translate(-2%,-3%);}
+50%{transform:translate(3%,1%);}
+75%{transform:translate(-1%,4%);}
+100%{transform:translate(2%,-2%);}
+
+}
+.checkers .checkers-header-content {
+  margin: 0 auto;
+  width: 65%;
+  height: 100%;
+  display: flex;
+  padding-top: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position:relative;
+  z-index:5;
+}
+
+.checkers .checkers-header {
+  width: 60%;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: #ffffff;
+}
+
+.checkers-header {
+  margin-top: 2rem;
+  font-family: Manrope;
+}
+
+.checkers-header-copy .lg {
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #c31b07;
+  font-family: inter;
+}
+
+.checkers .checkers-header-content .checkers-header-copy {
+  width: 80%;
+}
+
+/* MOBILE */
+@media (max-width: 1000px) {
+  .checkers .checkers-header,
+  .checkers .checkers-header-content,
+  .checkers .checkers-header-content .checkers-header-copy {
+    width: 100%;
+  }
+
+  .checkers-header h1 {
+    padding-top: 2rem;
+  }
+
+  .checkers .checkers-header-content {
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+}
+
+.row {
+  width: 100vw;
+  display: flex;
+}
+
+.col {
+  flex: 1;
+  aspect-ratio: 1;
+}
+
+.img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.img[data-origin="left"] {
+  transform-origin: 0% 0%;
+}
+
+.img[data-origin="right"] {
+  transform-origin: 100% 0%;
+}

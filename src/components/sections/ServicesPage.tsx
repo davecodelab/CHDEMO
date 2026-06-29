@@ -10,8 +10,8 @@ import Animates from "@/components/Animates/Animate";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heroBg = "/services/services.jpg";
-const heroExpand = "/services/second.jpg";
+const heroBg = "/services/service-hero.jpg";
+const heroExpand = "/services/service-hero.jpg";
 
 type Service = {
   number: string;
@@ -275,7 +275,26 @@ heroTl.fromTo(
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/40 via-background/30 to-background" />
+        {/* Dark overlay */}
+        {/* Cinematic Overlay */}
+<div
+  className="absolute inset-0 z-[1]"
+  style={{
+    background: `
+      radial-gradient(circle at center,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.45) 60%,
+        rgba(0,0,0,0.75) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.8)
+      )
+    `,
+  }}
+/>
 
         {/* Hero text */}
         <div
@@ -284,7 +303,7 @@ heroTl.fromTo(
         >
           <h1
             ref={heroTitleRef}
-            className="font-display text-balance text-5xl font-medium leading-[0.95] text-[oklch(0.98_0.005_80)] [text-shadow:0_2px_30px_rgba(0,0,0,0.6)] sm:text-7xl md:text-[clamp(4rem,9vw,9rem)]"
+            className="text-balance text-5xl font-medium leading-[0.95] text-[oklch(0.98_0.005_80)] [text-shadow:0_2px_30px_rgba(0,0,0,0.6)] sm:text-7xl md:text-[clamp(4rem,9vw,9rem)]"
           >
             Made with Craft.
             <br />
@@ -342,7 +361,7 @@ heroTl.fromTo(
               <span className="mb-4 inline-block text-[11px] uppercase tracking-[0.3em] text-[#c31b07]">
                 — Our Services
               </span>
-              <h2 className="font-display text-balance text-5xl font-medium text-white md:text-7xl">
+              <h2 className="text-balance text-5xl font-medium text-white md:text-7xl">
                 Six disciplines.
                 <br />
                 One standard of craft.
@@ -404,14 +423,14 @@ function ServiceCard({ service }: { service: Service }) {
       />
 
       <div className="relative z-10 flex items-start justify-between">
-        <span className="font-display text-3xl text-[#c31b07]">{service.number}</span>
+        <span className="text-3xl text-[#c31b07]">{service.number}</span>
         <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-white/60 backdrop-blur">
           Service
         </span>
       </div>
 
       <div className="relative z-10 mt-10">
-        <h3 className="font-display leading-tight text-2xl font-medium text-white sm:text-3xl"> 
+        <h3 className="leading-tight text-2xl font-medium text-white sm:text-3xl"> 
           {service.title}
         </h3>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70 sm:text-base">

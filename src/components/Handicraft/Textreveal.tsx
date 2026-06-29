@@ -240,9 +240,8 @@ export default function TextReveal() {
 
           <div className="copy-block">
             <p>
-              The final pieces capture the journey from
-               raw materials to timeless creations — preserving the hands, 
-              passion, and moments of craft that bring each design to life.
+              A celebration of the hands, passion,
+              and process behind every timeless creation.
             </p>
           </div>
         </div>
