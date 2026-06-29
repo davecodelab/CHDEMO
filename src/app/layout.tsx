@@ -4,6 +4,7 @@ import { Inter, Manrope } from "next/font/google";
 import ClientLayout from "@/client-layout";
 import { ViewTransitions } from "next-view-transitions";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -112,6 +113,7 @@ export default function RootLayout({
           <ClientLayout>{children}</ClientLayout>
         </ViewTransitions>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
