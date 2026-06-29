@@ -100,8 +100,8 @@ export default function Contact() {
 
               { icon: Mail,
                 label: 'Email', 
-                value: 'crafthiveghana@gmail.com', 
-                href: "mailto:crafthiveghana@gmail.com",
+                value: 'Info@crafthivegh.com', 
+                href: "mailto:info@crafthivegh.com",
                },
             ].map((item) => (
               <div key={item.label} className="flex items-start gap-4">

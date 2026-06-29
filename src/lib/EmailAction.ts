@@ -54,7 +54,7 @@ export async function sendContactEmail(formData: FormData) {
     const emailData: any = {
       from: 'onboarding@resend.dev', 
       replyTo: email,
-      to: ['crafthiveghana@gmail.com'],
+      to: ['info@crafthivegh.com'],
       subject: `New Enquiry from ${name}`,
       html: `
         <!DOCTYPE html>
