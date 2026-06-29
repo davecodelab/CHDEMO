@@ -1,5 +1,5 @@
 // import ScrollExpandHero from '@/components/blocks/ScrollExpandHero';
-import Services from '@/components/FramePreview/FramePreview';
+import FramePreview from '@/components/FramePreview/FramePreview';
 import FAQ from '@/components/sections/FAQ';
 import Footer from '@/components/ui/Footer';
 import ServicesPage from '@/components/sections/ServicesPage';
@@ -11,7 +11,7 @@ export default function Home() {
         <>
     <ServicesPage/>
         {/* Content revealed after hero expands  and the Services below is the framing tool Preview */}
-        <Services /> 
+        <FramePreview /> 
         <FAQ />
         <Footer />
        </>
