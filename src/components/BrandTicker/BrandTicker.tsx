@@ -4,7 +4,7 @@ import Image from "next/image";
 const pressLogos = [
   { src: "/logos/art-africa.png", alt: "Art Africa" },
   { src: "/logos/heritage-ghana.png", alt: "The House of Heritage Ghana" },
-  { src: "/logos/designexpress.png", alt: "DesignExpress interiors" },
+  { src: "/logos/DElogoo.png", alt: "DesignExpress interiors" },
   { src: "/logos/african-urban.png", alt: "African Urban Village" },
 ];
 
