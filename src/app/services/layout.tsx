@@ -19,13 +19,13 @@ export default function ServicesLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://crafthive.com"
+        "item": "https://crafthivegh.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://crafthive.com/services"
+        "item": "https://crafthivegh.com/services"
       }
     ]
   };

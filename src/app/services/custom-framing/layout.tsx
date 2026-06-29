@@ -19,19 +19,19 @@ export default function CustomFramingLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://crafthive.com"
+        "item": "https://crafthivegh.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://crafthive.com/services"
+        "item": "https://crafthivegh.com/services"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Custom Framing",
-        "item": "https://crafthive.com/services/custom-framing"
+        "item": "https://crafthivegh.com/services/custom-framing"
       }
     ]
   };

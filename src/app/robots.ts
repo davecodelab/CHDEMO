@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://crafthive.com/sitemap.xml",
+    sitemap: "https://crafthivegh.com/sitemap.xml",
   };
 }

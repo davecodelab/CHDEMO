@@ -19,19 +19,19 @@ export default function ShadowBoxLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://crafthive.com"
+        "item": "https://crafthivegh.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://crafthive.com/services"
+        "item": "https://crafthivegh.com/services"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Shadow Boxes",
-        "item": "https://crafthive.com/services/shadow-box"
+        "item": "https://crafthivegh.com/services/shadow-box"
       }
     ]
   };

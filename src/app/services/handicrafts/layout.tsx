@@ -19,19 +19,19 @@ export default function HandicraftsLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://crafthive.com"
+        "item": "https://crafthivegh.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://crafthive.com/services"
+        "item": "https://crafthivegh.com/services"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Handicrafts & Engraving",
-        "item": "https://crafthive.com/services/handicrafts"
+        "item": "https://crafthivegh.com/services/handicrafts"
       }
     ]
   };

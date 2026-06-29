@@ -17,7 +17,7 @@ const manrope = Manrope({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://crafthive.com"),
+  metadataBase: new URL("https://crafthivegh.com"),
   title: {
     template: "%s | CraftHive",
     default: "CraftHive — Custom Picture Framing & Art Studio in Weija",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "CraftHive — Custom Picture Framing & Art Studio in Weija",
     description:
       "Looking for the best custom picture framing near you? CraftHive at the Weija Tollbooth specializes in premium shadow boxes, personalized wooden gifts, and expert framing services.",
-    url: "https://crafthive.com",
+    url: "https://crafthivegh.com",
     siteName: "CraftHive",
     images: [
       {
@@ -74,8 +74,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "CraftHive Framing Studio",
-    "image": "https://crafthive.com/CraftHive.png",
-    "url": "https://crafthive.com",
+    "image": "https://crafthivegh.com/CraftHive.png",
+    "url": "https://crafthivegh.com",
     "telephone": "+233206564018",
     "address": {
       "@type": "PostalAddress",
